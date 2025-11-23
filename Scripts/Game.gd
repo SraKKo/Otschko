@@ -27,9 +27,9 @@ var current_time := 10
 @onready var bet_minus = $BetMinusButton
 @onready var deal_button = $DealButton
 
-@onready var money_label = $MoneyLabel
-@onready var round_label: Label = $RoundLabel
-@onready var bet_label = $BetLabel
+@onready var money_label = $Money/MoneyLabel
+@onready var round_label: Label = $Round/RoundLabel
+@onready var bet_label = $Bet/BetLabel
 
 @onready var time_bar: ProgressBar = $TimeBar
 @onready var round_timer: Timer = $RoundTime
