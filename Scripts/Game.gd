@@ -439,7 +439,7 @@ func dealer_play():
 		new_sprite.sprite_frames = dealer1.sprite_frames
 		new_sprite.scale = dealer1.scale
 
-		var offset := Vector2(60, 0)
+		var offset := Vector2(140, 0)
 		new_sprite.position = dealer2.position + offset * (dealer_cards.size() - 2)
 
 		add_child(new_sprite)

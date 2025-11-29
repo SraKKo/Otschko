@@ -1,8 +1,9 @@
-[gd_scene load_steps=65 format=3 uid="uid://ubpel0sj1qt1"]
+[gd_scene load_steps=70 format=3 uid="uid://ubpel0sj1qt1"]
 
 [ext_resource type="Script" uid="uid://cjorm84bv4p3n" path="res://Scripts/Game.gd" id="1_266y0"]
 [ext_resource type="Texture2D" uid="uid://c4mgjybri5vrq" path="res://Sprites/Deck of Cards Spritesheet.png" id="2_ln7r3"]
 [ext_resource type="Texture2D" uid="uid://bmb24aiecrc25" path="res://Sprites/GameBG.png" id="2_my1cl"]
+[ext_resource type="Texture2D" uid="uid://dqaasu06gqyr2" path="res://Sprites/Buttons/button2.png" id="4_6vmwt"]
 [ext_resource type="LabelSettings" uid="uid://bi4fbbj2r7ox3" path="res://Fonts/TextBasic.tres" id="4_j1s7x"]
 [ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="4_my1cl"]
 
@@ -385,6 +386,34 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0rta7"]
+atlas = ExtResource("4_6vmwt")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0xy6"]
+atlas = ExtResource("4_6vmwt")
+region = Rect2(32, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k33n5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rta7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0xy6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vg7pf"]
+font = ExtResource("4_my1cl")
+font_size = 26
+outline_size = 19
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_6vmwt"]
 font = ExtResource("4_my1cl")
 font_size = 35
@@ -556,6 +585,21 @@ offset_right = 792.0
 offset_bottom = 600.0
 text = "SPLIT!!!
 "
+
+[node name="SplitAnim" type="AnimatedSprite2D" parent="SplitButton"]
+position = Vector2(76.125, 30.0625)
+scale = Vector2(5.24219, 5.24219)
+sprite_frames = SubResource("SpriteFrames_k33n5")
+autoplay = "default"
+frame_progress = 0.184832
+
+[node name="Label" type="Label" parent="SplitButton"]
+offset_left = 16.0
+offset_top = 27.0
+offset_right = 237.0
+offset_bottom = 127.0
+text = "SPLIT!!"
+label_settings = SubResource("LabelSettings_vg7pf")
 
 [node name="Money" type="Sprite2D" parent="."]
 position = Vector2(1008, 105)
