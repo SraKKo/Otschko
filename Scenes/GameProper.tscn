@@ -1,4 +1,4 @@
-[gd_scene load_steps=85 format=3 uid="uid://ubpel0sj1qt1"]
+[gd_scene load_steps=87 format=3 uid="uid://ubpel0sj1qt1"]
 
 [ext_resource type="Script" uid="uid://cjorm84bv4p3n" path="res://Scripts/Game.gd" id="1_266y0"]
 [ext_resource type="Texture2D" uid="uid://c4mgjybri5vrq" path="res://Sprites/Deck of Cards Spritesheet.png" id="2_ln7r3"]
@@ -17,6 +17,7 @@
 [ext_resource type="LabelSettings" uid="uid://d3yiwmvq64atm" path="res://Fonts/MenuText.tres" id="14_y8fh6"]
 [ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="15_aww00"]
 [ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="16_s25x7"]
+[ext_resource type="Shader" uid="uid://v8uin0c7vj5a" path="res://Scripts/CRTshader.gdshader" id="18_2qxhv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
 atlas = ExtResource("2_ln7r3")
@@ -531,6 +532,15 @@ texture = ExtResource("15_aww00")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w8qwj"]
 texture = ExtResource("16_s25x7")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_13664"]
+shader = ExtResource("18_2qxhv")
+shader_parameter/scanline_strength = 0.35
+shader_parameter/scanline_count = 480.0
+shader_parameter/vignette_strength = 0.25
+shader_parameter/noise_strength = 0.05
+shader_parameter/chroma_offset = 1.0
+shader_parameter/curvature = 0.018000000855
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_266y0")
 
@@ -792,6 +802,17 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
 theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
 text = "
 continue"
+
+[node name="CRT" type="CanvasLayer" parent="."]
+
+[node name="Rect" type="ColorRect" parent="CRT"]
+material = SubResource("ShaderMaterial_13664")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="SplitButton" to="." method="_on_split_button_pressed"]
 [connection signal="timeout" from="RoundTime" to="." method="_on_round_time_timeout"]

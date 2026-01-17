@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cq7hgr2lajlv6"]
+[gd_scene load_steps=17 format=3 uid="uid://cq7hgr2lajlv6"]
 
 [ext_resource type="Script" uid="uid://cekn8vx346qwv" path="res://Scripts/game_over_screen.gd" id="1_ew8mo"]
 [ext_resource type="Texture2D" uid="uid://bxd62xm0ocp42" path="res://Sprites/MainMenuBg.png" id="1_q0tft"]
@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://c8dxw3bxjvto3" path="res://Fonts/new_style_box_texture.tres" id="4_g28uj"]
 [ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="5_327ky"]
 [ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="6_ib4ei"]
+[ext_resource type="Shader" uid="uid://v8uin0c7vj5a" path="res://Scripts/CRTshader.gdshader" id="8_jii3q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpdu0"]
 bg_color = Color(0.78, 0.1872, 0.1872, 0.37254903)
@@ -55,6 +56,15 @@ _data = {
 &"BOUNCE": SubResource("Animation_jii3q"),
 &"RESET": SubResource("Animation_g28uj")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g28uj"]
+shader = ExtResource("8_jii3q")
+shader_parameter/scanline_strength = 0.35
+shader_parameter/scanline_count = 480.0
+shader_parameter/vignette_strength = 0.25
+shader_parameter/noise_strength = 0.05
+shader_parameter/chroma_offset = 1.0
+shader_parameter/curvature = 0.018000000855
 
 [node name="GameOverScreen" type="Node2D"]
 script = ExtResource("1_ew8mo")
@@ -109,5 +119,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_327ky")
 }
 autoplay = "BOUNCE"
+
+[node name="CRT" type="CanvasLayer" parent="."]
+
+[node name="Rect" type="ColorRect" parent="CRT"]
+material = SubResource("ShaderMaterial_g28uj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

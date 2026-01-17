@@ -7,6 +7,8 @@ var fullscreen: bool = false
 var master: float = 1.0
 var music: float = 1.0
 var sfx: float = 1.0
+var crt_enabled: bool = true
+
 
 func _ready():
 	load_settings()
@@ -44,6 +46,7 @@ func save_settings():
 	cfg.set_value("audio", "master", master)
 	cfg.set_value("audio", "music", music)
 	cfg.set_value("audio", "sfx", sfx)
+	cfg.set_value("video", "crt_enabled", crt_enabled)
 	cfg.save(PATH)
 
 func load_settings():
@@ -55,3 +58,9 @@ func load_settings():
 	master = float(cfg.get_value("audio", "master", master))
 	music = float(cfg.get_value("audio", "music", music))
 	sfx = float(cfg.get_value("audio", "sfx", sfx))
+	crt_enabled = bool(cfg.get_value("video", "crt_enabled", crt_enabled))
+
+func apply_crt(rect: ColorRect):
+	if rect == null:
+		return
+	rect.visible = crt_enabled

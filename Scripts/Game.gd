@@ -45,10 +45,14 @@ var active_effects: Array[Node] = []
 @onready var trinkets_root: Node = $Trinkets
 
 @onready var pause_menu: Control = $UI/PauseMenu
+@onready var crt_rect: ColorRect = $CRT/Rect
+
 
 const CARD_BACK = 52  
 
 func _ready():
+	SettingsMenager.apply_crt(crt_rect)
+
 	deck = Deck.new()
 	deck.reset_deck()
 

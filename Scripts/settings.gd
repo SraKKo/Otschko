@@ -5,8 +5,18 @@ extends Control
 @onready var music_slider: HSlider = $Music
 @onready var sfx_slider: HSlider = $SFX
 @onready var back_button: Button = $Back
+@onready var crt_rect: ColorRect = $CRT/Rect
+@onready var crt_toggle: CheckButton = $CRTFilter
+
+
 
 func _ready():
+	SettingsMenager.apply_crt(crt_rect)
+
+	crt_toggle.button_pressed = SettingsMenager.crt_enabled
+	crt_toggle.toggled.connect(_on_crt_filter_toggled)
+
+
 	# wypełnij UI wartościami z SettingsManager
 	fullscreen_toggle.button_pressed = SettingsMenager.fullscreen
 	master_slider.value = SettingsMenager.master
@@ -38,6 +48,10 @@ func _on_sfx_changed(v: float):
 	SettingsMenager.sfx = v
 	SettingsMenager.apply_bus_volume("SFX", v)
 	SettingsMenager.save_settings()
-
+	
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://Scenes/StartScreen.tscn")
+
+func _on_crt_filter_toggled(_toggled_on: bool) -> void:
+	SettingsMenager.crt_enabled = true
+	SettingsMenager.save_settings()

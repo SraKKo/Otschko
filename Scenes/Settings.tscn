@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctc3ajm8qqfrh"]
+[gd_scene load_steps=17 format=3 uid="uid://ctc3ajm8qqfrh"]
 
 [ext_resource type="Texture2D" uid="uid://bxd62xm0ocp42" path="res://Sprites/MainMenuBg.png" id="1_4hxq3"]
 [ext_resource type="Script" uid="uid://cvs7fwq0pdign" path="res://Scripts/settings.gd" id="1_ppjuv"]
@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://c8dxw3bxjvto3" path="res://Fonts/new_style_box_texture.tres" id="4_646k0"]
 [ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="5_efosg"]
 [ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="6_4eoc7"]
+[ext_resource type="Shader" uid="uid://v8uin0c7vj5a" path="res://Scripts/CRTshader.gdshader" id="7_ipgag"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_flfri"]
 bg_color = Color(0.0935, 0.3, 0.09, 0.4)
@@ -49,6 +50,15 @@ outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 shadow_size = 10
 shadow_color = Color(0.0117647, 0.192157, 0.117647, 0.823529)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_646k0"]
+shader = ExtResource("7_ipgag")
+shader_parameter/scanline_strength = 0.35
+shader_parameter/scanline_count = 480.0
+shader_parameter/vignette_strength = 0.25
+shader_parameter/noise_strength = 0.05
+shader_parameter/chroma_offset = 1.0
+shader_parameter/curvature = 0.018000000855
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -104,9 +114,9 @@ label_settings = SubResource("LabelSettings_ci1r4")
 [node name="Music" type="HSlider" parent="."]
 layout_mode = 0
 offset_left = 432.0
-offset_top = 336.0
+offset_top = 392.0
 offset_right = 632.0
-offset_bottom = 352.0
+offset_bottom = 408.0
 scale = Vector2(2, 2)
 max_value = 1.0
 step = 0.1
@@ -123,9 +133,9 @@ label_settings = SubResource("LabelSettings_ecit4")
 [node name="Master" type="HSlider" parent="."]
 layout_mode = 0
 offset_left = 432.0
-offset_top = 232.0
+offset_top = 288.0
 offset_right = 632.0
-offset_bottom = 280.0
+offset_bottom = 336.0
 scale = Vector2(2, 2)
 max_value = 1.0
 step = 0.1
@@ -142,9 +152,9 @@ label_settings = SubResource("LabelSettings_fg815")
 [node name="SFX" type="HSlider" parent="."]
 layout_mode = 0
 offset_left = 432.0
-offset_top = 416.0
+offset_top = 472.0
 offset_right = 632.0
-offset_bottom = 432.0
+offset_bottom = 488.0
 scale = Vector2(2, 2)
 max_value = 1.0
 step = 0.1
@@ -163,8 +173,39 @@ offset_bottom = 239.00002
 text = "sfx volume"
 label_settings = SubResource("LabelSettings_i10pe")
 
+[node name="CRTFilter" type="CheckButton" parent="."]
+layout_mode = 0
+offset_left = 639.99994
+offset_top = 192.99998
+offset_right = 683.99994
+offset_bottom = 216.99998
+scale = Vector2(3.59, 3.59)
+button_pressed = true
+
+[node name="Label" type="Label" parent="CRTFilter"]
+layout_mode = 0
+offset_left = -71.30917
+offset_top = 10.863514
+offset_right = 45.690826
+offset_bottom = 33.863514
+scale = Vector2(0.64, 0.64)
+text = "CRT filter"
+label_settings = SubResource("LabelSettings_i10pe")
+
+[node name="CRT" type="CanvasLayer" parent="."]
+
+[node name="Rect" type="ColorRect" parent="CRT"]
+material = SubResource("ShaderMaterial_646k0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="Fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="changed" from="Music" to="." method="_on_music_changed"]
 [connection signal="changed" from="Master" to="." method="_on_master_changed"]
 [connection signal="changed" from="SFX" to="." method="_on_sfx_changed"]
+[connection signal="toggled" from="CRTFilter" to="." method="_on_crt_filter_toggled"]

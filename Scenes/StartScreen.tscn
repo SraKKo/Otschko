@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf4hd6m5t6e18"]
+[gd_scene load_steps=19 format=3 uid="uid://bf4hd6m5t6e18"]
 
 [ext_resource type="Script" uid="uid://dm3r71vbfmriw" path="res://Scripts/StartScreen.gd" id="1_6mw8b"]
 [ext_resource type="Texture2D" uid="uid://bxd62xm0ocp42" path="res://Sprites/MainMenuBg.png" id="1_ko4ly"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="4_ey7n4"]
 [ext_resource type="StyleBox" uid="uid://c8dxw3bxjvto3" path="res://Fonts/new_style_box_texture.tres" id="4_kehkj"]
 [ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="5_6mw8b"]
+[ext_resource type="Shader" uid="uid://v8uin0c7vj5a" path="res://Scripts/CRTshader.gdshader" id="9_anxsw"]
 
 [sub_resource type="Theme" id="Theme_2qxhv"]
 
@@ -95,6 +96,15 @@ _data = {
 &"TitleBounce": SubResource("Animation_ogpyo")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogpyo"]
+shader = ExtResource("9_anxsw")
+shader_parameter/scanline_strength = 0.35
+shader_parameter/scanline_count = 480.0
+shader_parameter/vignette_strength = 0.25
+shader_parameter/noise_strength = 0.05
+shader_parameter/chroma_offset = 1.0
+shader_parameter/curvature = 0.018000000855
+
 [node name="StartScreen" type="Node2D"]
 script = ExtResource("1_6mw8b")
 
@@ -167,6 +177,17 @@ libraries = {
 }
 autoplay = "TitleBounce"
 speed_scale = 0.711
+
+[node name="CRT" type="CanvasLayer" parent="."]
+
+[node name="Rect" type="ColorRect" parent="CRT"]
+material = SubResource("ShaderMaterial_ogpyo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
