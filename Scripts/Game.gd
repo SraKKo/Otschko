@@ -44,9 +44,9 @@ var active_effects: Array[Node] = []
 
 @onready var trinkets_root: Node = $Trinkets
 
+@onready var pause_menu: Control = $UI/PauseMenu
 
 const CARD_BACK = 52  
-
 
 func _ready():
 	deck = Deck.new()
@@ -65,7 +65,7 @@ func _ready():
 	
 	split_button.visible = false
 	
-	var t: TrinketDef = TrinketDb.get_by_id("slow_timer")
+	var t: TrinketDef = TrinketDb.get_by_id("lucky_draw")
 	inventory.add_trinket(t)
 	inventory.equip(t)
 	var b: TrinketDef = TrinketDb.get_by_id("overheat")
@@ -383,13 +383,12 @@ func start_new_game():
 	hit_button.disabled = true
 	hold_button.disabled = true
 
-	bet = bet     
+	bet = 0     
 	update_ui()
 	
 	round_timer.stop()
 	start_round_timer()
 	split_button.visible = false
-
 
 
 func on_deal():
@@ -550,3 +549,17 @@ func apply_payout_modifiers(base_payout: int, context: String) -> int:
 		if eff.has_method("modify_payout"):
 			payout = eff.modify_payout(self, payout, context)
 	return payout
+	
+func _input(event):
+	if event.is_action_pressed("pause"):
+		toggle_pause()
+
+func toggle_pause():
+	if get_tree().paused:
+		get_tree().paused = false
+		pause_menu.hide_menu()
+	else:
+		get_tree().paused = true
+		pause_menu.show_menu()
+
+	

@@ -1,21 +1,24 @@
-[gd_scene load_steps=15 format=3 uid="uid://bf4hd6m5t6e18"]
+[gd_scene load_steps=17 format=3 uid="uid://bf4hd6m5t6e18"]
 
-[ext_resource type="Script" uid="uid://dm3r71vbfmriw" path="res://Scenes/StartScreen.gd" id="1_6mw8b"]
+[ext_resource type="Script" uid="uid://dm3r71vbfmriw" path="res://Scripts/StartScreen.gd" id="1_6mw8b"]
 [ext_resource type="Texture2D" uid="uid://bxd62xm0ocp42" path="res://Sprites/MainMenuBg.png" id="1_ko4ly"]
 [ext_resource type="LabelSettings" uid="uid://d3yiwmvq64atm" path="res://Fonts/MenuText.tres" id="2_0on6r"]
 [ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="3_3u666"]
 [ext_resource type="Texture2D" uid="uid://qrjjajx15a5n" path="res://Sprites/Buttons/button.png" id="4_a2231"]
 [ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="4_ey7n4"]
+[ext_resource type="StyleBox" uid="uid://c8dxw3bxjvto3" path="res://Fonts/new_style_box_texture.tres" id="4_kehkj"]
 [ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="5_6mw8b"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ey7n4"]
-texture = ExtResource("4_a2231")
+[sub_resource type="Theme" id="Theme_2qxhv"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_anxsw"]
 texture = ExtResource("5_6mw8b")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kehkj"]
 texture = ExtResource("4_ey7n4")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ey7n4"]
+texture = ExtResource("4_a2231")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kehkj"]
 
@@ -105,10 +108,11 @@ offset_left = 464.0
 offset_top = 280.0
 offset_right = 704.0
 offset_bottom = 376.0
+theme = SubResource("Theme_2qxhv")
 theme_override_constants/outline_size = 19
 theme_override_fonts/font = ExtResource("3_3u666")
 theme_override_font_sizes/font_size = 46
-theme_override_styles/normal = SubResource("StyleBoxTexture_ey7n4")
+theme_override_styles/normal = ExtResource("4_kehkj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
 text = "
@@ -151,7 +155,7 @@ offset_left = -488.0
 offset_top = -40.0
 offset_right = 593.0
 offset_bottom = 144.0
-text = "BLACKEST OF JACKS"
+text = "otshcko!"
 label_settings = ExtResource("2_0on6r")
 horizontal_alignment = 1
 vertical_alignment = 1

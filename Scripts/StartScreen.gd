@@ -8,7 +8,7 @@ func _on_play_pressed():
 	get_tree().change_scene_to_file("res://Scenes/GameProper.tscn")
 	
 func _on_settings_pressed() -> void:
-	pass
+	get_tree().change_scene_to_file("res://Scenes/Settings.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

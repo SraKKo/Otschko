@@ -1,3 +1,113 @@
-[gd_scene format=3 uid="uid://cq7hgr2lajlv6"]
+[gd_scene load_steps=15 format=3 uid="uid://cq7hgr2lajlv6"]
+
+[ext_resource type="Script" uid="uid://cekn8vx346qwv" path="res://Scripts/game_over_screen.gd" id="1_ew8mo"]
+[ext_resource type="Texture2D" uid="uid://bxd62xm0ocp42" path="res://Sprites/MainMenuBg.png" id="1_q0tft"]
+[ext_resource type="LabelSettings" uid="uid://d3yiwmvq64atm" path="res://Fonts/MenuText.tres" id="2_ew8mo"]
+[ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="3_jii3q"]
+[ext_resource type="StyleBox" uid="uid://c8dxw3bxjvto3" path="res://Fonts/new_style_box_texture.tres" id="4_g28uj"]
+[ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="5_327ky"]
+[ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="6_ib4ei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gpdu0"]
+bg_color = Color(0.78, 0.1872, 0.1872, 0.37254903)
+
+[sub_resource type="Theme" id="Theme_qhbal"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2tcun"]
+texture = ExtResource("5_327ky")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u0bp0"]
+texture = ExtResource("6_ib4ei")
+
+[sub_resource type="Animation" id="Animation_jii3q"]
+resource_name = "BOUNCE"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.034906585, 0.0, -0.034906585, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_g28uj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.034906585]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_327ky"]
+_data = {
+&"BOUNCE": SubResource("Animation_jii3q"),
+&"RESET": SubResource("Animation_g28uj")
+}
 
 [node name="GameOverScreen" type="Node2D"]
+script = ExtResource("1_ew8mo")
+
+[node name="MainMenuBg" type="Sprite2D" parent="."]
+position = Vector2(576.857, 324)
+scale = Vector2(5.78571, 5.78571)
+texture = ExtResource("1_q0tft")
+
+[node name="Panel" type="Panel" parent="MainMenuBg"]
+offset_left = -102.46919
+offset_top = -56.86424
+offset_right = 103.03714
+offset_bottom = 57.38277
+theme_override_styles/panel = SubResource("StyleBoxFlat_gpdu0")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 448.0
+offset_top = 96.0
+offset_right = 782.0
+offset_bottom = 283.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.034906585
+size_flags_horizontal = 4
+text = "
+BUST!"
+label_settings = ExtResource("2_ew8mo")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 488.0
+offset_top = 376.0
+offset_right = 728.0
+offset_bottom = 472.0
+theme = SubResource("Theme_qhbal")
+theme_override_constants/outline_size = 19
+theme_override_fonts/font = ExtResource("3_jii3q")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = ExtResource("4_g28uj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2tcun")
+theme_override_styles/hover = SubResource("StyleBoxTexture_u0bp0")
+text = "
+quit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_327ky")
+}
+autoplay = "BOUNCE"
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

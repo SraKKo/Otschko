@@ -1,12 +1,22 @@
-[gd_scene load_steps=71 format=3 uid="uid://ubpel0sj1qt1"]
+[gd_scene load_steps=85 format=3 uid="uid://ubpel0sj1qt1"]
 
 [ext_resource type="Script" uid="uid://cjorm84bv4p3n" path="res://Scripts/Game.gd" id="1_266y0"]
 [ext_resource type="Texture2D" uid="uid://c4mgjybri5vrq" path="res://Sprites/Deck of Cards Spritesheet.png" id="2_ln7r3"]
 [ext_resource type="Texture2D" uid="uid://bmb24aiecrc25" path="res://Sprites/GameBG.png" id="2_my1cl"]
 [ext_resource type="Texture2D" uid="uid://dqaasu06gqyr2" path="res://Sprites/Buttons/button2.png" id="4_6vmwt"]
 [ext_resource type="LabelSettings" uid="uid://bi4fbbj2r7ox3" path="res://Fonts/TextBasic.tres" id="4_j1s7x"]
+[ext_resource type="Texture2D" uid="uid://bln103pn2a50g" path="res://Sprites/Buttons/chip10.png" id="4_k33n5"]
 [ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="4_my1cl"]
+[ext_resource type="Texture2D" uid="uid://hxwi2jf3afxj" path="res://Sprites/Buttons/hitbutton.png" id="4_npdhm"]
+[ext_resource type="Texture2D" uid="uid://bk7d2ljdynts4" path="res://Sprites/Buttons/holdbutton.png" id="5_pvu6l"]
+[ext_resource type="Texture2D" uid="uid://bybuf2233l8x5" path="res://Sprites/Buttons/chip-10.png" id="5_vg7pf"]
 [ext_resource type="Script" uid="uid://dujg6tivekcc4" path="res://Scripts/TrinketHUD.gd" id="7_0rta7"]
+[ext_resource type="Texture2D" uid="uid://dhn2fjpkwb6y4" path="res://Sprites/Buttons/dealbutton.png" id="8_unm8k"]
+[ext_resource type="Script" uid="uid://dxlaok1qfqahr" path="res://Scripts/PauseMenu.gd" id="13_s25x7"]
+[ext_resource type="StyleBox" uid="uid://c8dxw3bxjvto3" path="res://Fonts/new_style_box_texture.tres" id="13_unm8k"]
+[ext_resource type="LabelSettings" uid="uid://d3yiwmvq64atm" path="res://Fonts/MenuText.tres" id="14_y8fh6"]
+[ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="15_aww00"]
+[ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="16_s25x7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
 atlas = ExtResource("2_ln7r3")
@@ -387,6 +397,8 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="MeshTexture" id="MeshTexture_n5fvy"]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0rta7"]
 atlas = ExtResource("4_6vmwt")
 region = Rect2(0, 0, 32, 16)
@@ -511,11 +523,19 @@ _data = {
 &"TextShake": SubResource("Animation_j1s7x")
 }
 
+[sub_resource type="Theme" id="Theme_2qxhv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_13664"]
+texture = ExtResource("15_aww00")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w8qwj"]
+texture = ExtResource("16_s25x7")
+
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_266y0")
 
 [node name="GameBg" type="Sprite2D" parent="."]
-position = Vector2(584, 376)
+position = Vector2(588, 370)
 scale = Vector2(6.64286, 6.64286)
 texture = ExtResource("2_my1cl")
 
@@ -545,45 +565,71 @@ animation = &"cards"
 frame = 1
 
 [node name="HitButton" type="Button" parent="."]
-offset_left = 877.0
-offset_top = 448.0
-offset_right = 1029.1069
-offset_bottom = 529.0
+offset_left = 903.0
+offset_top = 569.0
+offset_right = 1024.0
+offset_bottom = 627.0
 text = "HIT"
 
+[node name="Hitbutton" type="Sprite2D" parent="HitButton"]
+position = Vector2(61, 28)
+scale = Vector2(5.063, 5.063)
+texture = ExtResource("4_npdhm")
+
 [node name="HoldButton" type="Button" parent="."]
-offset_left = 873.0
-offset_top = 339.0
-offset_right = 1026.504
-offset_bottom = 417.0
+offset_left = 898.0
+offset_top = 477.0
+offset_right = 1026.0
+offset_bottom = 538.0
 text = "HOLD"
 
+[node name="Holdbutton" type="Sprite2D" parent="HoldButton"]
+position = Vector2(66, 30)
+scale = Vector2(5.0625, 5.0625)
+texture = ExtResource("5_pvu6l")
+
 [node name="BetPlusButton" type="Button" parent="."]
-offset_left = 874.0
-offset_top = 284.0
-offset_right = 941.11865
-offset_bottom = 329.0
+offset_left = 890.0
+offset_top = 390.0
+offset_right = 957.11865
+offset_bottom = 435.0
 text = "+10"
 
+[node name="Chip10" type="Sprite2D" parent="BetPlusButton"]
+position = Vector2(34, 21)
+scale = Vector2(4.91, 4.91)
+texture = ExtResource("4_k33n5")
+
 [node name="BetMinusButton" type="Button" parent="."]
-offset_left = 955.0
-offset_top = 284.0
-offset_right = 1020.9828
-offset_bottom = 327.0
+offset_left = 971.0
+offset_top = 390.0
+offset_right = 1036.9828
+offset_bottom = 433.0
 text = "-10"
+icon = SubResource("MeshTexture_n5fvy")
+
+[node name="Chip10" type="Sprite2D" parent="BetMinusButton"]
+position = Vector2(35, 21)
+scale = Vector2(4.91, 4.91)
+texture = ExtResource("5_vg7pf")
 
 [node name="DealButton" type="Button" parent="."]
-offset_left = 34.0
+offset_left = 127.0
 offset_top = 546.0
-offset_right = 601.0
-offset_bottom = 619.0
+offset_right = 526.0
+offset_bottom = 629.0
 text = "DEAL"
 
+[node name="Dealbutton" type="Sprite2D" parent="DealButton"]
+position = Vector2(195, 43)
+scale = Vector2(6.90625, 6.90625)
+texture = ExtResource("8_unm8k")
+
 [node name="SplitButton" type="Button" parent="."]
-offset_left = 640.0
-offset_top = 552.0
-offset_right = 792.0
-offset_bottom = 600.0
+offset_left = 578.0
+offset_top = 558.0
+offset_right = 730.0
+offset_bottom = 606.0
 text = "SPLIT!!!
 "
 
@@ -604,8 +650,9 @@ text = "SPLIT!!"
 label_settings = SubResource("LabelSettings_vg7pf")
 
 [node name="Money" type="Sprite2D" parent="."]
-position = Vector2(1008, 105)
+position = Vector2(988.99994, 104.99999)
 rotation = 0.015708
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="MoneyLabel" type="Label" parent="Money"]
 offset_left = -142.0
@@ -614,8 +661,9 @@ offset_bottom = 63.0
 label_settings = ExtResource("4_j1s7x")
 
 [node name="Bet" type="Sprite2D" parent="."]
-position = Vector2(949, 235)
+position = Vector2(1005, 325.99997)
 rotation = 0.015708
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="BetLabel" type="Label" parent="Bet"]
 anchors_preset = -1
@@ -631,6 +679,7 @@ label_settings = ExtResource("4_j1s7x")
 [node name="Round" type="Sprite2D" parent="."]
 position = Vector2(72, 32)
 rotation = 0.015708
+scale = Vector2(0.99999994, 0.99999994)
 
 [node name="RoundLabel" type="Label" parent="Round"]
 offset_left = -64.0
@@ -643,13 +692,14 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TimeBar" type="ProgressBar" parent="."]
-offset_left = 201.0
+offset_left = 259.0
 offset_top = 11.0
 offset_right = 1117.0
-offset_bottom = 58.0
+offset_bottom = 55.024017
 theme_override_styles/background = SubResource("StyleBoxFlat_v1qfn")
 max_value = 20.0
 value = 10.0
+show_percentage = false
 
 [node name="RoundTime" type="Timer" parent="."]
 
@@ -680,5 +730,70 @@ offset_bottom = 20.0
 grow_horizontal = 0
 grow_vertical = 2
 
+[node name="UI" type="Node2D" parent="."]
+
+[node name="PauseMenu" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("13_s25x7")
+
+[node name="Panel" type="Panel" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = -74.0
+offset_top = -171.0
+offset_right = -34.0
+offset_bottom = -131.0
+scale = Vector2(33.703747, 31.465439)
+
+[node name="Label" type="Label" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 396.175
+offset_top = 193.0
+offset_right = 810.1754
+offset_bottom = 285.0
+theme_override_fonts/font = ExtResource("4_my1cl")
+text = "PAUSED"
+label_settings = ExtResource("14_y8fh6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 447.0
+offset_right = 712.0
+offset_bottom = 543.0
+theme = SubResource("Theme_2qxhv")
+theme_override_constants/outline_size = 19
+theme_override_fonts/font = ExtResource("4_my1cl")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = ExtResource("13_unm8k")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
+text = "
+quit"
+
+[node name="ResumeButton" type="Button" parent="UI/PauseMenu"]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 346.0
+offset_right = 765.0
+offset_bottom = 442.0
+theme = SubResource("Theme_2qxhv")
+theme_override_constants/outline_size = 19
+theme_override_fonts/font = ExtResource("4_my1cl")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = ExtResource("13_unm8k")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
+text = "
+continue"
+
 [connection signal="pressed" from="SplitButton" to="." method="_on_split_button_pressed"]
 [connection signal="timeout" from="RoundTime" to="." method="_on_round_time_timeout"]
+[connection signal="pressed" from="UI/PauseMenu/QuitButton" to="UI/PauseMenu" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="UI/PauseMenu/ResumeButton" to="UI/PauseMenu" method="_on_resume_button_pressed"]
