@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://ubpel0sj1qt1"]
+[gd_scene load_steps=71 format=3 uid="uid://ubpel0sj1qt1"]
 
 [ext_resource type="Script" uid="uid://cjorm84bv4p3n" path="res://Scripts/Game.gd" id="1_266y0"]
 [ext_resource type="Texture2D" uid="uid://c4mgjybri5vrq" path="res://Sprites/Deck of Cards Spritesheet.png" id="2_ln7r3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dqaasu06gqyr2" path="res://Sprites/Buttons/button2.png" id="4_6vmwt"]
 [ext_resource type="LabelSettings" uid="uid://bi4fbbj2r7ox3" path="res://Fonts/TextBasic.tres" id="4_j1s7x"]
 [ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="4_my1cl"]
+[ext_resource type="Script" uid="uid://dujg6tivekcc4" path="res://Scripts/TrinketHUD.gd" id="7_0rta7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
 atlas = ExtResource("2_ln7r3")
@@ -546,29 +547,29 @@ frame = 1
 [node name="HitButton" type="Button" parent="."]
 offset_left = 877.0
 offset_top = 448.0
-offset_right = 1123.0
-offset_bottom = 579.0
+offset_right = 1029.1069
+offset_bottom = 529.0
 text = "HIT"
 
 [node name="HoldButton" type="Button" parent="."]
 offset_left = 873.0
-offset_top = 302.0
-offset_right = 1119.0
-offset_bottom = 427.0
+offset_top = 339.0
+offset_right = 1026.504
+offset_bottom = 417.0
 text = "HOLD"
 
 [node name="BetPlusButton" type="Button" parent="."]
 offset_left = 874.0
-offset_top = 233.0
-offset_right = 962.0
-offset_bottom = 292.0
+offset_top = 284.0
+offset_right = 941.11865
+offset_bottom = 329.0
 text = "+10"
 
 [node name="BetMinusButton" type="Button" parent="."]
-offset_left = 1029.0
-offset_top = 232.0
-offset_right = 1118.0
-offset_bottom = 290.0
+offset_left = 955.0
+offset_top = 284.0
+offset_right = 1020.9828
+offset_bottom = 327.0
 text = "-10"
 
 [node name="DealButton" type="Button" parent="."]
@@ -594,6 +595,7 @@ autoplay = "default"
 frame_progress = 0.184832
 
 [node name="Label" type="Label" parent="SplitButton"]
+layout_mode = 0
 offset_left = 16.0
 offset_top = 27.0
 offset_right = 237.0
@@ -612,14 +614,18 @@ offset_bottom = 63.0
 label_settings = ExtResource("4_j1s7x")
 
 [node name="Bet" type="Sprite2D" parent="."]
-position = Vector2(984, 176)
+position = Vector2(949, 235)
 rotation = 0.015708
 
 [node name="BetLabel" type="Label" parent="Bet"]
-offset_left = -108.0
-offset_top = -5.0
-offset_right = 128.0
-offset_bottom = 41.0
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = -5.0
+anchor_right = 1.0
+anchor_bottom = -5.0
+offset_left = -109.0
+offset_right = 127.0
+offset_bottom = 46.0
 label_settings = ExtResource("4_j1s7x")
 
 [node name="Round" type="Sprite2D" parent="."]
@@ -652,6 +658,27 @@ libraries = {
 &"": SubResource("AnimationLibrary_0rta7")
 }
 autoplay = "TextShake"
+
+[node name="Trinkets" type="Node" parent="."]
+
+[node name="TrinketHUD" type="CanvasLayer" parent="."]
+script = ExtResource("7_0rta7")
+
+[node name="Panel" type="Panel" parent="TrinketHUD"]
+offset_right = 40.0
+grow_horizontal = 0
+
+[node name="Column" type="VBoxContainer" parent="TrinketHUD"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [connection signal="pressed" from="SplitButton" to="." method="_on_split_button_pressed"]
 [connection signal="timeout" from="RoundTime" to="." method="_on_round_time_timeout"]

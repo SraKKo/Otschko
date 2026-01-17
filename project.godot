@@ -12,11 +12,13 @@ config_version=5
 
 config/name="blackjack"
 run/main_scene="uid://bf4hd6m5t6e18"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
 Global="*res://Scripts/Global.gd"
+inventory="*res://Scripts/Inventory.gd"
+TrinketDb="*res://Scripts/TrinketDb.gd"
 
 [rendering]
 

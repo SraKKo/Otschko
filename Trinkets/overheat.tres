@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://cjyic7tlxd0r7"]
+
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_mm8ci"]
+[ext_resource type="Script" uid="uid://bfwfrt2fm5yx3" path="res://Scripts/T_Overheat.gd" id="1_x0jdw"]
+[ext_resource type="Texture2D" uid="uid://bw63oryokleag" path="res://Sprites/Trinkets/Overheat.png" id="2_4g6ag"]
+
+[resource]
+script = ExtResource("1_mm8ci")
+id = "overheat"
+display_name = "Overheat!"
+description = "You bust only above 22"
+icon = ExtResource("2_4g6ag")
+effect_script = ExtResource("1_x0jdw")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

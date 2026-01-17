@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://b6yqmbncrjmmn"]
+
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_68fyt"]
+[ext_resource type="Script" uid="uid://lcmdwav7fuk3" path="res://Scripts/T_NervousDealer.gd" id="1_yvcod"]
+[ext_resource type="Texture2D" uid="uid://deau35p7yg4vt" path="res://Sprites/Trinkets/NervousDealer.png" id="2_13kla"]
+
+[resource]
+script = ExtResource("1_68fyt")
+id = "nervous_dealer"
+display_name = "Nervous Dealer"
+description = "Dealer stands on 16 instead of 17"
+icon = ExtResource("2_13kla")
+effect_script = ExtResource("1_yvcod")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

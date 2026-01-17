@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://bquf4v17w0uym"]
+
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_8a23d"]
+[ext_resource type="Script" uid="uid://bjw0jo35j7shs" path="res://Scripts/T_GoldenChip.gd" id="1_pxqgq"]
+[ext_resource type="Texture2D" uid="uid://c2d58c21dujlw" path="res://Sprites/Trinkets/GoldenChip.png" id="2_jiwnb"]
+
+[resource]
+script = ExtResource("1_8a23d")
+id = "golden_chip"
+display_name = "Golden Chip"
+description = "Earn 10% more chips "
+icon = ExtResource("2_jiwnb")
+effect_script = ExtResource("1_pxqgq")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

@@ -19,6 +19,7 @@ var in_round: bool = false
 var max_time := 10     
 var current_time := 10
 
+var active_effects: Array[Node] = []
 
 
 @onready var player1: AnimatedSprite2D = $PlayerCard1
@@ -41,6 +42,9 @@ var current_time := 10
 @onready var time_bar: ProgressBar = $TimeBar
 @onready var round_timer: Timer = $RoundTime
 
+@onready var trinkets_root: Node = $Trinkets
+
+
 const CARD_BACK = 52  
 
 
@@ -60,9 +64,20 @@ func _ready():
 	deal_button.pressed.connect(on_deal)
 	
 	split_button.visible = false
+	
+	var t: TrinketDef = TrinketDb.get_by_id("slow_timer")
+	inventory.add_trinket(t)
+	inventory.equip(t)
+	var b: TrinketDef = TrinketDb.get_by_id("overheat")
+	inventory.add_trinket(b)
+	inventory.equip(b)
+	inventory.equipped_changed.connect(apply_equipped_trinkets)
+	apply_equipped_trinkets()
+
+
 
 	update_ui()
-
+	
 func can_split() -> bool:
 	if player_cards.size() != 2:
 		return false
@@ -91,6 +106,7 @@ func on_bet_minus():
 
 
 func deal_initial_cards():
+	start_round_timer()
 	# --- KARTY GRACZA ---
 	var p1 = deck.draw_card()
 	var p2 = deck.draw_card()
@@ -109,8 +125,6 @@ func deal_initial_cards():
 	set_card(dealer1, d1)
 	set_card(dealer2, CARD_BACK)
 	
-	round_timer.stop()
-	start_round_timer()
 	
 	if can_split():
 		split_button.visible = true
@@ -123,33 +137,36 @@ func on_hit_pressed():
 	if not split_active:
 		var new_card = deck.draw_card()
 		player_cards.append(new_card)
+
+		# pozwól trinketom cofnąć bust na pierwszym Hicie
+		for eff in active_effects:
+			if eff.has_method("prevent_first_hit_bust"):
+				if eff.prevent_first_hit_bust(self, player_cards):
+					update_ui()
+					return
+
 		add_new_player_card_sprite(new_card)
 
-		if count_score(player_cards) > 21:
-			game_over("Przegrana! Masz ponad 21.")
-		return
+		if count_score(player_cards) > get_bust_limit():
+			game_over("Przegrana! Masz ponad limit.")
+		return   # <-- TO jest kluczowe
 
 	# ====== SPLIT AKTYWNY ======
-
-	# --- RĘKA 1 ---
 	if current_hand == 1:
 		var c1 = deck.draw_card()
 		player_hand1.append(c1)
 		update_split_sprites()
 
-		# bust → przechodzimy do ręki 2
-		if count_score(player_hand1) > 21:
+		if count_score(player_hand1) > get_bust_limit():
 			current_hand = 2
 		return
 
-	# --- RĘKA 2 ---
 	if current_hand == 2:
 		var c2 = deck.draw_card()
 		player_hand2.append(c2)
 		update_split_sprites()
 
-		# bust → koniec splita
-		if count_score(player_hand2) > 21:
+		if count_score(player_hand2) > get_bust_limit():
 			finish_split()
 		return
 
@@ -249,16 +266,31 @@ func update_split_sprites():
 		add_child(spr2)
 		set_card(spr2, player_hand2[i])
 
+func split_payout(result: String, bet_amount: int, context: String) -> int:
+	var base := 0
+	match result:
+		"win":
+			base = bet_amount * 2
+		"draw":
+			base = bet_amount
+		"lose":
+			base = 0
+
+	# modyfikujemy TYLKO wygrane (draw i lose zostawiamy)
+	if result == "win":
+		return apply_payout_modifiers(base, context)
+	return base
+
 
 func finish_split():
-	split_active = false
-	current_hand = 1
-
-	# dealer gra normalnie
+	# na czas liczenia zostawiamy split_active = true, żeby game_over nie odpalił payoutu normalnego
+	# (a dopiero potem go wyłączymy)
+	
+	# odkrywamy kartę dealera i dealer gra
 	set_card(dealer2, dealer_hidden_card)
 	dealer_play()
 
-	# sprawdzamy wynik dla obu rąk
+	# wyniki
 	var score1 = count_score(player_hand1)
 	var score2 = count_score(player_hand2)
 	var dealer_score = count_score(dealer_cards)
@@ -266,14 +298,16 @@ func finish_split():
 	var result1 = hand_result(score1, dealer_score)
 	var result2 = hand_result(score2, dealer_score)
 
-	# bet rozliczamy za obie ręce
-	money += bet * result_value(result1)
-	money += bet * result_value(result2)
+	# wypłata za obie ręce
+	money += split_payout(result1, bet, "split_hand1_win")
+	money += split_payout(result2, bet, "split_hand2_win")
 
 	update_ui()
 
+	# kończymy split dopiero po rozliczeniu
+	split_active = false
+	current_hand = 1
 	game_over("Split zakończony")
-
 
 func count_score(cards: Array) -> int:
 	var total = 0
@@ -297,14 +331,6 @@ func count_score(cards: Array) -> int:
 
 	return total
 
-func result_value(res):
-	match res:
-		"win": return 1  # +bet
-		"draw": return 0 # 0
-		"lose": return -1 # -bet
-	return 0
-
-
 func check_winner():
 	var player_score = count_score(player_cards)
 	var dealer_score = count_score(dealer_cards)
@@ -325,18 +351,20 @@ func game_over(msg: String):
 	hit_button.disabled = true
 	hold_button.disabled = true
 
-	# Rozliczenie betu
-	match msg:
-		"Wygrałeś! Dealer ma ponad 21.":
-			money += bet * 2
-		"Wygrałeś! Masz więcej punktów.":
-			money += bet * 2
-		"Przegrana! Masz ponad 21.":
-			money -= bet
-		"Przegrana! Dealer ma więcej punktów.":
-			money -= bet
-		"Remis!":
-			money += bet
+# Rozliczenie betu (tylko normalna gra)
+	if msg != "Split zakończony":
+		match msg:
+			"Wygrałeś! Dealer ma ponad 21.", "Wygrałeś! Masz więcej punktów.":
+				var base = bet * 2
+				money += apply_payout_modifiers(base, "normal_win")
+
+			"Remis!":
+				money += bet  # zwrot stawki (tego zwykle nie modyfikujemy)
+
+			"Przegrana! Masz ponad 21.", "Przegrana! Dealer ma więcej punktów.", "Przegrana! Czas minął.":
+				pass
+
+
 
 	update_ui()
 
@@ -371,6 +399,7 @@ func on_deal():
 		return
 	round_count += 1
 	update_round_label()
+	notify_round_start()
 
 	in_round = true
 
@@ -396,15 +425,24 @@ func start_round_timer():
 	time_bar.value = max_time
 	round_timer.start()
 
+func notify_round_start():
+	for eff in active_effects:
+		if eff.has_method("on_round_start"):
+			eff.on_round_start(self)
 
 func time_out():
 	print("Czas minął!")
 	# Gracz automatycznie przegrywa
 	game_over("Przegrana! Czas minął.")
 
-
 func _on_round_time_timeout() -> void:
-	current_time -= 1
+	var step := 1
+	for eff in active_effects:
+		if eff.has_method("modify_timer_step"):
+			step = eff.modify_timer_step(self, step)
+
+	current_time -= step
+
 	time_bar.value = current_time
 
 	if current_time <= 0:
@@ -431,19 +469,30 @@ func dealer_play():
 	set_card(dealer2, dealer_hidden_card)
 
 	# Dealer dobiera do 17
-	while count_score(dealer_cards) < 17:
-		var new_card = deck.draw_card()
-		dealer_cards.append(new_card)
+	while count_score(dealer_cards) < get_dealer_stand_value():
+	# Lazy Dealer hook: czasem przerywa dobieranie
+		var stop_drawing := false
+		for eff in active_effects:
+			if eff.has_method("should_skip_dealer_draw"):
+				if eff.should_skip_dealer_draw(self):
+					stop_drawing = true
+					break
+		if stop_drawing:
+			break
 
-		var new_sprite := AnimatedSprite2D.new()
-		new_sprite.sprite_frames = dealer1.sprite_frames
-		new_sprite.scale = dealer1.scale
+	var new_card = deck.draw_card()
+	dealer_cards.append(new_card)
 
-		var offset := Vector2(140, 0)
-		new_sprite.position = dealer2.position + offset * (dealer_cards.size() - 2)
+	var new_sprite := AnimatedSprite2D.new()
+	new_sprite.sprite_frames = dealer1.sprite_frames
+	new_sprite.scale = dealer1.scale
 
-		add_child(new_sprite)
-		set_card(new_sprite, new_card)
+	var offset := Vector2(140, 0)
+	new_sprite.position = dealer2.position + offset * (dealer_cards.size() - 2)
+
+	add_child(new_sprite)
+	set_card(new_sprite, new_card)
+
 
 func hand_result(player_score: int, dealer_score: int) -> String:
 	if player_score > 21:
@@ -464,3 +513,40 @@ func get_current_hand_score() -> int:
 	if current_hand == 1:
 		return count_score(player_hand1)
 	return count_score(player_hand2)
+	
+func apply_equipped_trinkets():
+	# usuń stare efekty
+	for e in active_effects:
+		if is_instance_valid(e):
+			e.queue_free()
+	active_effects.clear()
+
+	# dodaj nowe efekty
+	for def in inventory.equipped:
+		if def == null or def.effect_script == null:
+			continue
+		var eff: Node = def.effect_script.new()
+		trinkets_root.add_child(eff)
+		active_effects.append(eff)
+
+func get_bust_limit() -> int:
+	var limit := 21
+	for eff in active_effects:
+		if eff.has_method("modify_bust_limit"):
+			limit = eff.modify_bust_limit(self, limit)
+	return limit
+
+	
+func get_dealer_stand_value() -> int:
+	var stand := 17
+	for eff in active_effects:
+		if eff.has_method("modify_dealer_stand_value"):
+			stand = eff.modify_dealer_stand_value(self, stand)
+	return stand
+
+func apply_payout_modifiers(base_payout: int, context: String) -> int:
+	var payout := base_payout
+	for eff in active_effects:
+		if eff.has_method("modify_payout"):
+			payout = eff.modify_payout(self, payout, context)
+	return payout

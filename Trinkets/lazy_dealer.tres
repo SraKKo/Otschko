@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://dxj64a7uwqywk"]
+
+[ext_resource type="Script" uid="uid://cbn6fas0n32pu" path="res://Scripts/T_LazyDealer.gd" id="1_orkun"]
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_yfv5l"]
+[ext_resource type="Texture2D" uid="uid://br04sf24eecrl" path="res://Sprites/Trinkets/LazyDealer.png" id="2_jvvg5"]
+
+[resource]
+script = ExtResource("1_yfv5l")
+id = "lazy_dealer"
+display_name = "Lazy Dealer"
+description = "Dealer sometimes stops drawing early"
+icon = ExtResource("2_jvvg5")
+effect_script = ExtResource("1_orkun")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

@@ -8,14 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="4_ey7n4"]
 [ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="5_6mw8b"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kehkj"]
-texture = ExtResource("4_ey7n4")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ey7n4"]
+texture = ExtResource("4_a2231")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_anxsw"]
 texture = ExtResource("5_6mw8b")
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ey7n4"]
-texture = ExtResource("4_a2231")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kehkj"]
+texture = ExtResource("4_ey7n4")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kehkj"]
 
@@ -108,9 +108,9 @@ offset_bottom = 376.0
 theme_override_constants/outline_size = 19
 theme_override_fonts/font = ExtResource("3_3u666")
 theme_override_font_sizes/font_size = 46
-theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ey7n4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
 text = "
 PLAY"
 
@@ -122,9 +122,9 @@ offset_bottom = 472.0
 theme_override_constants/outline_size = 19
 theme_override_fonts/font = ExtResource("3_3u666")
 theme_override_font_sizes/font_size = 36
-theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ey7n4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
 text = "
 SETTINGS"
 
@@ -136,9 +136,9 @@ offset_bottom = 568.0
 theme_override_constants/outline_size = 19
 theme_override_fonts/font = ExtResource("3_3u666")
 theme_override_font_sizes/font_size = 46
-theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
 theme_override_styles/normal = SubResource("StyleBoxTexture_ey7n4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
 text = "
 quit"
 

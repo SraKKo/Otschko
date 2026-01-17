@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://0lb4xs4v8qja"]
+
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_7xwyf"]
+[ext_resource type="Script" uid="uid://ihfn6owstfb8" path="res://Scripts/T_LuckyDraw.gd" id="1_leebh"]
+[ext_resource type="Texture2D" uid="uid://dnnj0or63vghp" path="res://Sprites/Trinkets/LuckyDraw.png" id="2_ewnnf"]
+
+[resource]
+script = ExtResource("1_7xwyf")
+id = "lucky_draw"
+display_name = "Lucky Draw"
+description = "first HIT can't bust, lasts 10 rounds"
+icon = ExtResource("2_ewnnf")
+effect_script = ExtResource("1_leebh")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

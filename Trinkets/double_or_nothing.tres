@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://8i46syle6nk7"]
+
+[ext_resource type="Script" uid="uid://cpb73xh6qpuxw" path="res://Scripts/T_DoubleOrNothing.gd" id="1_es8gw"]
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_w7w28"]
+[ext_resource type="Texture2D" uid="uid://duuruwnaxwl6e" path="res://Sprites/Trinkets/DoubleOrNothing.png" id="2_d5stw"]
+
+[resource]
+script = ExtResource("1_w7w28")
+id = "double_or_nothing"
+display_name = "Double or Nothing"
+description = "20% chance to double your winnings, 20% chance to lose them"
+icon = ExtResource("2_d5stw")
+effect_script = ExtResource("1_es8gw")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"
