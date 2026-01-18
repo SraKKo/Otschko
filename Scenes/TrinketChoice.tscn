@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="2_kg11o"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp5ai"]
-bg_color = Color(0.610305, 0.69, 0.25530002, 0.4862745)
+bg_color = Color(0.6117647, 0.6901961, 0.25490198, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ddjky"]
 font = ExtResource("2_kg11o")
@@ -19,16 +19,29 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_fr1v4")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Blocker" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 1155.0
+offset_right = 1162.0
 offset_bottom = 648.0
+color = Color(0.6117647, 0.6901961, 0.25490198, 1)
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jp5ai")
 
 [node name="HBox" type="HBoxContainer" parent="Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 280.00003
+offset_top = 256.0
+offset_right = 288.00003
+offset_bottom = 256.0
+scale = Vector2(10, 10)
 
 [node name="Option1" type="TextureButton" parent="Panel/HBox"]
 layout_mode = 2
@@ -47,9 +60,3 @@ offset_bottom = 123.0
 text = "
 CHOOSE YOUR NEXT TRINKET!"
 label_settings = SubResource("LabelSettings_ddjky")
-
-[node name="Blocker" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1162.0
-offset_bottom = 648.0
-color = Color(1, 1, 1, 0)

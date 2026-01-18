@@ -18,10 +18,24 @@ var in_round: bool = false
 
 var max_time := 10     
 var current_time := 10
+const TIMER_DECREASE_EVERY := 5 
+const TIMER_DECREASE_BY := 1.5
+const TIMER_MIN := 3
+
+const STAGE_LENGTH := 5
+const STAGE_MULTIPLIER := 1.5
+const FINAL_STAGE := 5
+
+var stage_index: int = 1
+var stage_start_money: int = 0
+var stage_target_money: int = 0
 
 var active_effects: Array[Node] = []
 
 var reward_shown_this_round := false
+
+const GAME_OVER_SCENE := "res://Scenes/GameOverScreen.tscn"
+const VICTORY_SCENE := "res://Scenes/VictoryScreen.tscn"
 
 @onready var player1: AnimatedSprite2D = $PlayerCard1
 @onready var player2: AnimatedSprite2D = $PlayerCard2
@@ -41,6 +55,13 @@ var reward_shown_this_round := false
 @onready var bet_label = $Bet/BetLabel
 @onready var win_label = $Win
 @onready var bust_label = $Bust
+@onready var draw_label = $Draw
+@onready var stage_label: Label = $UI/Stage/StageLabel
+@onready var target_label: Label = $UI/Sprite2D/TargetLabel
+@onready var hand1_arrow: CanvasItem = $UI/Hand1Arrow
+@onready var hand2_arrow: CanvasItem = $UI/Hand2Arrow
+
+
 
 @onready var time_bar: ProgressBar = $TimeBar
 @onready var round_timer: Timer = $RoundTime
@@ -63,9 +84,11 @@ func _ready():
 	
 	win_label.visible = false
 	bust_label.visible = false
+	draw_label.visible = false
+	hand1_arrow.visible = false
+	hand2_arrow.visible = false
+
 	anim.animation_finished.connect(_on_result_anim_finished)
-
-
 
 	deck = Deck.new()
 	deck.reset_deck()
@@ -83,17 +106,6 @@ func _ready():
 	
 	split_button.visible = false
 	
-	var t: TrinketDef = TrinketDb.get_by_id("lucky_draw")
-	inventory.add_trinket(t)
-	inventory.equip(t)
-	var b: TrinketDef = TrinketDb.get_by_id("overheat")
-	inventory.add_trinket(b)
-	inventory.equip(b)
-	inventory.equipped_changed.connect(apply_equipped_trinkets)
-	apply_equipped_trinkets()
-
-
-
 	update_ui()
 	
 func can_split() -> bool:
@@ -167,6 +179,7 @@ func on_hit_pressed():
 
 		if count_score(player_cards) > get_bust_limit():
 			game_over("Przegrana! Masz ponad limit.")
+			show_result("BUST")
 		return   # <-- TO jest kluczowe
 
 	# ====== SPLIT AKTYWNY ======
@@ -183,6 +196,8 @@ func on_hit_pressed():
 		var c2 = deck.draw_card()
 		player_hand2.append(c2)
 		update_split_sprites()
+		update_split_arrows()
+
 
 		if count_score(player_hand2) > get_bust_limit():
 			finish_split()
@@ -195,6 +210,7 @@ func on_hold_pressed():
 		if current_hand == 1:
 			# kończymy pierwszą rękę, przechodzimy do drugiej
 			current_hand = 2
+			update_split_arrows()
 			return
 		else:
 			# druga ręka zakończona → teraz dealer gra
@@ -248,6 +264,8 @@ func do_split():
 
 	# zaktualizuj wizualnie karty
 	update_split_sprites()
+	update_split_arrows()
+
 	
 func update_split_sprites():
 	# wyczyść dodatkowe karty gracza (poza bazowymi sprite’ami)
@@ -301,14 +319,11 @@ func split_payout(result: String, bet_amount: int, context: String) -> int:
 
 
 func finish_split():
-	# na czas liczenia zostawiamy split_active = true, żeby game_over nie odpalił payoutu normalnego
-	# (a dopiero potem go wyłączymy)
-	
 	# odkrywamy kartę dealera i dealer gra
 	set_card(dealer2, dealer_hidden_card)
 	dealer_play()
 
-	# wyniki
+		# wyniki
 	var score1 = count_score(player_hand1)
 	var score2 = count_score(player_hand2)
 	var dealer_score = count_score(dealer_cards)
@@ -316,16 +331,27 @@ func finish_split():
 	var result1 = hand_result(score1, dealer_score)
 	var result2 = hand_result(score2, dealer_score)
 
-	# wypłata za obie ręce
+	# payout
 	money += split_payout(result1, bet, "split_hand1_win")
 	money += split_payout(result2, bet, "split_hand2_win")
-
 	update_ui()
+
+	# === pokaż animację wyniku dla całego splita ===
+	# (proste zasady: jak chociaż jedna ręka wygra -> WIN,
+	#  jak obie przegrają -> BUST, inaczej DRAW)
+	if result1 == "win" or result2 == "win":
+		show_result("WIN")
+	elif result1 == "lose" and result2 == "lose":
+		show_result("BUST")
+	else:
+		show_result("DRAW")
 
 	# kończymy split dopiero po rozliczeniu
 	split_active = false
 	current_hand = 1
+	update_split_arrows()
 	game_over("Split zakończony")
+
 
 func count_score(cards: Array) -> int:
 	var total = 0
@@ -363,6 +389,7 @@ func check_winner():
 		game_over("Wygrałeś! Masz więcej punktów.")
 		show_result("WIN")
 	else:
+		show_result("DRAW")
 		game_over("Remis!")
 
 
@@ -386,20 +413,42 @@ func game_over(msg: String):
 				pass
 
 
-
 	update_ui()
 
 	await get_tree().create_timer(1.0).timeout
 
-	if (round_count % 5 == 0) and (not reward_shown_this_round):
-		reward_shown_this_round = true
-		show_trinket_reward()  # otwiera overlay i pauzuje grę
-	else:
-		start_new_game()
-
+	# --- KONIEC RUNDY (zawsze) ---
 	in_round = false
 	round_timer.stop()
 
+	# --- BANKRUCTWO ---
+	if money <= 0:
+		get_tree().change_scene_to_file(GAME_OVER_SCENE)
+		return
+
+	# --- KONIEC ETAPU (co 5 rund) ---
+	if round_count % STAGE_LENGTH == 0:
+		if money < stage_target_money:
+			print("Stage FAILED. Money:", money, "Target:", stage_target_money)
+			get_tree().change_scene_to_file(GAME_OVER_SCENE)
+			inventory.clear()
+			return
+		else:
+			print("Stage PASSED! Money:", money, "Target:", stage_target_money)
+			update_timer_difficulty()
+			
+		if stage_index >= FINAL_STAGE:
+			get_tree().change_scene_to_file(VICTORY_SCENE)
+			return
+
+	# --- NAGRODA CO 5 RUND (tylko jeśli nie pokazana) ---
+	if (round_count % 5 == 0) and (not reward_shown_this_round):
+		reward_shown_this_round = true
+		show_trinket_reward()  # pauzuje grę i czeka na wybór
+		return
+
+	# --- NORMALNIE: NOWA RĘKA ---
+	start_new_game()
 
 func start_new_game():
 	for child in get_children():
@@ -425,6 +474,12 @@ func on_deal():
 	
 	round_count += 1
 	update_round_label()
+	
+	# start nowego etapu co 5 rund (1,6,11...)
+	if (round_count - 1) % STAGE_LENGTH == 0:
+		start_stage(((round_count - 1) / STAGE_LENGTH) + 1)
+
+	
 	notify_round_start()
 	reward_shown_this_round = false
 
@@ -445,8 +500,8 @@ func on_deal():
 func update_ui():
 	money_label.text = "Money: " + str(money)
 	bet_label.text = "Bet: " + str(bet)
-	
-	
+	update_stage_ui()
+
 func start_round_timer():
 	current_time = max_time
 	time_bar.max_value = max_time
@@ -493,12 +548,9 @@ func add_new_player_card_sprite(card_index: int):
 	set_card(new_sprite, card_index)
 	
 func dealer_play():
-	# Odkryj zakrytą kartę
 	set_card(dealer2, dealer_hidden_card)
 
-	# Dealer dobiera do 17
 	while count_score(dealer_cards) < get_dealer_stand_value():
-	# Lazy Dealer hook: czasem przerywa dobieranie
 		var stop_drawing := false
 		for eff in active_effects:
 			if eff.has_method("should_skip_dealer_draw"):
@@ -508,18 +560,19 @@ func dealer_play():
 		if stop_drawing:
 			break
 
-	var new_card = deck.draw_card()
-	dealer_cards.append(new_card)
+		var new_card = deck.draw_card()
+		dealer_cards.append(new_card)
 
-	var new_sprite := AnimatedSprite2D.new()
-	new_sprite.sprite_frames = dealer1.sprite_frames
-	new_sprite.scale = dealer1.scale
+		var new_sprite := AnimatedSprite2D.new()
+		new_sprite.sprite_frames = dealer1.sprite_frames
+		new_sprite.scale = dealer1.scale
 
-	var offset := Vector2(140, 0)
-	new_sprite.position = dealer2.position + offset * (dealer_cards.size() - 2)
+		var offset := Vector2(140, 0)
+		new_sprite.position = dealer2.position + offset * (dealer_cards.size() - 2)
 
-	add_child(new_sprite)
-	set_card(new_sprite, new_card)
+		add_child(new_sprite)
+		set_card(new_sprite, new_card)
+
 
 
 func hand_result(player_score: int, dealer_score: int) -> String:
@@ -559,8 +612,12 @@ func apply_equipped_trinkets():
 		if def == null or def.effect_script == null:
 			continue
 		var eff: Node = def.effect_script.new()
+
+		eff.set_meta("def", def)
+
 		trinkets_root.add_child(eff)
 		active_effects.append(eff)
+
 
 func get_bust_limit() -> int:
 	var limit := 21
@@ -599,11 +656,14 @@ func toggle_pause():
 func _on_result_anim_finished(_name: StringName) -> void:
 	win_label.visible = false
 	bust_label.visible = false
+	draw_label.visible = false
+	anim.play("TextShake")
 
 func show_result(kind: String) -> void:
 	# schowaj oba i pokaż tylko właściwy
 	win_label.visible = false
 	bust_label.visible = false
+	draw_label.visible = false
 
 	if kind == "WIN":
 		win_label.visible = true
@@ -611,6 +671,9 @@ func show_result(kind: String) -> void:
 	elif kind == "BUST":
 		bust_label.visible = true
 		anim.play("BUST")
+	elif kind == "DRAW":
+		draw_label.visible = true
+		anim.play("DRAW")
 
 func _on_trinket_chosen(def: TrinketDef) -> void:
 	inventory.add_trinket(def)
@@ -626,5 +689,39 @@ func _on_trinket_chosen(def: TrinketDef) -> void:
 func show_trinket_reward():
 	trinket_choice.open()
 	
+func update_timer_difficulty():
+	if round_count % TIMER_DECREASE_EVERY != 0:
+		return
 
+	var new_time := max_time - TIMER_DECREASE_BY
+	max_time = max(new_time, TIMER_MIN)
+
+	print("Timer reduced to:", max_time)
 	
+func start_stage(new_stage_index: int) -> void:
+	stage_index = new_stage_index
+
+	#bet odejmuje money, więc realny "kapitał" na starcie etapu to money + bet
+	stage_start_money = money + bet
+
+	stage_target_money = int(ceil(float(stage_start_money) * STAGE_MULTIPLIER))
+
+	print("=== STAGE ", stage_index, " START ===")
+	print("Start money:", stage_start_money, " Target:", stage_target_money)
+	update_stage_ui()
+
+
+func update_stage_ui():
+	stage_label.text = "STAGE " + str(stage_index)
+	target_label.text = "Money Required: " + str(stage_target_money)
+
+func update_split_arrows() -> void:
+	# bez splita - nic nie pokazujemy
+	if not split_active:
+		hand1_arrow.visible = false
+		hand2_arrow.visible = false
+		return
+
+	# split aktywny - pokazuj tylko aktualną rękę
+	hand1_arrow.visible = (current_hand == 1)
+	hand2_arrow.visible = (current_hand == 2)

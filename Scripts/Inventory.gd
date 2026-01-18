@@ -41,3 +41,8 @@ func remove_by_id(trinket_id: String) -> void:
 		if owned[i] != null and owned[i].id == trinket_id:
 			owned.remove_at(i)
 			owned_changed.emit()
+
+func clear() -> void:
+	owned.clear()
+	equipped.clear()
+	emit_signal("equipped_changed")

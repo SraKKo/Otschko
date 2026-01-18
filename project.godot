@@ -14,6 +14,10 @@ config/name="blackjack"
 run/main_scene="uid://bf4hd6m5t6e18"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
+[audio]
+
+buses/default_bus_layout="res://Sounds/default_bus_layout.tres"
+
 [autoload]
 
 Global="*res://Scripts/Global.gd"

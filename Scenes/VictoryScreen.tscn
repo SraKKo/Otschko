@@ -1,0 +1,126 @@
+[gd_scene load_steps=17 format=3 uid="uid://w6law1diuw2y"]
+
+[ext_resource type="Script" uid="uid://cekn8vx346qwv" path="res://Scripts/game_over_screen.gd" id="1_11iis"]
+[ext_resource type="Texture2D" uid="uid://bxd62xm0ocp42" path="res://Sprites/MainMenuBg.png" id="2_cek7k"]
+[ext_resource type="LabelSettings" uid="uid://d3yiwmvq64atm" path="res://Fonts/MenuText.tres" id="3_r53cv"]
+[ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="4_rg3ah"]
+[ext_resource type="StyleBox" uid="uid://c8dxw3bxjvto3" path="res://Fonts/new_style_box_texture.tres" id="5_ua571"]
+[ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="6_5dxs6"]
+[ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="7_c5778"]
+[ext_resource type="Shader" uid="uid://v8uin0c7vj5a" path="res://Scripts/CRTshader.gdshader" id="8_xuyag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0i7ly"]
+bg_color = Color(0.78039217, 0.96862745, 0.1882353, 0.37254903)
+
+[sub_resource type="Animation" id="Animation_s7sor"]
+resource_name = "textshake"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Victory!:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.017453292, 0.017453292]
+}
+
+[sub_resource type="Animation" id="Animation_p8jrq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Victory!:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.017453292]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bytw5"]
+_data = {
+&"RESET": SubResource("Animation_p8jrq"),
+&"textshake": SubResource("Animation_s7sor")
+}
+
+[sub_resource type="Theme" id="Theme_gao4f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_clld4"]
+texture = ExtResource("6_5dxs6")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qpx47"]
+texture = ExtResource("7_c5778")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6noqf"]
+shader = ExtResource("8_xuyag")
+shader_parameter/scanline_strength = 0.35
+shader_parameter/scanline_count = 480.0
+shader_parameter/vignette_strength = 0.25
+shader_parameter/noise_strength = 0.05
+shader_parameter/chroma_offset = 1.0
+shader_parameter/curvature = 0.018000000855
+
+[node name="VictoryScreen" type="Node2D"]
+script = ExtResource("1_11iis")
+
+[node name="MainMenuBg" type="Sprite2D" parent="."]
+position = Vector2(576.857, 324)
+scale = Vector2(5.78571, 5.78571)
+texture = ExtResource("2_cek7k")
+
+[node name="Panel" type="Panel" parent="MainMenuBg"]
+offset_left = -102.46919
+offset_top = -56.86424
+offset_right = 103.03714
+offset_bottom = 57.38277
+theme_override_styles/panel = SubResource("StyleBoxFlat_0i7ly")
+
+[node name="Victory!" type="Label" parent="."]
+offset_left = 48.0
+offset_top = 120.0
+offset_right = 1129.0
+offset_bottom = 212.0
+rotation = -0.017453292
+pivot_offset = Vector2(524, 0)
+text = "Congratulations!"
+label_settings = ExtResource("3_r53cv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bytw5")
+}
+autoplay = "textshake"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 456.0
+offset_top = 376.0
+offset_right = 696.0
+offset_bottom = 472.00003
+theme = SubResource("Theme_gao4f")
+theme_override_constants/outline_size = 19
+theme_override_fonts/font = ExtResource("4_rg3ah")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = ExtResource("5_ua571")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_clld4")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qpx47")
+text = "
+quit"
+
+[node name="CRT" type="CanvasLayer" parent="."]
+
+[node name="Rect" type="ColorRect" parent="CRT"]
+material = SubResource("ShaderMaterial_6noqf")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

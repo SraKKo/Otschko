@@ -7,12 +7,11 @@ class_name TrinketLuckyDraw
 var used_this_round := false
 
 
-func on_round_start(_game):
-	used_this_round = false
+func on_round_start(game: Node) -> void:
 	rounds_left -= 1
-
 	if rounds_left <= 0:
-		inventory.remove_by_id(trinket_id)
+		var def: TrinketDef = get_meta("def", null)
+		game.expire_trinket(def)
 
 
 # Zwraca true jeśli uratował od spalenia i cofnął kartę
