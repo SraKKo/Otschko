@@ -118,6 +118,7 @@ func can_split() -> bool:
 	return rank1 == rank2
 
 func on_bet_plus():
+	SfxPlayer.play(preload("res://Sounds/SFX/chips.ogg"))
 	if in_round: 
 		return
 	if money >= 10:
@@ -127,6 +128,7 @@ func on_bet_plus():
 
 
 func on_bet_minus():
+	SfxPlayer.play(preload("res://Sounds/SFX/nChips.ogg"))
 	if in_round: 
 		return
 	if bet >= 10:
@@ -136,6 +138,7 @@ func on_bet_minus():
 
 
 func deal_initial_cards():
+
 	start_round_timer()
 	# --- KARTY GRACZA ---
 	var p1 = deck.draw_card()
@@ -160,13 +163,18 @@ func deal_initial_cards():
 		split_button.visible = true
 	else:
 		split_button.visible = false
+		
+	notify_player_hand_updated()
 
 
 func on_hit_pressed():
+	SfxPlayer.play(preload("res://Sounds/SFX/ClickTrinket.ogg"))
 	# ====== NORMALNY HIT (BEZ SPLITU) ======
 	if not split_active:
 		var new_card = deck.draw_card()
 		player_cards.append(new_card)
+		notify_player_hand_updated()
+
 
 		# pozwól trinketom cofnąć bust na pierwszym Hicie
 		for eff in active_effects:
@@ -254,9 +262,18 @@ func do_split():
 	player_hand1 = [player_cards[0]]
 	player_hand2 = [player_cards[1]]
 
-	# rozdaj po jednej karcie do każdej ręki
-	player_hand1.append(deck.draw_card())
-	player_hand2.append(deck.draw_card())
+# rozdaj po jednej karcie do każdej ręki
+	var c1 := deck.draw_card()
+	var c2 := deck.draw_card()
+
+	# Mirror Hands hook: może podmienić kartę dla ręki 2
+	for eff in active_effects:
+		if eff.has_method("on_split_deal_second_cards"):
+			c2 = eff.on_split_deal_second_cards(self, c1)
+			break
+
+	player_hand1.append(c1)
+	player_hand2.append(c2)
 
 	# bet dla drugiej ręki
 	money -= bet
@@ -265,8 +282,8 @@ func do_split():
 	# zaktualizuj wizualnie karty
 	update_split_sprites()
 	update_split_arrows()
+	notify_player_hand_updated()
 
-	
 func update_split_sprites():
 	# wyczyść dodatkowe karty gracza (poza bazowymi sprite’ami)
 	for child in get_children():
@@ -382,15 +399,19 @@ func check_winner():
 	if dealer_score > 21:
 		game_over("Wygrałeś! Dealer ma ponad 21.")
 		show_result("WIN")
+		SfxPlayer.play(preload("res://Sounds/SFX/Win.wav"))
 	elif dealer_score > player_score:
 		game_over("Przegrana! Dealer ma więcej punktów.")
 		show_result("BUST")
+		SfxPlayer.play(preload("res://Sounds/SFX/Fail.wav"))
 	elif dealer_score < player_score:
 		game_over("Wygrałeś! Masz więcej punktów.")
 		show_result("WIN")
+		SfxPlayer.play(preload("res://Sounds/SFX/Win.wav"))
 	else:
 		show_result("DRAW")
 		game_over("Remis!")
+		SfxPlayer.play(preload("res://Sounds/SFX/Draw.wav"))
 
 
 func game_over(msg: String):
@@ -398,6 +419,7 @@ func game_over(msg: String):
 
 	hit_button.disabled = true
 	hold_button.disabled = true
+	var end_res := ""
 
 # Rozliczenie betu (tylko normalna gra)
 	if msg != "Split zakończony":
@@ -411,6 +433,9 @@ func game_over(msg: String):
 
 			"Przegrana! Masz ponad 21.", "Przegrana! Dealer ma więcej punktów.", "Przegrana! Czas minął.":
 				pass
+	
+	if end_res != "":
+		notify_round_end(end_res)
 
 
 	update_ui()
@@ -436,6 +461,7 @@ func game_over(msg: String):
 		else:
 			print("Stage PASSED! Money:", money, "Target:", stage_target_money)
 			update_timer_difficulty()
+			notify_stage_cleared()
 			
 		if stage_index >= FINAL_STAGE:
 			get_tree().change_scene_to_file(VICTORY_SCENE)
@@ -467,6 +493,7 @@ func start_new_game():
 
 
 func on_deal():
+	SfxPlayer.play(preload("res://Sounds/SFX/Shuffle.ogg"))
 	if in_round: return
 	if bet == 0:
 		print("Postaw najpierw zakład!")
@@ -512,6 +539,12 @@ func notify_round_start():
 	for eff in active_effects:
 		if eff.has_method("on_round_start"):
 			eff.on_round_start(self)
+			
+func notify_round_end(result: String) -> void:
+	for eff in active_effects:
+		if eff.has_method("on_round_end"):
+			eff.on_round_end(self, result)
+
 
 func time_out():
 	print("Czas minął!")
@@ -592,6 +625,7 @@ func hand_result(player_score: int, dealer_score: int) -> String:
 
 
 func _on_split_button_pressed() -> void:
+	SfxPlayer.play(preload("res://Sounds/SFX/Split.wav"))
 	do_split()
 	split_button.visible = false
 	
@@ -725,3 +759,13 @@ func update_split_arrows() -> void:
 	# split aktywny - pokazuj tylko aktualną rękę
 	hand1_arrow.visible = (current_hand == 1)
 	hand2_arrow.visible = (current_hand == 2)
+
+func notify_player_hand_updated() -> void:
+	for eff in active_effects:
+		if eff.has_method("after_player_hand_updated"):
+			eff.after_player_hand_updated(self)
+			
+func notify_stage_cleared() -> void:
+	for eff in active_effects:
+		if eff.has_method("on_stage_cleared"):
+			eff.on_stage_cleared(self)

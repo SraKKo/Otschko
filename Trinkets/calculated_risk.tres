@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://cnp4xxl6713v6"]
+
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_d6u5o"]
+[ext_resource type="Script" uid="uid://d070lbby4u8k0" path="res://Scripts/T_CalculatedRisk.gd" id="1_novdb"]
+[ext_resource type="Texture2D" uid="uid://wx80mmmbe3t" path="res://Sprites/Trinkets/CalculatedRisk.png" id="2_i1hdk"]
+
+[resource]
+script = ExtResource("1_d6u5o")
+id = "calculated_risk"
+display_name = "Calculated Risk"
+description = "If your hand is at 16-18 you BUST at 23"
+icon = ExtResource("2_i1hdk")
+effect_script = ExtResource("1_novdb")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

@@ -31,6 +31,7 @@ func _ready():
 	back_button.pressed.connect(_on_back_pressed)
 
 func _on_fullscreen_toggled(on: bool):
+	SfxPlayer.play(preload("res://Sounds/SFX/ClickButton.ogg"))
 	SettingsMenager.apply_fullscreen(on)
 	SettingsMenager.save_settings()
 
@@ -50,8 +51,10 @@ func _on_sfx_changed(v: float):
 	SettingsMenager.save_settings()
 	
 func _on_back_pressed():
+	SfxPlayer.play(preload("res://Sounds/SFX/ClickButton.ogg"))
 	get_tree().change_scene_to_file("res://Scenes/StartScreen.tscn")
 
 func _on_crt_filter_toggled(_toggled_on: bool) -> void:
+	SfxPlayer.play(preload("res://Sounds/SFX/ClickButton.ogg"))
 	SettingsMenager.crt_enabled = true
 	SettingsMenager.save_settings()

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://ch0v6kx12xjfa"]
+
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_gvkn0"]
+[ext_resource type="Script" uid="uid://cmwye7shtqn7p" path="res://Scripts/T_InterestChip.gd" id="1_q4a2t"]
+[ext_resource type="Texture2D" uid="uid://2kj508hscv0e" path="res://Sprites/Trinkets/InterestChip.png" id="2_dy672"]
+
+[resource]
+script = ExtResource("1_gvkn0")
+id = "interest_chip"
+display_name = "Interest Chip"
+description = "Every stage PASSED get 5% total money"
+icon = ExtResource("2_dy672")
+effect_script = ExtResource("1_q4a2t")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

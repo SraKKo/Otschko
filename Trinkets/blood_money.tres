@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://dqcs6uliqkb0h"]
+
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_iwp08"]
+[ext_resource type="Script" uid="uid://bmd6g4dbf2kpo" path="res://Scripts/T_BloodMoney.gd" id="1_kckeu"]
+[ext_resource type="Texture2D" uid="uid://ci73s0h4n7lok" path="res://Sprites/Trinkets/BloodMoney.png" id="2_1r1le"]
+
+[resource]
+script = ExtResource("1_iwp08")
+id = "blood_money"
+display_name = "Blood Money"
+description = "Every successive win grants +5% money"
+icon = ExtResource("2_1r1le")
+effect_script = ExtResource("1_kckeu")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

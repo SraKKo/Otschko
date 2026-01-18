@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://r0x0qdqcg8ih"]
+
+[ext_resource type="Script" uid="uid://ckt8sqf2mikt7" path="res://Scripts/T_LastBreath.gd" id="1_3joii"]
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_74twg"]
+[ext_resource type="Texture2D" uid="uid://besfkw1b2u58e" path="res://Sprites/Trinkets/LastBreath.png" id="2_wgfni"]
+
+[resource]
+script = ExtResource("1_74twg")
+id = "last_breath"
+display_name = "Last Breath"
+description = "You win when you have 21, skips dealer turn"
+icon = ExtResource("2_wgfni")
+effect_script = ExtResource("1_3joii")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

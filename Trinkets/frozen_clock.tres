@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://c0dvxj5hx6d4h"]
+
+[ext_resource type="Script" uid="uid://bybifoxom4sn5" path="res://Scripts/T_FrozenClock.gd" id="1_8g7ba"]
+[ext_resource type="Texture2D" uid="uid://2pie4amcx738" path="res://Sprites/Trinkets/FrozenClock.png" id="2_gj1ru"]
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="3_21hs6"]
+
+[resource]
+script = ExtResource("3_21hs6")
+id = "frozen_clock"
+display_name = "Frozen Clock"
+description = "Freezes time for 3 seconds"
+icon = ExtResource("2_gj1ru")
+effect_script = ExtResource("1_8g7ba")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

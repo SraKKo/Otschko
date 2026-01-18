@@ -25,6 +25,7 @@ inventory="*res://Scripts/Inventory.gd"
 TrinketDb="*res://Scripts/TrinketDb.gd"
 SettingsMenager="*res://Scripts/SettingsManager.gd"
 MusicPlayer="*res://Scenes/MusicPlayer.tscn"
+SfxPlayer="*res://Scripts/SFXPlayer.gd"
 
 [display]
 

@@ -9,6 +9,13 @@ var trinkets: Array[TrinketDef] = [
 	preload("res://Trinkets/double_or_nothing.tres"),
 	preload("res://Trinkets/golden_chip.tres"),
 	preload("res://Trinkets/overheat.tres"),
+	preload("res://Trinkets/blood_money.tres"),
+	preload("res://Trinkets/calculated_risk.tres"),
+	preload("res://Trinkets/frozen_clock.tres"),
+	preload("res://Trinkets/glass_chip.tres"),
+	preload("res://Trinkets/interest_chip.tres"),
+	preload("res://Trinkets/mirror_hands.tres"),
+	preload("res://Trinkets/tax_evasion.tres"),
 ]
 
 func get_by_id(id: String) -> TrinketDef:

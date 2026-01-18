@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TrinketDef" load_steps=4 format=3 uid="uid://bpnryeekmbiem"]
+
+[ext_resource type="Script" uid="uid://c2ex0ity18gr" path="res://Scripts/T_TaxEvasion.gd" id="1_05mi4"]
+[ext_resource type="Script" uid="uid://cfodyqpqyn817" path="res://Scripts/TrinketDef.gd" id="1_lwwcb"]
+[ext_resource type="Texture2D" uid="uid://7lnf7l8aoxmt" path="res://Sprites/Trinkets/TaxEvasion.png" id="2_y5hm7"]
+
+[resource]
+script = ExtResource("1_lwwcb")
+id = "tax_evasion"
+display_name = "Tax Evasion!"
+description = "Recieve a refund of half your chips lost when you BUST"
+icon = ExtResource("2_y5hm7")
+effect_script = ExtResource("1_05mi4")
+metadata/_custom_type_script = "uid://cfodyqpqyn817"

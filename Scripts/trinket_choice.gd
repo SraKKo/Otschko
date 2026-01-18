@@ -59,6 +59,7 @@ func _set_button_def(btn: TextureButton, def: TrinketDef):
 	btn.tooltip_text = def.display_name + "\n" + def.description
 
 func _pick(idx: int):
+	SfxPlayer.play(preload("res://Sounds/SFX/ClickTrinket.ogg"))
 	if idx < 0 or idx >= options.size():
 		return
 	var def := options[idx]

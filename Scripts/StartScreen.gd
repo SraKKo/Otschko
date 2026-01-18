@@ -13,9 +13,11 @@ func _ready() -> void:
 
 
 func _on_play_pressed():
+	SfxPlayer.play(preload("res://Sounds/SFX/ClickButton.ogg"))
 	get_tree().change_scene_to_file("res://Scenes/GameProper.tscn")
 	
 func _on_settings_pressed() -> void:
+	SfxPlayer.play(preload("res://Sounds/SFX/ClickButton.ogg"))
 	get_tree().change_scene_to_file("res://Scenes/Settings.tscn")
 
 func _on_quit_pressed() -> void:
