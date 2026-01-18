@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://ubpel0sj1qt1"]
+[gd_scene load_steps=90 format=3 uid="uid://ubpel0sj1qt1"]
 
 [ext_resource type="Script" uid="uid://cjorm84bv4p3n" path="res://Scripts/Game.gd" id="1_266y0"]
 [ext_resource type="Texture2D" uid="uid://c4mgjybri5vrq" path="res://Sprites/Deck of Cards Spritesheet.png" id="2_ln7r3"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="15_aww00"]
 [ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="16_s25x7"]
 [ext_resource type="Shader" uid="uid://v8uin0c7vj5a" path="res://Scripts/CRTshader.gdshader" id="18_2qxhv"]
+[ext_resource type="PackedScene" uid="uid://wq1do65c5vjx" path="res://Scenes/TrinketChoice.tscn" id="18_13664"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0hol4"]
 atlas = ExtResource("2_ln7r3")
@@ -906,6 +907,8 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
 theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
 text = "
 continue"
+
+[node name="TrinketChoice" parent="UI" instance=ExtResource("18_13664")]
 
 [node name="CRT" type="CanvasLayer" parent="."]
 

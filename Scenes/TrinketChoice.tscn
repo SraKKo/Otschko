@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://wq1do65c5vjx"]
+
+[ext_resource type="Script" uid="uid://baant80grb4cm" path="res://Scripts/trinket_choice.gd" id="1_fr1v4"]
+[ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="2_kg11o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jp5ai"]
+bg_color = Color(0.610305, 0.69, 0.25530002, 0.4862745)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ddjky"]
+font = ExtResource("2_kg11o")
+font_size = 60
+outline_size = 35
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 60
+shadow_color = Color(0.0117647, 0.192157, 0.117647, 0.823529)
+
+[node name="TrinketChoice" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_fr1v4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1155.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jp5ai")
+
+[node name="HBox" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Option1" type="TextureButton" parent="Panel/HBox"]
+layout_mode = 2
+
+[node name="Option2" type="TextureButton" parent="Panel/HBox"]
+layout_mode = 2
+
+[node name="Option3" type="TextureButton" parent="Panel/HBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 50.0
+offset_right = 1094.0
+offset_bottom = 123.0
+text = "
+CHOOSE YOUR NEXT TRINKET!"
+label_settings = SubResource("LabelSettings_ddjky")
+
+[node name="Blocker" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1162.0
+offset_bottom = 648.0
+color = Color(1, 1, 1, 0)

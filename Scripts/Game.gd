@@ -21,6 +21,7 @@ var current_time := 10
 
 var active_effects: Array[Node] = []
 
+var reward_shown_this_round := false
 
 @onready var player1: AnimatedSprite2D = $PlayerCard1
 @onready var player2: AnimatedSprite2D = $PlayerCard2
@@ -49,6 +50,7 @@ var active_effects: Array[Node] = []
 
 @onready var pause_menu: Control = $UI/PauseMenu
 @onready var crt_rect: ColorRect = $CRT/Rect
+@onready var trinket_choice : TrinketChoice = $UI/TrinketChoice
 
 
 const CARD_BACK = 52  
@@ -56,6 +58,8 @@ const CARD_BACK = 52
 func _ready():
 	SettingsMenager.apply_crt(crt_rect)
 	MusicPlayer.play_crossfade(preload("res://Sounds/Music/Base.ogg"), 1.0)
+	
+	trinket_choice.chosen.connect(_on_trinket_chosen)
 	
 	win_label.visible = false
 	bust_label.visible = false
@@ -387,7 +391,12 @@ func game_over(msg: String):
 
 	await get_tree().create_timer(1.0).timeout
 
-	start_new_game()
+	if (round_count % 5 == 0) and (not reward_shown_this_round):
+		reward_shown_this_round = true
+		show_trinket_reward()  # otwiera overlay i pauzuje grę
+	else:
+		start_new_game()
+
 	in_round = false
 	round_timer.stop()
 
@@ -413,9 +422,12 @@ func on_deal():
 	if bet == 0:
 		print("Postaw najpierw zakład!")
 		return
+	
 	round_count += 1
 	update_round_label()
 	notify_round_start()
+	reward_shown_this_round = false
+
 
 	in_round = true
 
@@ -599,5 +611,20 @@ func show_result(kind: String) -> void:
 	elif kind == "BUST":
 		bust_label.visible = true
 		anim.play("BUST")
+
+func _on_trinket_chosen(def: TrinketDef) -> void:
+	inventory.add_trinket(def)
+
+	if inventory.equipped.size() < inventory.max_equipped:
+		inventory.equip(def)
+
+	apply_equipped_trinkets()
+	update_ui()
+
+	start_new_game()
+
+func show_trinket_reward():
+	trinket_choice.open()
+	
 
 	
