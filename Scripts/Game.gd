@@ -44,10 +44,17 @@ const VICTORY_SCENE := "res://Scenes/VictoryScreen.tscn"
 
 @onready var hit_button: Button = $HitButton
 @onready var hold_button: Button = $HoldButton
-@onready var bet_plus = $BetPlusButton
-@onready var bet_minus = $BetMinusButton
 @onready var deal_button = $DealButton
 @onready var split_button: Button = $SplitButton
+
+@onready var bet_plus_10: Button = $BetButtons/BetPlus10Button
+@onready var bet_plus_50: Button = $BetButtons/BetPlus50Button
+@onready var bet_plus_100: Button = $BetButtons/BetPlus100Button
+
+@onready var bet_minus_10: Button = $BetButtons/BetMinus10Button
+@onready var bet_minus_50: Button = $BetButtons/BetMinus50Button
+@onready var bet_minus_100: Button = $BetButtons/BetMinus100Button
+
 
 
 @onready var money_label = $Money/MoneyLabel
@@ -96,17 +103,31 @@ func _ready():
 	player_cards.clear()
 	dealer_cards.clear()
 
-	deal_initial_cards()
+	#deal_initial_cards()
 
 	hit_button.pressed.connect(on_hit_pressed)
 	hold_button.pressed.connect(on_hold_pressed)
-	bet_plus.pressed.connect(on_bet_plus)
-	bet_minus.pressed.connect(on_bet_minus)
 	deal_button.pressed.connect(on_deal)
+	
+	bet_plus_10.pressed.connect(func(): change_bet(10))
+	bet_plus_50.pressed.connect(func(): change_bet(50))
+	bet_plus_100.pressed.connect(func(): change_bet(100))
+
+	bet_minus_10.pressed.connect(func(): change_bet(-10))
+	bet_minus_50.pressed.connect(func(): change_bet(-50))
+	bet_minus_100.pressed.connect(func(): change_bet(-100))
+
 	
 	split_button.visible = false
 	
 	update_ui()
+	
+	hide_cards()
+	hit_button.disabled = true
+	hold_button.disabled = true
+	round_timer.stop()
+	time_bar.value = time_bar.max_value
+
 	
 func can_split() -> bool:
 	if player_cards.size() != 2:
@@ -117,29 +138,33 @@ func can_split() -> bool:
 
 	return rank1 == rank2
 
-func on_bet_plus():
-	SfxPlayer.play(preload("res://Sounds/SFX/chips.ogg"))
-	if in_round: 
+func _on_bet_button_pressed(amount: int) -> void:
+	if in_round:
 		return
-	if money >= 10:
-		bet += 10
-		money -= 10
-		update_ui()
 
+	if amount > 0:
+		if money < amount:
+			return
+		bet += amount
+		money -= amount
+	else:
+		if bet < -amount:
+			return
+		bet += amount
+		money -= amount
 
-func on_bet_minus():
-	SfxPlayer.play(preload("res://Sounds/SFX/nChips.ogg"))
-	if in_round: 
-		return
-	if bet >= 10:
-		bet -= 10
-		money += 10
-		update_ui()
+	update_ui()
+
 
 
 func deal_initial_cards():
 
 	start_round_timer()
+	player1.visible = true
+	player2.visible = true
+	dealer1.visible = true
+	dealer2.visible = true
+
 	# --- KARTY GRACZA ---
 	var p1 = deck.draw_card()
 	var p2 = deck.draw_card()
@@ -529,6 +554,7 @@ func update_ui():
 	bet_label.text = "Bet: " + str(bet)
 	update_stage_ui()
 
+
 func start_round_timer():
 	current_time = max_time
 	time_bar.max_value = max_time
@@ -769,3 +795,44 @@ func notify_stage_cleared() -> void:
 	for eff in active_effects:
 		if eff.has_method("on_stage_cleared"):
 			eff.on_stage_cleared(self)
+			
+
+func change_bet(amount: int) -> void:
+	if in_round:
+		return
+
+	# zwiększanie
+	if amount > 0:
+		SfxPlayer.play(preload("res://Sounds/SFX/chips.ogg"))
+		if money >= amount:
+			bet += amount
+			money -= amount
+	else:
+		SfxPlayer.play(preload("res://Sounds/SFX/nChips.ogg"))
+		# zmniejszanie
+		if bet >= -amount:
+			bet += amount
+			money -= amount
+
+	update_ui()
+	
+func hide_cards() -> void:
+	# schowaj bazowe sprity kart
+	player1.visible = false
+	player2.visible = false
+	dealer1.visible = false
+	dealer2.visible = false
+
+	# usuń wszystkie dodatkowe karty (dobrane) jeśli jakieś zostały
+	for child in get_children():
+		if child is AnimatedSprite2D and child not in [player1, player2, dealer1, dealer2]:
+			child.queue_free()
+
+	# reset danych
+	player_cards.clear()
+	dealer_cards.clear()
+	player_hand1.clear()
+	player_hand2.clear()
+	split_active = false
+	current_hand = 1
+	split_button.visible = false

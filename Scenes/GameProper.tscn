@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://ubpel0sj1qt1"]
+[gd_scene load_steps=97 format=3 uid="uid://ubpel0sj1qt1"]
 
 [ext_resource type="Script" uid="uid://cjorm84bv4p3n" path="res://Scripts/Game.gd" id="1_266y0"]
 [ext_resource type="Texture2D" uid="uid://c4mgjybri5vrq" path="res://Sprites/Deck of Cards Spritesheet.png" id="2_ln7r3"]
@@ -11,7 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://bk7d2ljdynts4" path="res://Sprites/Buttons/holdbutton.png" id="5_pvu6l"]
 [ext_resource type="Texture2D" uid="uid://bybuf2233l8x5" path="res://Sprites/Buttons/chip-10.png" id="5_vg7pf"]
 [ext_resource type="Script" uid="uid://dujg6tivekcc4" path="res://Scripts/TrinketHUD.gd" id="7_0rta7"]
+[ext_resource type="Texture2D" uid="uid://6at5il8w3e6i" path="res://Sprites/Buttons/chip50.png" id="8_fxnrk"]
 [ext_resource type="Texture2D" uid="uid://dhn2fjpkwb6y4" path="res://Sprites/Buttons/dealbutton.png" id="8_unm8k"]
+[ext_resource type="Texture2D" uid="uid://d28vy2jo35eth" path="res://Sprites/Buttons/chip-50.png" id="9_hnbh4"]
+[ext_resource type="Texture2D" uid="uid://tbhlfgcykxrg" path="res://Sprites/Buttons/chip100.png" id="10_l47h3"]
+[ext_resource type="Texture2D" uid="uid://brygie35vqjtk" path="res://Sprites/Buttons/chip-100.png" id="11_s1rj8"]
 [ext_resource type="Script" uid="uid://dxlaok1qfqahr" path="res://Scripts/PauseMenu.gd" id="13_s25x7"]
 [ext_resource type="StyleBox" uid="uid://c8dxw3bxjvto3" path="res://Fonts/new_style_box_texture.tres" id="13_unm8k"]
 [ext_resource type="LabelSettings" uid="uid://d3yiwmvq64atm" path="res://Fonts/MenuText.tres" id="14_y8fh6"]
@@ -468,6 +472,21 @@ tracks/1/keys = {
 "values": [Vector2(429.875, 259), Vector2(435.183, 259), Vector2(451.4, 259), Vector2(407.885, 259), Vector2(423.87, 259), Vector2(411.365, 259)]
 }
 
+[sub_resource type="Animation" id="Animation_w8qwj"]
+resource_name = "DRAW"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Draw:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.205, 0.205), Vector2(1, 1), Vector2(0.2, 0.2)]
+}
+
 [sub_resource type="Animation" id="Animation_6vmwt"]
 length = 0.001
 tracks/0/type = "value"
@@ -640,7 +659,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-0.015707964, 0.015707963267948568]
+"values": [-0.015707964, 0.01570796326794856]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -680,21 +699,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [-0.59864795, 0.59864795, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_w8qwj"]
-resource_name = "DRAW"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Draw:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0.205, 0.205), Vector2(1, 1), Vector2(0.2, 0.2)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0rta7"]
@@ -765,53 +769,106 @@ animation = &"cards"
 frame = 1
 
 [node name="HitButton" type="Button" parent="."]
-offset_left = 903.0
-offset_top = 569.0
-offset_right = 1024.0
-offset_bottom = 627.0
+offset_left = 781.0
+offset_top = 572.0
+offset_right = 902.0
+offset_bottom = 630.0
 text = "HIT"
 
 [node name="Hitbutton" type="Sprite2D" parent="HitButton"]
-position = Vector2(61, 28)
+position = Vector2(58.007996, 25.5)
 scale = Vector2(5.063, 5.063)
 texture = ExtResource("4_npdhm")
 
 [node name="HoldButton" type="Button" parent="."]
-offset_left = 898.0
-offset_top = 477.0
-offset_right = 1026.0
-offset_bottom = 538.0
+offset_left = 776.0
+offset_top = 480.0
+offset_right = 904.0
+offset_bottom = 541.0
 text = "HOLD"
 
 [node name="Holdbutton" type="Sprite2D" parent="HoldButton"]
-position = Vector2(66, 30)
+position = Vector2(63.007996, 27.5)
 scale = Vector2(5.0625, 5.0625)
 texture = ExtResource("5_pvu6l")
 
-[node name="BetPlusButton" type="Button" parent="."]
-offset_left = 890.0
-offset_top = 390.0
-offset_right = 957.11865
-offset_bottom = 435.0
+[node name="BetButtons" type="Node" parent="."]
+
+[node name="BetPlus100Button" type="Button" parent="BetButtons"]
+offset_left = 957.0
+offset_top = 400.0
+offset_right = 1022.9829
+offset_bottom = 443.0
+text = "-10"
+icon = SubResource("MeshTexture_n5fvy")
+
+[node name="Chip100" type="Sprite2D" parent="BetButtons/BetPlus100Button"]
+position = Vector2(35, 24)
+scale = Vector2(4.91, 4.91)
+texture = ExtResource("10_l47h3")
+
+[node name="BetMinus10Button" type="Button" parent="BetButtons"]
+offset_left = 1048.0
+offset_top = 576.0
+offset_right = 1113.9828
+offset_bottom = 619.0
+text = "-10"
+icon = SubResource("MeshTexture_n5fvy")
+
+[node name="Chip10" type="Sprite2D" parent="BetButtons/BetMinus10Button"]
+position = Vector2(35, 21)
+scale = Vector2(4.91, 4.91)
+texture = ExtResource("5_vg7pf")
+
+[node name="BetPlus10Button" type="Button" parent="BetButtons"]
+offset_left = 957.0
+offset_top = 576.0
+offset_right = 1024.1187
+offset_bottom = 621.0
 text = "+10"
 
-[node name="Chip10" type="Sprite2D" parent="BetPlusButton"]
+[node name="Chip10" type="Sprite2D" parent="BetButtons/BetPlus10Button"]
 position = Vector2(34, 21)
 scale = Vector2(4.91, 4.91)
 texture = ExtResource("4_k33n5")
 
-[node name="BetMinusButton" type="Button" parent="."]
-offset_left = 971.0
-offset_top = 390.0
-offset_right = 1036.9828
-offset_bottom = 433.0
+[node name="BetPlus50Button" type="Button" parent="BetButtons"]
+offset_left = 960.0
+offset_top = 488.0
+offset_right = 1027.1187
+offset_bottom = 533.0
+text = "+10"
+
+[node name="Chip50" type="Sprite2D" parent="BetButtons/BetPlus50Button"]
+position = Vector2(32.00003, 24.000008)
+scale = Vector2(4.91, 4.91)
+texture = ExtResource("8_fxnrk")
+
+[node name="BetMinus50Button" type="Button" parent="BetButtons"]
+offset_left = 1040.0
+offset_top = 488.0
+offset_right = 1105.9829
+offset_bottom = 531.0
 text = "-10"
 icon = SubResource("MeshTexture_n5fvy")
 
-[node name="Chip10" type="Sprite2D" parent="BetMinusButton"]
-position = Vector2(35, 21)
+[node name="Chip51" type="Sprite2D" parent="BetButtons/BetMinus50Button"]
+position = Vector2(36, 23.999992)
 scale = Vector2(4.91, 4.91)
-texture = ExtResource("5_vg7pf")
+texture = ExtResource("9_hnbh4")
+
+[node name="BetMinus100Button" type="Button" parent="BetButtons"]
+offset_left = 1048.0
+offset_top = 408.0
+offset_right = 1113.9829
+offset_bottom = 451.0
+text = "-10"
+icon = SubResource("MeshTexture_n5fvy")
+
+[node name="Chip100" type="Sprite2D" parent="BetButtons/BetMinus100Button"]
+position = Vector2(31.999998, 16)
+scale = Vector2(4.91, 4.91)
+texture = ExtResource("11_s1rj8")
 
 [node name="DealButton" type="Button" parent="."]
 offset_left = 127.0
@@ -861,7 +918,7 @@ offset_bottom = 63.0
 label_settings = ExtResource("4_j1s7x")
 
 [node name="Bet" type="Sprite2D" parent="."]
-position = Vector2(1005, 325.99997)
+position = Vector2(959.99994, 248)
 rotation = 0.015708
 scale = Vector2(0.99999994, 0.99999994)
 

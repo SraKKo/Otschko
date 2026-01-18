@@ -178,6 +178,21 @@ libraries = {
 autoplay = "TitleBounce"
 speed_scale = 0.711
 
+[node name="Credits" type="Button" parent="."]
+offset_left = 1007.99994
+offset_top = 568.0
+offset_right = 1248.0
+offset_bottom = 664.0
+scale = Vector2(0.52, 0.52)
+theme_override_constants/outline_size = 19
+theme_override_fonts/font = ExtResource("3_3u666")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxTexture_ey7n4")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
+text = "
+credits"
+
 [node name="CRT" type="CanvasLayer" parent="."]
 
 [node name="Rect" type="ColorRect" parent="CRT"]
@@ -189,6 +204,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Version" type="Label" parent="."]
+offset_top = 618.0
+offset_right = 40.0
+offset_bottom = 641.0
+text = "V0.4"
+
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]

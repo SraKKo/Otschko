@@ -6,6 +6,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SettingsMenager.apply_crt(crt_rect)
+	SfxPlayer.play(preload("res://Sounds/SFX/Loose.wav"))
+	MusicPlayer.stop_fade_out(1)
 
 
 

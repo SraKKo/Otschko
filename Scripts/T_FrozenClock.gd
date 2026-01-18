@@ -1,6 +1,6 @@
 extends Node
 
-@export var freeze_ticks := 3
+@export var freeze_ticks := 6
 var ticks_left := 0
 
 func on_round_start(_game: Node) -> void:

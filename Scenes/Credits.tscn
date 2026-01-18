@@ -1,0 +1,106 @@
+[gd_scene load_steps=15 format=3 uid="uid://f1jb5y7xaph2"]
+
+[ext_resource type="Script" uid="uid://d2sbfbtlwun53" path="res://Scripts/credits.gd" id="1_5qoai"]
+[ext_resource type="Texture2D" uid="uid://bxd62xm0ocp42" path="res://Sprites/MainMenuBg.png" id="1_lpub1"]
+[ext_resource type="LabelSettings" uid="uid://d3yiwmvq64atm" path="res://Fonts/MenuText.tres" id="2_640q4"]
+[ext_resource type="LabelSettings" uid="uid://bi4fbbj2r7ox3" path="res://Fonts/TextBasic.tres" id="3_5qoai"]
+[ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="4_jpdlp"]
+[ext_resource type="StyleBox" uid="uid://c8dxw3bxjvto3" path="res://Fonts/new_style_box_texture.tres" id="5_cmrso"]
+[ext_resource type="Texture2D" uid="uid://dt65vu60vowwr" path="res://Sprites/Buttons/buttonPressed.png" id="6_3hr06"]
+[ext_resource type="Texture2D" uid="uid://lxv8cvnhcvxb" path="res://Sprites/Buttons/buttonHovered.png" id="7_6n0gi"]
+[ext_resource type="Shader" uid="uid://v8uin0c7vj5a" path="res://Scripts/CRTshader.gdshader" id="9_jpdlp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u6j5g"]
+bg_color = Color(0.09019608, 0.45490196, 0.2784314, 0.5058824)
+
+[sub_resource type="Theme" id="Theme_ubfhf"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iiqut"]
+texture = ExtResource("6_3hr06")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7xbyc"]
+texture = ExtResource("7_6n0gi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cmrso"]
+shader = ExtResource("9_jpdlp")
+shader_parameter/scanline_strength = 0.35
+shader_parameter/scanline_count = 480.0
+shader_parameter/vignette_strength = 0.25
+shader_parameter/noise_strength = 0.05
+shader_parameter/chroma_offset = 1.0
+shader_parameter/curvature = 0.018000000855
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5qoai")
+
+[node name="MainMenuBg" type="Sprite2D" parent="."]
+position = Vector2(576.857, 324)
+scale = Vector2(5.78571, 5.78571)
+texture = ExtResource("1_lpub1")
+
+[node name="Panel" type="Panel" parent="MainMenuBg"]
+offset_left = -137.03712
+offset_top = -58.76548
+offset_right = -97.037125
+offset_bottom = -18.76548
+scale = Vector2(7.159678, 3.1969328)
+theme_override_styles/panel = SubResource("StyleBoxFlat_u6j5g")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 368.0
+offset_top = 72.0
+offset_right = 840.0
+offset_bottom = 164.0
+text = "credits"
+label_settings = ExtResource("2_640q4")
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 136.0
+offset_right = 1299.0
+offset_bottom = 523.0
+text = "assets used:
+Deck of Cards by Noh 
+itch.io: noh-kinda.itch.io
+
+UI Buttons SFX by SoupTonic
+itch.io: souptonic.itch.io
+
+
+Programming, Graphics, Music, SFX,
+Idea, etc. - SraKKo
+itch.io: srakko.itch.io"
+label_settings = ExtResource("3_5qoai")
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 864.0
+offset_top = 520.0
+offset_right = 1104.0
+offset_bottom = 616.0
+theme = SubResource("Theme_ubfhf")
+theme_override_constants/outline_size = 19
+theme_override_fonts/font = ExtResource("4_jpdlp")
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = ExtResource("5_cmrso")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_iiqut")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7xbyc")
+text = "
+back"
+
+[node name="CRT" type="CanvasLayer" parent="."]
+
+[node name="Rect" type="ColorRect" parent="CRT"]
+material = SubResource("ShaderMaterial_cmrso")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
