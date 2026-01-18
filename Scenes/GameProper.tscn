@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://ubpel0sj1qt1"]
+[gd_scene load_steps=89 format=3 uid="uid://ubpel0sj1qt1"]
 
 [ext_resource type="Script" uid="uid://cjorm84bv4p3n" path="res://Scripts/Game.gd" id="1_266y0"]
 [ext_resource type="Texture2D" uid="uid://c4mgjybri5vrq" path="res://Sprites/Deck of Cards Spritesheet.png" id="2_ln7r3"]
@@ -477,6 +477,54 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.015708]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Win:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.13, 0.13)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Win:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.59864795]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bust:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.165, 0.165)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bust:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(429.875, 259)]
+}
 
 [sub_resource type="Animation" id="Animation_j1s7x"]
 resource_name = "TextShake"
@@ -518,10 +566,66 @@ tracks/2/keys = {
 "values": [0.015708, -0.015708]
 }
 
+[sub_resource type="Animation" id="Animation_2qxhv"]
+resource_name = "WIN"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Win:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.13, 0.13), Vector2(1.005, 1.005)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Win:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.59864795, 0.59864795, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_13664"]
+resource_name = "BUST"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bust:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.165, 0.165), Vector2(1, 1), Vector2(1, 1), Vector2(0.18, 0.18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bust:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45, 0.6, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(429.875, 259), Vector2(435.183, 259), Vector2(451.4, 259), Vector2(407.885, 259), Vector2(423.87, 259), Vector2(411.365, 259)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0rta7"]
 _data = {
+&"BUST": SubResource("Animation_13664"),
 &"RESET": SubResource("Animation_6vmwt"),
-&"TextShake": SubResource("Animation_j1s7x")
+&"TextShake": SubResource("Animation_j1s7x"),
+&"WIN": SubResource("Animation_2qxhv")
 }
 
 [sub_resource type="Theme" id="Theme_2qxhv"]
@@ -813,6 +917,27 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="Win" type="Label" parent="."]
+z_index = 1
+offset_left = 418.0
+offset_top = 259.0
+offset_right = 786.0
+offset_bottom = 351.0
+rotation = -0.59864795
+scale = Vector2(0.13, 0.13)
+text = "WIN!!!"
+label_settings = ExtResource("14_y8fh6")
+
+[node name="Bust" type="Label" parent="."]
+z_index = 1
+offset_left = 429.875
+offset_top = 259.0
+offset_right = 763.87573
+offset_bottom = 351.0
+scale = Vector2(0.165, 0.165)
+text = "BUST!"
+label_settings = ExtResource("14_y8fh6")
 
 [connection signal="pressed" from="SplitButton" to="." method="_on_split_button_pressed"]
 [connection signal="timeout" from="RoundTime" to="." method="_on_round_time_timeout"]

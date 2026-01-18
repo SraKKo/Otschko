@@ -20,6 +20,7 @@ Global="*res://Scripts/Global.gd"
 inventory="*res://Scripts/Inventory.gd"
 TrinketDb="*res://Scripts/TrinketDb.gd"
 SettingsMenager="*res://Scripts/SettingsManager.gd"
+MusicPlayer="*res://Scenes/MusicPlayer.tscn"
 
 [display]
 

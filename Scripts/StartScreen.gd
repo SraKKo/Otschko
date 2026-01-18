@@ -8,6 +8,8 @@ extends Node2D
 
 func _ready() -> void:
 	SettingsMenager.apply_crt(crt_rect)
+	MusicPlayer.play_with_fade_in(preload("res://Sounds/Music/MainMenu1.ogg"), 1.25)
+
 
 
 func _on_play_pressed():

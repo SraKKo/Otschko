@@ -38,9 +38,12 @@ var active_effects: Array[Node] = []
 @onready var money_label = $Money/MoneyLabel
 @onready var round_label: Label = $Round/RoundLabel
 @onready var bet_label = $Bet/BetLabel
+@onready var win_label = $Win
+@onready var bust_label = $Bust
 
 @onready var time_bar: ProgressBar = $TimeBar
 @onready var round_timer: Timer = $RoundTime
+@onready var anim = $AnimationPlayer
 
 @onready var trinkets_root: Node = $Trinkets
 
@@ -52,6 +55,13 @@ const CARD_BACK = 52
 
 func _ready():
 	SettingsMenager.apply_crt(crt_rect)
+	MusicPlayer.play_crossfade(preload("res://Sounds/Music/Base.ogg"), 1.0)
+	
+	win_label.visible = false
+	bust_label.visible = false
+	anim.animation_finished.connect(_on_result_anim_finished)
+
+
 
 	deck = Deck.new()
 	deck.reset_deck()
@@ -341,10 +351,13 @@ func check_winner():
 
 	if dealer_score > 21:
 		game_over("Wygrałeś! Dealer ma ponad 21.")
+		show_result("WIN")
 	elif dealer_score > player_score:
 		game_over("Przegrana! Dealer ma więcej punktów.")
+		show_result("BUST")
 	elif dealer_score < player_score:
 		game_over("Wygrałeś! Masz więcej punktów.")
+		show_result("WIN")
 	else:
 		game_over("Remis!")
 
@@ -498,15 +511,20 @@ func dealer_play():
 
 
 func hand_result(player_score: int, dealer_score: int) -> String:
-	if player_score > 21:
+	if player_score > get_bust_limit():
 		return "lose"
-	if dealer_score > 21:
+
+	if dealer_score > get_bust_limit():
 		return "win"
+
 	if player_score > dealer_score:
 		return "win"
+
 	if player_score < dealer_score:
 		return "lose"
+
 	return "draw"
+
 
 func _on_split_button_pressed() -> void:
 	do_split()
@@ -565,5 +583,21 @@ func toggle_pause():
 	else:
 		get_tree().paused = true
 		pause_menu.show_menu()
+
+func _on_result_anim_finished(_name: StringName) -> void:
+	win_label.visible = false
+	bust_label.visible = false
+
+func show_result(kind: String) -> void:
+	# schowaj oba i pokaż tylko właściwy
+	win_label.visible = false
+	bust_label.visible = false
+
+	if kind == "WIN":
+		win_label.visible = true
+		anim.play("WIN")
+	elif kind == "BUST":
+		bust_label.visible = true
+		anim.play("BUST")
 
 	
