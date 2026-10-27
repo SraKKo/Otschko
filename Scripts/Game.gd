@@ -84,6 +84,7 @@ const VICTORY_SCENE := "res://Scenes/VictoryScreen.tscn"
 const CARD_BACK = 52  
 
 func _ready():
+	PCRuntime.dev_log("Wczytano poziom: GameProper")
 	SettingsMenager.apply_crt(crt_rect)
 	MusicPlayer.play_crossfade(preload("res://Sounds/Music/Base.ogg"), 1.0)
 	
@@ -98,6 +99,7 @@ func _ready():
 	anim.animation_finished.connect(_on_result_anim_finished)
 
 	deck = Deck.new()
+	add_child(deck)
 	deck.reset_deck()
 
 	player_cards.clear()
@@ -440,7 +442,7 @@ func check_winner():
 
 
 func game_over(msg: String):
-	print(msg)
+	PCRuntime.dev_log("Wynik rundy: " + msg)
 
 	hit_button.disabled = true
 	hold_button.disabled = true
@@ -452,6 +454,7 @@ func game_over(msg: String):
 			"Wygrałeś! Dealer ma ponad 21.", "Wygrałeś! Masz więcej punktów.":
 				var base = bet * 2
 				money += apply_payout_modifiers(base, "normal_win")
+				PCRuntime.dev_log("Zdobyto wygrana. Kapital: " + str(money))
 
 			"Remis!":
 				money += bet  # zwrot stawki (tego zwykle nie modyfikujemy)
@@ -479,12 +482,14 @@ func game_over(msg: String):
 	# --- KONIEC ETAPU (co 5 rund) ---
 	if round_count % STAGE_LENGTH == 0:
 		if money < stage_target_money:
-			print("Stage FAILED. Money:", money, "Target:", stage_target_money)
+			if OS.is_debug_build():
+				print("[DEV] ", "Stage FAILED. Money:", money, "Target:", stage_target_money)
 			get_tree().change_scene_to_file(GAME_OVER_SCENE)
 			inventory.clear()
 			return
 		else:
-			print("Stage PASSED! Money:", money, "Target:", stage_target_money)
+			if OS.is_debug_build():
+				print("[DEV] ", "Stage PASSED! Money:", money, "Target:", stage_target_money)
 			update_timer_difficulty()
 			notify_stage_cleared()
 			
@@ -521,7 +526,8 @@ func on_deal():
 	SfxPlayer.play(preload("res://Sounds/SFX/Shuffle.ogg"))
 	if in_round: return
 	if bet == 0:
-		print("Postaw najpierw zakład!")
+		if OS.is_debug_build():
+			print("[DEV] ", "Postaw najpierw zakład!")
 		return
 	
 	round_count += 1
@@ -573,7 +579,8 @@ func notify_round_end(result: String) -> void:
 
 
 func time_out():
-	print("Czas minął!")
+	if OS.is_debug_build():
+		print("[DEV] ", "Czas minął!")
 	# Gracz automatycznie przegrywa
 	game_over("Przegrana! Czas minął.")
 
@@ -701,11 +708,8 @@ func apply_payout_modifiers(base_payout: int, context: String) -> int:
 			payout = eff.modify_payout(self, payout, context)
 	return payout
 	
-func _input(event):
-	if event.is_action_pressed("pause"):
-		toggle_pause()
-
 func toggle_pause():
+	PCRuntime.dev_log("Pauza: " + str(not get_tree().paused))
 	if get_tree().paused:
 		get_tree().paused = false
 		pause_menu.hide_menu()
@@ -720,6 +724,7 @@ func _on_result_anim_finished(_name: StringName) -> void:
 	anim.play("TextShake")
 
 func show_result(kind: String) -> void:
+	ControllerInput.rumble()
 	# schowaj oba i pokaż tylko właściwy
 	win_label.visible = false
 	bust_label.visible = false
@@ -756,7 +761,9 @@ func update_timer_difficulty():
 	var new_time := max_time - TIMER_DECREASE_BY
 	max_time = max(new_time, TIMER_MIN)
 
-	print("Timer reduced to:", max_time)
+	if OS.is_debug_build():
+
+		print("[DEV] ", "Timer reduced to:", max_time)
 	
 func start_stage(new_stage_index: int) -> void:
 	stage_index = new_stage_index
@@ -766,8 +773,11 @@ func start_stage(new_stage_index: int) -> void:
 
 	stage_target_money = int(ceil(float(stage_start_money) * STAGE_MULTIPLIER))
 
-	print("=== STAGE ", stage_index, " START ===")
-	print("Start money:", stage_start_money, " Target:", stage_target_money)
+	if OS.is_debug_build():
+
+		print("[DEV] ", "=== STAGE ", stage_index, " START ===")
+	if OS.is_debug_build():
+		print("[DEV] ", "Start money:", stage_start_money, " Target:", stage_target_money)
 	update_stage_ui()
 
 

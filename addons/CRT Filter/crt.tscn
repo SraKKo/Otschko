@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://iu6w2vn1g4ac"]
+
+[ext_resource type="Shader" uid="uid://v8uin0c7vj5a" path="res://Scripts/CRTshader.gdshader" id="1_u3egi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ogpyo"]
+shader = ExtResource("1_u3egi")
+shader_parameter/scanline_strength = 0.35
+shader_parameter/scanline_count = 480.0
+shader_parameter/vignette_strength = 0.25
+shader_parameter/noise_strength = 0.05
+shader_parameter/chroma_offset = 1.0
+shader_parameter/curvature = 0.018000000855
+
+[node name="CRT" type="CanvasLayer"]
+
+[node name="Rect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_ogpyo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

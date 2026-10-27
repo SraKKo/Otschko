@@ -1,0 +1,1 @@
+Przy wyłączonym VSync i limicie FPS, w tej samej scenie GameProper (1280 x 720, CRT włączony), przez 30 s po 5 s rozgrzewki zmierzono średnio 1794.96 FPS w debug i 1824.86 FPS w release, co daje zmianę +1.67% względem debug.

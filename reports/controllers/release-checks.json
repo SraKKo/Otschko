@@ -1,0 +1,207 @@
+{
+	"checks": [
+		{
+			"passed": true,
+			"test": "Menu starts with visible mouse"
+		},
+		{
+			"passed": true,
+			"test": "Startup scheme is keyboard/mouse"
+		},
+		{
+			"passed": true,
+			"test": "Xbox identification"
+		},
+		{
+			"passed": true,
+			"test": "PlayStation identification"
+		},
+		{
+			"passed": true,
+			"test": "Nintendo identification"
+		},
+		{
+			"passed": true,
+			"test": "Unknown pad fallback"
+		},
+		{
+			"passed": true,
+			"test": "Stick drift does not switch devices"
+		},
+		{
+			"passed": true,
+			"test": "Stick activates Xbox scheme"
+		},
+		{
+			"passed": true,
+			"test": "Pad hides menu cursor"
+		},
+		{
+			"passed": true,
+			"test": "Xbox icon and text"
+		},
+		{
+			"passed": true,
+			"test": "Mouse noise does not steal active device"
+		},
+		{
+			"passed": true,
+			"test": "Left stick navigates menu on nonzero controller ID"
+		},
+		{
+			"passed": true,
+			"test": "D-pad navigates main menu"
+		},
+		{
+			"passed": true,
+			"test": "Pad opens Settings with Accept"
+		},
+		{
+			"passed": true,
+			"test": "Vibration option exists"
+		},
+		{
+			"passed": true,
+			"test": "Pad toggles vibration through real menu"
+		},
+		{
+			"passed": true,
+			"test": "Vibration option is persisted to settings file"
+		},
+		{
+			"passed": true,
+			"test": "Controller toggles live CRT setting"
+		},
+		{
+			"passed": true,
+			"test": "Pad Cancel returns to main menu"
+		},
+		{
+			"passed": true,
+			"test": "Pad starts gameplay"
+		},
+		{
+			"passed": true,
+			"test": "Pad hides gameplay cursor without capturing mouse"
+		},
+		{
+			"passed": true,
+			"test": "Mouse clicks gameplay bet button"
+		},
+		{
+			"passed": true,
+			"test": "Mouse restores visible cursor during gameplay"
+		},
+		{
+			"passed": true,
+			"test": "Mouse clicks gameplay decrease button"
+		},
+		{
+			"passed": true,
+			"test": "Shoulder action increases bet"
+		},
+		{
+			"passed": true,
+			"test": "Left shoulder decreases bet"
+		},
+		{
+			"passed": true,
+			"test": "Pad deals cards through shared action"
+		},
+		{
+			"passed": true,
+			"test": "Live switch to PlayStation icon"
+		},
+		{
+			"passed": true,
+			"test": "PlayStation gameplay text"
+		},
+		{
+			"passed": true,
+			"test": "Controller Cancel resumes from pause"
+		},
+		{
+			"passed": true,
+			"test": "PlayStation west button performs Hit"
+		},
+		{
+			"passed": true,
+			"test": "North button performs Split"
+		},
+		{
+			"passed": true,
+			"test": "East button holds first split hand"
+		},
+		{
+			"passed": true,
+			"test": "Result requests vibration when enabled"
+		},
+		{
+			"passed": true,
+			"test": "Vibration disabled blocks request"
+		},
+		{
+			"passed": true,
+			"test": "Disconnect of inactive pad does not pause"
+		},
+		{
+			"passed": true,
+			"test": "Active controller disconnect pauses and displays message"
+		},
+		{
+			"passed": true,
+			"test": "Reconnect hides notice and does not auto-resume"
+		},
+		{
+			"passed": true,
+			"test": "Player manually resumes with controller Start"
+		},
+		{
+			"passed": true,
+			"test": "Keyboard fallback clears notice but keeps pause"
+		},
+		{
+			"passed": true,
+			"test": "Keyboard pause shows cursor"
+		},
+		{
+			"passed": true,
+			"test": "Escape resumes with clickable mouse cursor"
+		},
+		{
+			"passed": true,
+			"test": "Nintendo uses its physical south button label B"
+		},
+		{
+			"passed": true,
+			"test": "Explicit input zone lock prevents switching"
+		},
+		{
+			"passed": true,
+			"test": "Mouse movement restores keyboard scheme"
+		},
+		{
+			"passed": true,
+			"test": "Pause exposes keyboard mouse cursor"
+		},
+		{
+			"passed": true,
+			"test": "Reward menu exposes all choices to focus"
+		},
+		{
+			"passed": true,
+			"test": "Controller accepts a reward without mouse"
+		},
+		{
+			"passed": true,
+			"test": "Reward selection resumes gameplay"
+		},
+		{
+			"passed": true,
+			"test": "Mouse returns in menu after gameplay"
+		}
+	],
+	"method": "Synthesized Godot input events and connection callbacks, not a physical USB test",
+	"passed": true,
+	"physical_controllers": []
+}

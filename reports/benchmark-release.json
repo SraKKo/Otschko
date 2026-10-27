@@ -1,0 +1,22 @@
+{
+	"average_fps": 1824.85681172212,
+	"build": "release",
+	"cpu": "12th Gen Intel(R) Core(TM) i5-12400F",
+	"crt": true,
+	"duration_seconds": 30.00071,
+	"engine": "4.5.1-stable (official)",
+	"fps_limit": 0,
+	"frames": 54747,
+	"gpu": "NVIDIA GeForce RTX 4060",
+	"one_percent_low_fps": 200.182575275772,
+	"os": "Windows",
+	"rendered_frames": 54747,
+	"renderer": "forward_plus",
+	"scene": "res://Scenes/GameProper.tscn",
+	"seed": 20261027,
+	"timestamp": "2026-10-27T17:36:27",
+	"vsync": 0,
+	"warmup_seconds": 5,
+	"window_mode": 0,
+	"window_size": "(1280, 720)"
+}

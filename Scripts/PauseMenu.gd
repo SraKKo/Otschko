@@ -11,6 +11,7 @@ func hide_menu():
 	visible = false
 
 func _on_resume_button_pressed():
+	PCRuntime.dev_log("Pauza: false (wznowienie)")
 	SfxPlayer.play(preload("res://Sounds/SFX/ClickButton.ogg"))
 	get_tree().paused = false
 	hide_menu()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bf4hd6m5t6e18"]
+[gd_scene load_steps=18 format=3 uid="uid://bf4hd6m5t6e18"]
 
 [ext_resource type="Script" uid="uid://dm3r71vbfmriw" path="res://Scripts/StartScreen.gd" id="1_6mw8b"]
 [ext_resource type="Texture2D" uid="uid://bxd62xm0ocp42" path="res://Sprites/MainMenuBg.png" id="1_ko4ly"]
@@ -20,8 +20,6 @@ texture = ExtResource("4_ey7n4")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ey7n4"]
 texture = ExtResource("4_a2231")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_kehkj"]
 
 [sub_resource type="Animation" id="Animation_anxsw"]
 length = 0.001
@@ -156,9 +154,8 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
 text = "
 quit"
 
-[node name="Title" type="Sprite2D" parent="."]
+[node name="Title" type="Node2D" parent="."]
 position = Vector2(520, 120)
-texture = SubResource("ViewportTexture_kehkj")
 
 [node name="TitleLabel" type="Label" parent="Title"]
 offset_left = -488.0
