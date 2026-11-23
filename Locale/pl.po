@@ -1,0 +1,660 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Otshcko!\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+
+msgid "LOC_ACHIEVEMENTS"
+msgstr "OSIĄGNIĘCIA"
+
+msgid "LOC_ACH_BLACKJACK"
+msgstr "Oczko!"
+
+msgid "LOC_ACH_BLACKJACK_DESC"
+msgstr "Wygraj rundę z 21 punktami w dwóch kartach."
+
+msgid "LOC_ACH_COMPLETION"
+msgstr "Komplet przy stole"
+
+msgid "LOC_ACH_COMPLETION_DESC"
+msgstr "Zdobądź wszystkie pozostałe osiągnięcia."
+
+msgid "LOC_ACH_EARNED"
+msgstr "Zdobyte"
+
+msgid "LOC_ACH_FIRST_ROUND"
+msgstr "Pierwsze rozdanie"
+
+msgid "LOC_ACH_FIRST_ROUND_DESC"
+msgstr "Zakończ pierwszą rundę."
+
+msgid "LOC_ACH_FIRST_WIN"
+msgstr "Pierwsza wygrana"
+
+msgid "LOC_ACH_FIRST_WIN_DESC"
+msgstr "Wygraj rundę."
+
+msgid "LOC_ACH_FIVE_WINS"
+msgstr "Dobra passa"
+
+msgid "LOC_ACH_FIVE_WINS_DESC"
+msgstr "Wygraj łącznie 5 rund."
+
+msgid "LOC_ACH_HIDDEN"
+msgstr "Ukryte osiągnięcie"
+
+msgid "LOC_ACH_LOCKED"
+msgstr "Zablokowane"
+
+msgid "LOC_ACH_SECRET"
+msgstr "Warunek pojawi się po odblokowaniu."
+
+msgid "LOC_ACH_SPLIT"
+msgstr "Na dwa fronty"
+
+msgid "LOC_ACH_SPLIT_DESC"
+msgstr "Rozdziel parę na dwie ręce."
+
+msgid "LOC_ACH_STAGE_THREE"
+msgstr "Wyższa stawka"
+
+msgid "LOC_ACH_STAGE_THREE_DESC"
+msgstr "Zakończ rundę na trzecim etapie."
+
+msgid "LOC_ACH_TEN_ROUNDS"
+msgstr "Stały bywalec"
+
+msgid "LOC_ACH_TEN_ROUNDS_DESC"
+msgstr "Zakończ 10 rund."
+
+msgid "LOC_ACH_TOTAL"
+msgstr "{name}   •   Zdobyto {current} z {total}"
+
+msgid "LOC_ACH_TRINKETS"
+msgstr "Pełne kieszenie"
+
+msgid "LOC_ACH_TRINKETS_DESC"
+msgstr "Wyposaż jednocześnie 3 różne talizmany."
+
+msgid "LOC_ACH_UNLOCKED"
+msgstr "OSIĄGNIĘCIE ODBLOKOWANE"
+
+msgid "LOC_ACH_VICTORY"
+msgstr "Po ostatnim rozdaniu"
+
+msgid "LOC_ACH_VICTORY_DESC"
+msgstr "Zalicz wszystkie etapy jednej rozgrywki."
+
+msgid "LOC_BACK"
+msgstr "WRÓĆ"
+
+msgid "LOC_BACK_MENU"
+msgstr "WRÓĆ DO MENU"
+
+msgid "LOC_BENCHMARK"
+msgstr "POMIAR — poczekaj"
+
+msgid "LOC_BET"
+msgstr "Zakład: {number}"
+
+msgid "LOC_BUST"
+msgstr "PRZEGRANA!"
+
+msgid "LOC_CANCEL"
+msgstr "ANULUJ"
+
+msgid "LOC_CHANGE_PROFILE"
+msgstr "ZMIEŃ PROFIL"
+
+msgid "LOC_CHANGE_USER"
+msgstr "ZMIEŃ UŻYTKOWNIKA"
+
+msgid "LOC_CHIPS_TAMPERED"
+msgstr "Wykryto zmianę żetonów. Portfel wyzerowano."
+
+msgid "LOC_CHOOSE_PROFILE"
+msgstr "WYBIERZ PROFIL"
+
+msgid "LOC_CHOOSE_TRINKET"
+msgstr "WYBIERZ TALIZMAN!"
+
+msgid "LOC_CLOSE"
+msgstr "ZAMKNIJ"
+
+msgid "LOC_CLOUD_BAD_REMOTE"
+msgstr "Nieprawidłowy zapis z chmury - zachowano lokalny"
+
+msgid "LOC_CLOUD_BAD_SAVE"
+msgstr "Nieprawidłowy zapis - zachowano lokalny"
+
+msgid "LOC_CLOUD_CHECK"
+msgstr "SPRAWDŹ SYNCHRONIZACJĘ (ODCZYT)"
+
+msgid "LOC_CLOUD_CLEAR"
+msgstr "WYCZYŚĆ ZAPIS LOKALNY…"
+
+msgid "LOC_CLOUD_CLEARED"
+msgstr "Lokalny zapis usunięty - zaloguj się ponownie"
+
+msgid "LOC_CLOUD_CLEAR_BODY"
+msgstr "Usunięty zostanie tylko lokalny zapis bieżącego profilu. Dane w chmurze nie zostaną zmienione. Lokalna kopia zapasowa zostanie zachowana."
+
+msgid "LOC_CLOUD_CLEAR_ERROR"
+msgstr "Nie udało się usunąć lokalnego zapisu"
+
+msgid "LOC_CLOUD_CLEAR_RECOVERY"
+msgstr "Po ponownym zalogowaniu lub restarcie postęp zostanie pobrany z chmury. Niewysłane zmiany pozostaną wyłącznie w kopii zapasowej."
+
+msgid "LOC_CLOUD_CLEAR_TITLE"
+msgstr "WYCZYŚĆ ZAPIS LOKALNY?"
+
+msgid "LOC_CLOUD_CONFIRM_CLEAR"
+msgstr "POTWIERDZAM - WYCZYŚĆ LOKALNY"
+
+msgid "LOC_CLOUD_CONFLICT"
+msgstr "Konflikt - wybierz zapis"
+
+msgid "LOC_CLOUD_CONFLICT_DATES"
+msgstr "Zapis lokalny (UTC): {local}  •  Serwer (UTC): {remote}\nDaty są informacją. Wybór wersji nie zależy od zegara komputera."
+
+msgid "LOC_CLOUD_CONFLICT_TITLE"
+msgstr "KONFLIKT ZAPISÓW"
+
+msgid "LOC_CLOUD_DIRTY"
+msgstr "Zapis lokalny - oczekuje na zapis w chmurze"
+
+msgid "LOC_CLOUD_DIRTY_OFFLINE"
+msgstr "Offline - zmiany czekają lokalnie"
+
+msgid "LOC_CLOUD_DISABLED"
+msgstr "Chmura wyłączona w teście lokalnym"
+
+msgid "LOC_CLOUD_DOWNLOAD_ERROR"
+msgstr "Nie można zapisać pobranych danych"
+
+msgid "LOC_CLOUD_IN_SYNC"
+msgstr "Zsynchronizowano"
+
+msgid "LOC_CLOUD_KEEP_LOCAL"
+msgstr "ZACHOWAJ TEN KOMPUTER I ZAPISZ"
+
+msgid "LOC_CLOUD_KEEP_REMOTE"
+msgstr "ZACHOWAJ ZAPIS Z CHMURY"
+
+msgid "LOC_CLOUD_KEY"
+msgstr "Profil: {profile}  •  Chmura: 51796 / {user} / save"
+
+msgid "LOC_CLOUD_LATER"
+msgstr "ZDECYDUJ PÓŹNIEJ"
+
+msgid "LOC_CLOUD_LOADING"
+msgstr "Pobieranie zapisu…"
+
+msgid "LOC_CLOUD_LOCAL_VERSION"
+msgstr "Ten komputer (baza v{version}):\n{stats}"
+
+msgid "LOC_CLOUD_MENU"
+msgstr "ZAPIS W CHMURZE"
+
+msgid "LOC_CLOUD_MENU_HELP"
+msgstr "Zapis lokalny działa zawsze. Kliknij ZAPISZ W CHMURZE, aby wysłać bieżący postęp."
+
+msgid "LOC_CLOUD_MERGED"
+msgstr "Połączono osiągnięcia - zapisz w chmurze"
+
+msgid "LOC_CLOUD_NEWER_CHANGES"
+msgstr "Nowsze zmiany czekają na zapis w chmurze"
+
+msgid "LOC_CLOUD_NOT_SENT"
+msgstr "Nie wysłano - dane czekają lokalnie"
+
+msgid "LOC_CLOUD_NO_CONNECTION"
+msgstr "Brak połączenia - zachowano dane lokalne"
+
+msgid "LOC_CLOUD_NO_SAVE"
+msgstr "Nowa gra - brak zapisu w chmurze"
+
+msgid "LOC_CLOUD_OFFLINE"
+msgstr "Offline - zapis pozostaje lokalnie"
+
+msgid "LOC_CLOUD_OLDER"
+msgstr "Chmura ma starszą wersję - nie nadpisano danych"
+
+msgid "LOC_CLOUD_REMOTE_VERSION"
+msgstr "Chmura (v{version}):\n{stats}"
+
+msgid "LOC_CLOUD_RESTORED_LEGACY"
+msgstr "Odtworzono poprzedni zapis - kliknij Zapisz, aby przenieść pod nazwę"
+
+msgid "LOC_CLOUD_SAVE"
+msgstr "ZAPISZ W CHMURZE"
+
+msgid "LOC_CLOUD_SIGNATURE_REFUSED"
+msgstr "Odrzucony zapis nie trafi do chmury"
+
+msgid "LOC_CLOUD_STATS"
+msgstr "Rundy: {rounds}  •  Wygrane: {wins}  •  Etap: {stage}  •  Rekord: {chips}"
+
+msgid "LOC_CLOUD_STATUS"
+msgstr "Chmura: {message}"
+
+msgid "LOC_CLOUD_SYNC_VERSION"
+msgstr "Zsynchronizowano · wersja {version}"
+
+msgid "LOC_CLOUD_UPLOADING"
+msgstr "Zapisywanie w chmurze…"
+
+msgid "LOC_CLOUD_WAIT_UPLOAD"
+msgstr "Zmiany czekają - kliknij Zapisz w chmurze"
+
+msgid "LOC_CLOUD_WARNING"
+msgstr "Odrzucono lokalny zapis. Podpis HMAC jest niezgodny."
+
+msgid "LOC_CONTINUE"
+msgstr "KONTYNUUJ"
+
+msgid "LOC_CREATE_PROFILE"
+msgstr "UTWÓRZ PROFIL"
+
+msgid "LOC_CREDITS"
+msgstr "TWÓRCY"
+
+msgid "LOC_CREDITS_BODY"
+msgstr "Wykorzystane materiały:\nTalia kart — Noh\nitch.io: noh-kinda.itch.io\n\nDźwięki przycisków — SoupTonic\nitch.io: souptonic.itch.io\n\nKod, grafika, muzyka, dźwięk i pomysł — SraKKo\nitch.io: srakko.itch.io"
+
+msgid "LOC_CRT"
+msgstr "Filtr CRT"
+
+msgid "LOC_DEAL"
+msgstr "ROZDAJ!"
+
+msgid "LOC_DEVICE_KEYBOARD"
+msgstr "Mysz i klawiatura"
+
+msgid "LOC_DEVICE_PAD"
+msgstr "Kontroler"
+
+msgid "LOC_DEVICE_PLAYSTATION"
+msgstr "Pad PlayStation"
+
+msgid "LOC_DEVICE_RECONNECT"
+msgstr "Podłącz kontroler lub użyj klawiatury"
+
+msgid "LOC_DEVICE_SWITCH"
+msgstr "Pad Nintendo Switch"
+
+msgid "LOC_DEVICE_XBOX"
+msgstr "Pad Xbox"
+
+msgid "LOC_DRAW"
+msgstr "REMIS"
+
+msgid "LOC_FPS"
+msgstr "{fps} FPS ({ms} ms)"
+
+msgid "LOC_FULLSCREEN"
+msgstr "Pełny ekran"
+
+msgid "LOC_GAME_OVER"
+msgstr "KONIEC GRY"
+
+msgid "LOC_HINT_GAME_KEYBOARD"
+msgstr "Spacja: Rozdaj   H: Dobierz   J: Pas   K: Podziel   Q/E: Zakład −/+10   Esc: Pauza"
+
+msgid "LOC_HINT_GAME_PAD"
+msgstr "Dolny: Rozdaj   Lewy: Dobierz   Prawy: Pas   Górny: Podziel   LB/RB: Zakład   Start: Pauza"
+
+msgid "LOC_HINT_GAME_PS"
+msgstr "Krzyżyk: Rozdaj   Kwadrat: Dobierz   Kółko: Pas   Trójkąt: Podziel   L1/R1: Zakład   Options: Pauza"
+
+msgid "LOC_HINT_GAME_SWITCH"
+msgstr "B: Rozdaj   Y: Dobierz   A: Pas   X: Podziel   L/R: Zakład −/+10   +: Pauza"
+
+msgid "LOC_HINT_GAME_XBOX"
+msgstr "A: Rozdaj   X: Dobierz   B: Pas   Y: Podziel   LB/RB: Zakład −/+10   Menu: Pauza"
+
+msgid "LOC_HINT_MENU"
+msgstr "{accept}: Wybierz   •   {back}: Wstecz   •   Strzałki / krzyżak / lewa gałka: Nawigacja"
+
+msgid "LOC_HINT_REWARD"
+msgstr "{accept}: Wybierz nagrodę   •   Strzałki / krzyżak / lewa gałka: Nawigacja"
+
+msgid "LOC_HIT"
+msgstr "DOBIERZ"
+
+msgid "LOC_HOLD"
+msgstr "PAS"
+
+msgid "LOC_KEY_CIRCLE"
+msgstr "Kółko"
+
+msgid "LOC_KEY_CROSS"
+msgstr "Krzyżyk"
+
+msgid "LOC_KEY_EAST"
+msgstr "prawy przycisk"
+
+msgid "LOC_KEY_SOUTH"
+msgstr "dolny przycisk"
+
+msgid "LOC_KEY_SPACE_ENTER"
+msgstr "Spacja / Enter"
+
+msgid "LOC_LANGUAGE"
+msgstr "Język"
+
+msgid "LOC_LICENSE"
+msgstr "LICENCJA"
+
+msgid "LOC_LICENSE_ACTIVATE"
+msgstr "AKTYWUJ KLUCZ"
+
+msgid "LOC_LICENSE_ACTIVATING"
+msgstr "Aktywowanie klucza…"
+
+msgid "LOC_LICENSE_BUY"
+msgstr "KUP GRĘ (SYMULACJA)"
+
+msgid "LOC_LICENSE_CHECKING"
+msgstr "Sprawdzanie licencji…"
+
+msgid "LOC_LICENSE_COPY"
+msgstr "KOPIUJ KLUCZ"
+
+msgid "LOC_LICENSE_ENTER"
+msgstr "Wpisz klucz licencji"
+
+msgid "LOC_LICENSE_ERROR_OFFLINE"
+msgstr "{message} F9 przywraca połączenie."
+
+msgid "LOC_LICENSE_EXPIRED"
+msgstr "Połącz się z internetem, aby odnowić dostęp na 7 dni."
+
+msgid "LOC_LICENSE_FETCH"
+msgstr "Pobieranie klucza…"
+
+msgid "LOC_LICENSE_GAME"
+msgstr "LICENCJA GRY"
+
+msgid "LOC_LICENSE_INVALID"
+msgstr "Klucz jest nieprawidłowy lub nie należy do tego profilu."
+
+msgid "LOC_LICENSE_MISSING"
+msgstr "Ten profil nie ma aktywnej licencji."
+
+msgid "LOC_LICENSE_OFFLINE"
+msgstr "Brak połączenia z usługą licencji."
+
+msgid "LOC_LICENSE_OFFLINE_MODE"
+msgstr "Dostęp offline"
+
+msgid "LOC_LICENSE_REQUIRED"
+msgstr "Wpisz klucz licencji."
+
+msgid "LOC_LICENSE_RETRY"
+msgstr "SPRAWDŹ PONOWNIE"
+
+msgid "LOC_LICENSE_SAVE_ERROR"
+msgstr "Nie można zapisać licencji na tym urządzeniu."
+
+msgid "LOC_LICENSE_SERVICE_ERROR"
+msgstr "Usługa licencji jest chwilowo niedostępna."
+
+msgid "LOC_LICENSE_TAKEN"
+msgstr "Ten klucz jest już aktywowany na innym koncie."
+
+msgid "LOC_LICENSE_VERIFIED"
+msgstr "Licencja zweryfikowana"
+
+msgid "LOC_LOCALE_EN"
+msgstr "English"
+
+msgid "LOC_LOCALE_PL"
+msgstr "Polski"
+
+msgid "LOC_LOCAL_PROFILES"
+msgstr "Lokalne profile - postęp pozostaje na tym komputerze."
+
+msgid "LOC_MASTER"
+msgstr "Głośność ogólna"
+
+msgid "LOC_MENU"
+msgstr "DO MENU"
+
+msgid "LOC_MENU_SIGN_OUT"
+msgstr "Nie zalogowano.\nWybierz profil, aby rozpocząć grę.\n\nF9: Sieć"
+
+msgid "LOC_MENU_STATS"
+msgstr "Profil: {name}\n{rounds}\nWygrane: {wins}\nNajlepszy etap: {stage}\nRekord żetonów: {chips}\n\nF8: Wyloguj  •  F9: Sieć"
+
+msgid "LOC_MONEY"
+msgstr "Żetony: {number}"
+
+msgid "LOC_MUSIC"
+msgstr "Głośność muzyki"
+
+msgid "LOC_NEW_PROFILE"
+msgstr "Nazwa nowego profilu (maks. 24 znaki)"
+
+msgid "LOC_OFFLINE_LICENSE"
+msgstr "Tryb offline - licencja z ostatnich 7 dni"
+
+msgid "LOC_OFFLINE_LOCAL"
+msgstr "Tryb offline - zapis lokalny"
+
+msgid "LOC_PAUSED"
+msgstr "PAUZA"
+
+msgid "LOC_PLAY"
+msgstr "GRAJ"
+
+msgid "LOC_PREMIUM_ADD"
+msgstr "DODAJ 50"
+
+msgid "LOC_PREMIUM_BALANCE"
+msgstr "Saldo na serwerze: {chips}"
+
+msgid "LOC_PREMIUM_CHIPS"
+msgstr "ŻETONY PREMIUM"
+
+msgid "LOC_PREMIUM_LOADING"
+msgstr "Sprawdzanie stanu na serwerze…"
+
+msgid "LOC_PREMIUM_READ"
+msgstr "Stan odczytany z serwera."
+
+msgid "LOC_PREMIUM_REJECTED"
+msgstr "Serwer odrzucił zmianę o {amount}. Limit jednej operacji to ±100."
+
+msgid "LOC_PREMIUM_TEST_ADD"
+msgstr "TEST: DODAJ 5000"
+
+msgid "LOC_PREMIUM_UNAVAILABLE"
+msgstr "Saldo niedostępne."
+
+msgid "LOC_PRESS_ANY"
+msgstr "Naciśnij dowolny przycisk"
+
+msgid "LOC_PRIMARY_CLAIM"
+msgstr "To urządzenie zostanie przypisane do głównego gracza."
+
+msgid "LOC_PROFILE_CONTROL"
+msgstr "Nazwa nie może zawierać znaków sterujących."
+
+msgid "LOC_PROFILE_DIR_ERROR"
+msgstr "Nie można utworzyć katalogu profili"
+
+msgid "LOC_PROFILE_DUPLICATE"
+msgstr "Taki profil już istnieje."
+
+msgid "LOC_PROFILE_LENGTH"
+msgstr "Wpisz nazwę od 1 do 24 znaków."
+
+msgid "LOC_PROFILE_NAME"
+msgstr "Profil: {name}"
+
+msgid "LOC_PROFILE_SAVE_ERROR"
+msgstr "Zapis profilu nie powiódł się"
+
+msgid "LOC_PROFILE_WRITE_ERROR"
+msgstr "Nie można zapisać profilu"
+
+msgid "LOC_QUIT"
+msgstr "WYJDŹ"
+
+msgid "LOC_RESOLUTION"
+msgstr "Rozdzielczość okna"
+
+msgid "LOC_ROUND"
+msgstr "Runda: {number}"
+
+msgid "LOC_SESSION_PLAYER"
+msgstr "Gracz: {name}"
+
+msgid "LOC_SESSION_PRIMARY_DEVICE"
+msgstr "Urządzenie główne: {device}"
+
+msgid "LOC_SESSION_TWO_PLAYERS"
+msgstr "Gracz: {primary}  •  Gracz 2: {secondary}"
+
+msgid "LOC_SETTINGS"
+msgstr "USTAWIENIA"
+
+msgid "LOC_SETTINGS_HINT"
+msgstr "Ustawienia zapisują się automatycznie. F11: pełny ekran."
+
+msgid "LOC_SFX"
+msgstr "Głośność efektów"
+
+msgid "LOC_SIGNED_OUT"
+msgstr "Nie zalogowano"
+
+msgid "LOC_SIGN_IN"
+msgstr "ZALOGUJ SIĘ"
+
+msgid "LOC_SITE_BLOCKED"
+msgstr "Ta gra została skopiowana bez zgody autora."
+
+msgid "LOC_SPLIT"
+msgstr "PODZIEL"
+
+msgid "LOC_STAGE"
+msgstr "ETAP {number}"
+
+msgid "LOC_TARGET"
+msgstr "Cel: {number}"
+
+msgid "LOC_TRINKET_BLOOD_MONEY_DETAIL"
+msgstr "Każda kolejna wygrana w serii zwiększa wypłatę o 5%."
+
+msgid "LOC_TRINKET_BLOOD_MONEY_NAME"
+msgstr "Krwawe pieniądze"
+
+msgid "LOC_TRINKET_CALCULATED_RISK_DETAIL"
+msgstr "Gdy masz od 16 do 18 punktów, przekraczasz limit od 23 punktów."
+
+msgid "LOC_TRINKET_CALCULATED_RISK_NAME"
+msgstr "Skalkulowane ryzyko"
+
+msgid "LOC_TRINKET_DOUBLE_OR_NOTHING_DETAIL"
+msgstr "20% szans na podwojenie wygranej i 20% na jej utratę."
+
+msgid "LOC_TRINKET_DOUBLE_OR_NOTHING_NAME"
+msgstr "Podwójnie albo nic"
+
+msgid "LOC_TRINKET_FROZEN_CLOCK_DETAIL"
+msgstr "Zatrzymuje zegar na 3 sekundy."
+
+msgid "LOC_TRINKET_FROZEN_CLOCK_NAME"
+msgstr "Zamrożony zegar"
+
+msgid "LOC_TRINKET_GLASS_CHIP_DETAIL"
+msgstr "Wygrane rosną o 30%, lecz od 20 punktów przekraczasz limit."
+
+msgid "LOC_TRINKET_GLASS_CHIP_NAME"
+msgstr "Szklany żeton"
+
+msgid "LOC_TRINKET_GOLDEN_CHIP_DETAIL"
+msgstr "Wygrywasz o 10% więcej żetonów."
+
+msgid "LOC_TRINKET_GOLDEN_CHIP_NAME"
+msgstr "Złoty żeton"
+
+msgid "LOC_TRINKET_INTEREST_CHIP_DETAIL"
+msgstr "Za zaliczony etap zyskujesz 5% posiadanych żetonów."
+
+msgid "LOC_TRINKET_INTEREST_CHIP_NAME"
+msgstr "Żeton z odsetkami"
+
+msgid "LOC_TRINKET_LAST_BREATH_DETAIL"
+msgstr "Gdy masz 21 punktów, wygrywasz przed ruchem krupiera."
+
+msgid "LOC_TRINKET_LAST_BREATH_NAME"
+msgstr "Ostatni oddech"
+
+msgid "LOC_TRINKET_LAZY_DEALER_DETAIL"
+msgstr "Krupier czasem przestaje dobierać wcześniej."
+
+msgid "LOC_TRINKET_LAZY_DEALER_NAME"
+msgstr "Leniwy krupier"
+
+msgid "LOC_TRINKET_LUCKY_DRAW_DETAIL"
+msgstr "Pierwsze dobranie nie przekroczy limitu. Działa przez 10 rund."
+
+msgid "LOC_TRINKET_LUCKY_DRAW_NAME"
+msgstr "Szczęśliwy dobór"
+
+msgid "LOC_TRINKET_MIRROR_HANDS_DETAIL"
+msgstr "Po splicie obie ręce otrzymują tę samą dobraną kartę."
+
+msgid "LOC_TRINKET_MIRROR_HANDS_NAME"
+msgstr "Lustrzane ręce"
+
+msgid "LOC_TRINKET_NERVOUS_DEALER_DETAIL"
+msgstr "Krupier pasuje przy 16 zamiast przy 17."
+
+msgid "LOC_TRINKET_NERVOUS_DEALER_NAME"
+msgstr "Nerwowy krupier"
+
+msgid "LOC_TRINKET_OVERHEAT_DETAIL"
+msgstr "Przekraczasz limit dopiero powyżej 22 punktów."
+
+msgid "LOC_TRINKET_OVERHEAT_NAME"
+msgstr "Przegrzanie!"
+
+msgid "LOC_TRINKET_SLOW_TIMER_DETAIL"
+msgstr "Zegar rundy czasami się zatrzymuje."
+
+msgid "LOC_TRINKET_SLOW_TIMER_NAME"
+msgstr "Powolny zegar"
+
+msgid "LOC_TRINKET_TAX_EVASION_DETAIL"
+msgstr "Po przekroczeniu limitu odzyskujesz połowę straconych żetonów."
+
+msgid "LOC_TRINKET_TAX_EVASION_NAME"
+msgstr "Unik podatkowy"
+
+msgid "LOC_VIBRATION"
+msgstr "Wibracje kontrolera"
+
+msgid "LOC_VICTORY"
+msgstr "ZWYCIĘSTWO!"
+
+msgid "LOC_VSYNC"
+msgstr "Synchronizacja pionowa"
+
+msgid "LOC_WIN"
+msgstr "WYGRANA!"
+
+#. Profile stats. %s is the localized round count.
+msgid "LOC_ROUNDS_PLAYED"
+msgid_plural "LOC_ROUNDS_PLAYED_MANY"
+msgstr[0] "%s rozegrana runda"
+msgstr[1] "%s rozegrane rundy"
+msgstr[2] "%s rozegranych rund"
+
+msgid "LOC_FPS_PENDING"
+msgstr "FPS: …"

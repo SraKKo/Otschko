@@ -1,0 +1,659 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Otshcko!\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "LOC_ACHIEVEMENTS"
+msgstr "ACHIEVEMENTS"
+
+msgid "LOC_ACH_BLACKJACK"
+msgstr "Blackjack!"
+
+msgid "LOC_ACH_BLACKJACK_DESC"
+msgstr "Win a round with 21 points in two cards."
+
+msgid "LOC_ACH_COMPLETION"
+msgstr "Full House"
+
+msgid "LOC_ACH_COMPLETION_DESC"
+msgstr "Earn all the other achievements."
+
+msgid "LOC_ACH_EARNED"
+msgstr "Earned"
+
+msgid "LOC_ACH_FIRST_ROUND"
+msgstr "First Hand"
+
+msgid "LOC_ACH_FIRST_ROUND_DESC"
+msgstr "Finish your first round."
+
+msgid "LOC_ACH_FIRST_WIN"
+msgstr "First Win"
+
+msgid "LOC_ACH_FIRST_WIN_DESC"
+msgstr "Win a round."
+
+msgid "LOC_ACH_FIVE_WINS"
+msgstr "Hot Streak"
+
+msgid "LOC_ACH_FIVE_WINS_DESC"
+msgstr "Win 5 rounds in total."
+
+msgid "LOC_ACH_HIDDEN"
+msgstr "Hidden achievement"
+
+msgid "LOC_ACH_LOCKED"
+msgstr "Locked"
+
+msgid "LOC_ACH_SECRET"
+msgstr "Unlock this achievement to reveal its description."
+
+msgid "LOC_ACH_SPLIT"
+msgstr "Divide and Conquer"
+
+msgid "LOC_ACH_SPLIT_DESC"
+msgstr "Split a pair into two hands."
+
+msgid "LOC_ACH_STAGE_THREE"
+msgstr "Higher Stakes"
+
+msgid "LOC_ACH_STAGE_THREE_DESC"
+msgstr "Finish a round in stage three."
+
+msgid "LOC_ACH_TEN_ROUNDS"
+msgstr "A Regular"
+
+msgid "LOC_ACH_TEN_ROUNDS_DESC"
+msgstr "Finish 10 rounds."
+
+msgid "LOC_ACH_TOTAL"
+msgstr "{name}   •   Earned {current} of {total}"
+
+msgid "LOC_ACH_TRINKETS"
+msgstr "Full Pockets"
+
+msgid "LOC_ACH_TRINKETS_DESC"
+msgstr "Equip 3 different trinkets at once."
+
+msgid "LOC_ACH_UNLOCKED"
+msgstr "ACHIEVEMENT UNLOCKED"
+
+msgid "LOC_ACH_VICTORY"
+msgstr "After the Last Hand"
+
+msgid "LOC_ACH_VICTORY_DESC"
+msgstr "Clear every stage in one run."
+
+msgid "LOC_BACK"
+msgstr "BACK"
+
+msgid "LOC_BACK_MENU"
+msgstr "BACK TO MENU"
+
+msgid "LOC_BENCHMARK"
+msgstr "BENCHMARK — please wait"
+
+msgid "LOC_BET"
+msgstr "Bet: {number}"
+
+msgid "LOC_BUST"
+msgstr "BUST!"
+
+msgid "LOC_CANCEL"
+msgstr "CANCEL"
+
+msgid "LOC_CHANGE_PROFILE"
+msgstr "SWITCH PROFILE"
+
+msgid "LOC_CHANGE_USER"
+msgstr "SWITCH PROFILE"
+
+msgid "LOC_CHIPS_TAMPERED"
+msgstr "Chip tampering detected. Your balance was reset."
+
+msgid "LOC_CHOOSE_PROFILE"
+msgstr "CHOOSE A PROFILE"
+
+msgid "LOC_CHOOSE_TRINKET"
+msgstr "CHOOSE A TRINKET!"
+
+msgid "LOC_CLOSE"
+msgstr "CLOSE"
+
+msgid "LOC_CLOUD_BAD_REMOTE"
+msgstr "Invalid cloud save · kept the local save"
+
+msgid "LOC_CLOUD_BAD_SAVE"
+msgstr "Invalid save · kept the local version"
+
+msgid "LOC_CLOUD_CHECK"
+msgstr "CHECK SYNC (READ ONLY)"
+
+msgid "LOC_CLOUD_CLEAR"
+msgstr "CLEAR LOCAL SAVE…"
+
+msgid "LOC_CLOUD_CLEARED"
+msgstr "Local save cleared · sign in again"
+
+msgid "LOC_CLOUD_CLEAR_BODY"
+msgstr "This removes the current profile’s local save. Cloud data and a local backup are kept."
+
+msgid "LOC_CLOUD_CLEAR_ERROR"
+msgstr "Could not remove the local save"
+
+msgid "LOC_CLOUD_CLEAR_RECOVERY"
+msgstr "Sign in again or restart to restore cloud progress. Changes that were never uploaded remain in the backup."
+
+msgid "LOC_CLOUD_CLEAR_TITLE"
+msgstr "CLEAR LOCAL SAVE?"
+
+msgid "LOC_CLOUD_CONFIRM_CLEAR"
+msgstr "CONFIRM CLEAR LOCAL SAVE"
+
+msgid "LOC_CLOUD_CONFLICT"
+msgstr "Save conflict · choose a version"
+
+msgid "LOC_CLOUD_CONFLICT_DATES"
+msgstr "Local save (UTC): {local}  •  Server (UTC): {remote}\nDates are informational. The local clock does not determine which save to keep."
+
+msgid "LOC_CLOUD_CONFLICT_TITLE"
+msgstr "SAVE CONFLICT"
+
+msgid "LOC_CLOUD_DIRTY"
+msgstr "Saved locally · ready to upload"
+
+msgid "LOC_CLOUD_DIRTY_OFFLINE"
+msgstr "Offline · pending changes stored locally"
+
+msgid "LOC_CLOUD_DISABLED"
+msgstr "Cloud disabled in local tests"
+
+msgid "LOC_CLOUD_DOWNLOAD_ERROR"
+msgstr "Could not store the downloaded save"
+
+msgid "LOC_CLOUD_IN_SYNC"
+msgstr "Synced"
+
+msgid "LOC_CLOUD_KEEP_LOCAL"
+msgstr "KEEP THIS DEVICE AND UPLOAD"
+
+msgid "LOC_CLOUD_KEEP_REMOTE"
+msgstr "KEEP CLOUD SAVE"
+
+msgid "LOC_CLOUD_KEY"
+msgstr "Profile: {profile}  •  Cloud: 51796 / {user} / save"
+
+msgid "LOC_CLOUD_LATER"
+msgstr "DECIDE LATER"
+
+msgid "LOC_CLOUD_LOADING"
+msgstr "Downloading save…"
+
+msgid "LOC_CLOUD_LOCAL_VERSION"
+msgstr "This device (base v{version}):\n{stats}"
+
+msgid "LOC_CLOUD_MENU"
+msgstr "CLOUD SAVE"
+
+msgid "LOC_CLOUD_MENU_HELP"
+msgstr "Local saving is always available. Select SAVE TO CLOUD to upload your progress."
+
+msgid "LOC_CLOUD_MERGED"
+msgstr "Achievements merged · ready to upload"
+
+msgid "LOC_CLOUD_NEWER_CHANGES"
+msgstr "More recent changes are ready to upload"
+
+msgid "LOC_CLOUD_NOT_SENT"
+msgstr "Upload failed · data kept locally"
+
+msgid "LOC_CLOUD_NO_CONNECTION"
+msgstr "Connection unavailable · kept local data"
+
+msgid "LOC_CLOUD_NO_SAVE"
+msgstr "New game · no cloud save"
+
+msgid "LOC_CLOUD_OFFLINE"
+msgstr "Offline · keeping the local save"
+
+msgid "LOC_CLOUD_OLDER"
+msgstr "Cloud version is older · data kept"
+
+msgid "LOC_CLOUD_REMOTE_VERSION"
+msgstr "Cloud (v{version}):\n{stats}"
+
+msgid "LOC_CLOUD_RESTORED_LEGACY"
+msgstr "Legacy save restored · select Save to Cloud to migrate"
+
+msgid "LOC_CLOUD_SAVE"
+msgstr "SAVE TO CLOUD"
+
+msgid "LOC_CLOUD_SIGNATURE_REFUSED"
+msgstr "The rejected save cannot be uploaded"
+
+msgid "LOC_CLOUD_STATS"
+msgstr "Rounds: {rounds}  •  Wins: {wins}  •  Stage: {stage}  •  Record: {chips}"
+
+msgid "LOC_CLOUD_STATUS"
+msgstr "Cloud: {message}"
+
+msgid "LOC_CLOUD_SYNC_VERSION"
+msgstr "Synced · version {version}"
+
+msgid "LOC_CLOUD_UPLOADING"
+msgstr "Saving to the cloud…"
+
+msgid "LOC_CLOUD_WAIT_UPLOAD"
+msgstr "Pending changes · select Save to Cloud"
+
+msgid "LOC_CLOUD_WARNING"
+msgstr "Local save rejected. Its HMAC signature does not match."
+
+msgid "LOC_CONTINUE"
+msgstr "CONTINUE"
+
+msgid "LOC_CREATE_PROFILE"
+msgstr "CREATE PROFILE"
+
+msgid "LOC_CREDITS"
+msgstr "CREDITS"
+
+msgid "LOC_CREDITS_BODY"
+msgstr "Assets used:\nDeck of Cards by Noh\nitch.io: noh-kinda.itch.io\n\nUI button sounds by SoupTonic\nitch.io: souptonic.itch.io\n\nCode, graphics, music, sound and concept by SraKKo\nitch.io: srakko.itch.io"
+
+msgid "LOC_CRT"
+msgstr "CRT filter"
+
+msgid "LOC_DEAL"
+msgstr "DEAL!"
+
+msgid "LOC_DEVICE_KEYBOARD"
+msgstr "Mouse and keyboard"
+
+msgid "LOC_DEVICE_PAD"
+msgstr "Controller"
+
+msgid "LOC_DEVICE_PLAYSTATION"
+msgstr "PlayStation controller"
+
+msgid "LOC_DEVICE_RECONNECT"
+msgstr "Reconnect a controller or use the keyboard"
+
+msgid "LOC_DEVICE_SWITCH"
+msgstr "Nintendo Switch controller"
+
+msgid "LOC_DEVICE_XBOX"
+msgstr "Xbox controller"
+
+msgid "LOC_DRAW"
+msgstr "DRAW"
+
+msgid "LOC_FPS"
+msgstr "{fps} FPS ({ms} ms)"
+
+msgid "LOC_FULLSCREEN"
+msgstr "Fullscreen"
+
+msgid "LOC_GAME_OVER"
+msgstr "GAME OVER"
+
+msgid "LOC_HINT_GAME_KEYBOARD"
+msgstr "Space: Deal   H: Hit   J: Stand   K: Split   Q/E: Bet −/+10   Esc: Pause"
+
+msgid "LOC_HINT_GAME_PAD"
+msgstr "Bottom: Deal   Left: Hit   Right: Stand   Top: Split   LB/RB: Bet   Start: Pause"
+
+msgid "LOC_HINT_GAME_PS"
+msgstr "Cross: Deal   Square: Hit   Circle: Stand   Triangle: Split   L1/R1: Bet   Options: Pause"
+
+msgid "LOC_HINT_GAME_SWITCH"
+msgstr "B: Deal   Y: Hit   A: Stand   X: Split   L/R: Bet −/+10   +: Pause"
+
+msgid "LOC_HINT_GAME_XBOX"
+msgstr "A: Deal   X: Hit   B: Stand   Y: Split   LB/RB: Bet −/+10   Menu: Pause"
+
+msgid "LOC_HINT_MENU"
+msgstr "{accept}: Select   •   {back}: Back   •   Arrows / D-pad / left stick: Navigate"
+
+msgid "LOC_HINT_REWARD"
+msgstr "{accept}: Choose a reward   •   Arrows / D-pad / left stick: Navigate"
+
+msgid "LOC_HIT"
+msgstr "HIT"
+
+msgid "LOC_HOLD"
+msgstr "STAND"
+
+msgid "LOC_KEY_CIRCLE"
+msgstr "Circle"
+
+msgid "LOC_KEY_CROSS"
+msgstr "Cross"
+
+msgid "LOC_KEY_EAST"
+msgstr "right button"
+
+msgid "LOC_KEY_SOUTH"
+msgstr "bottom button"
+
+msgid "LOC_KEY_SPACE_ENTER"
+msgstr "Space / Enter"
+
+msgid "LOC_LANGUAGE"
+msgstr "Language"
+
+msgid "LOC_LICENSE"
+msgstr "LICENSE"
+
+msgid "LOC_LICENSE_ACTIVATE"
+msgstr "ACTIVATE KEY"
+
+msgid "LOC_LICENSE_ACTIVATING"
+msgstr "Activating key…"
+
+msgid "LOC_LICENSE_BUY"
+msgstr "BUY GAME (SIMULATION)"
+
+msgid "LOC_LICENSE_CHECKING"
+msgstr "Checking license…"
+
+msgid "LOC_LICENSE_COPY"
+msgstr "COPY KEY"
+
+msgid "LOC_LICENSE_ENTER"
+msgstr "Enter a license key"
+
+msgid "LOC_LICENSE_ERROR_OFFLINE"
+msgstr "{message} Press F9 to go back online."
+
+msgid "LOC_LICENSE_EXPIRED"
+msgstr "Go online to renew your access for 7 days."
+
+msgid "LOC_LICENSE_FETCH"
+msgstr "Getting a key…"
+
+msgid "LOC_LICENSE_GAME"
+msgstr "GAME LICENSE"
+
+msgid "LOC_LICENSE_INVALID"
+msgstr "This key is invalid or belongs to a different profile."
+
+msgid "LOC_LICENSE_MISSING"
+msgstr "This profile has no active license."
+
+msgid "LOC_LICENSE_OFFLINE"
+msgstr "Unable to connect to the license service."
+
+msgid "LOC_LICENSE_OFFLINE_MODE"
+msgstr "Offline access"
+
+msgid "LOC_LICENSE_REQUIRED"
+msgstr "Please enter a license key."
+
+msgid "LOC_LICENSE_RETRY"
+msgstr "CHECK AGAIN"
+
+msgid "LOC_LICENSE_SAVE_ERROR"
+msgstr "Could not save the license on this device."
+
+msgid "LOC_LICENSE_SERVICE_ERROR"
+msgstr "The license service is temporarily unavailable."
+
+msgid "LOC_LICENSE_TAKEN"
+msgstr "This key has already been activated on another account."
+
+msgid "LOC_LICENSE_VERIFIED"
+msgstr "License verified"
+
+msgid "LOC_LOCALE_EN"
+msgstr "English"
+
+msgid "LOC_LOCALE_PL"
+msgstr "Polski"
+
+msgid "LOC_LOCAL_PROFILES"
+msgstr "Local profiles store progress on this device."
+
+msgid "LOC_MASTER"
+msgstr "Master volume"
+
+msgid "LOC_MENU"
+msgstr "MENU"
+
+msgid "LOC_MENU_SIGN_OUT"
+msgstr "Signed out.\nChoose a profile to start playing.\n\nF9: Network"
+
+msgid "LOC_MENU_STATS"
+msgstr "Profile: {name}\n{rounds}\nWins: {wins}\nBest stage: {stage}\nChip record: {chips}\n\nF8: Sign out  •  F9: Network"
+
+msgid "LOC_MONEY"
+msgstr "Chips: {number}"
+
+msgid "LOC_MUSIC"
+msgstr "Music volume"
+
+msgid "LOC_NEW_PROFILE"
+msgstr "New profile name (up to 24 characters)"
+
+msgid "LOC_OFFLINE_LICENSE"
+msgstr "Offline mode · verified within the last 7 days"
+
+msgid "LOC_OFFLINE_LOCAL"
+msgstr "Offline mode · saving locally"
+
+msgid "LOC_PAUSED"
+msgstr "PAUSED"
+
+msgid "LOC_PLAY"
+msgstr "PLAY"
+
+msgid "LOC_PREMIUM_ADD"
+msgstr "ADD 50"
+
+msgid "LOC_PREMIUM_BALANCE"
+msgstr "Server balance: {chips}"
+
+msgid "LOC_PREMIUM_CHIPS"
+msgstr "PREMIUM CHIPS"
+
+msgid "LOC_PREMIUM_LOADING"
+msgstr "Checking the server balance…"
+
+msgid "LOC_PREMIUM_READ"
+msgstr "Balance retrieved from the server."
+
+msgid "LOC_PREMIUM_REJECTED"
+msgstr "The server rejected a change of {amount}. The per-operation limit is ±100."
+
+msgid "LOC_PREMIUM_TEST_ADD"
+msgstr "TEST: ADD 5,000"
+
+msgid "LOC_PREMIUM_UNAVAILABLE"
+msgstr "Balance unavailable."
+
+msgid "LOC_PRESS_ANY"
+msgstr "Press any button"
+
+msgid "LOC_PRIMARY_CLAIM"
+msgstr "This device will be assigned to the main player."
+
+msgid "LOC_PROFILE_CONTROL"
+msgstr "Profile names cannot contain control characters."
+
+msgid "LOC_PROFILE_DIR_ERROR"
+msgstr "Could not create the profiles folder"
+
+msgid "LOC_PROFILE_DUPLICATE"
+msgstr "A profile with this name already exists."
+
+msgid "LOC_PROFILE_LENGTH"
+msgstr "Enter a name between 1 and 24 characters long."
+
+msgid "LOC_PROFILE_NAME"
+msgstr "Profile: {name}"
+
+msgid "LOC_PROFILE_SAVE_ERROR"
+msgstr "Could not save the profile"
+
+msgid "LOC_PROFILE_WRITE_ERROR"
+msgstr "Could not write the profile"
+
+msgid "LOC_QUIT"
+msgstr "QUIT"
+
+msgid "LOC_RESOLUTION"
+msgstr "Window resolution"
+
+msgid "LOC_ROUND"
+msgstr "Round: {number}"
+
+msgid "LOC_SESSION_PLAYER"
+msgstr "Player: {name}"
+
+msgid "LOC_SESSION_PRIMARY_DEVICE"
+msgstr "Primary input: {device}"
+
+msgid "LOC_SESSION_TWO_PLAYERS"
+msgstr "Player: {primary}  •  Player 2: {secondary}"
+
+msgid "LOC_SETTINGS"
+msgstr "SETTINGS"
+
+msgid "LOC_SETTINGS_HINT"
+msgstr "Settings are saved automatically. F11: fullscreen."
+
+msgid "LOC_SFX"
+msgstr "Sound effects volume"
+
+msgid "LOC_SIGNED_OUT"
+msgstr "Signed out"
+
+msgid "LOC_SIGN_IN"
+msgstr "SIGN IN"
+
+msgid "LOC_SITE_BLOCKED"
+msgstr "This copy of the game is running on an unauthorized site."
+
+msgid "LOC_SPLIT"
+msgstr "SPLIT"
+
+msgid "LOC_STAGE"
+msgstr "STAGE {number}"
+
+msgid "LOC_TARGET"
+msgstr "Target: {number}"
+
+msgid "LOC_TRINKET_BLOOD_MONEY_DETAIL"
+msgstr "Each consecutive win adds 5% to your payout."
+
+msgid "LOC_TRINKET_BLOOD_MONEY_NAME"
+msgstr "Blood Money"
+
+msgid "LOC_TRINKET_CALCULATED_RISK_DETAIL"
+msgstr "With a hand of 16–18, you bust at 23."
+
+msgid "LOC_TRINKET_CALCULATED_RISK_NAME"
+msgstr "Calculated Risk"
+
+msgid "LOC_TRINKET_DOUBLE_OR_NOTHING_DETAIL"
+msgstr "20% chance to double your winnings and 20% chance to lose them."
+
+msgid "LOC_TRINKET_DOUBLE_OR_NOTHING_NAME"
+msgstr "Double or Nothing"
+
+msgid "LOC_TRINKET_FROZEN_CLOCK_DETAIL"
+msgstr "Freezes the timer for 3 seconds."
+
+msgid "LOC_TRINKET_FROZEN_CLOCK_NAME"
+msgstr "Frozen Clock"
+
+msgid "LOC_TRINKET_GLASS_CHIP_DETAIL"
+msgstr "Win 30% more, but bust at 20."
+
+msgid "LOC_TRINKET_GLASS_CHIP_NAME"
+msgstr "Glass Chip"
+
+msgid "LOC_TRINKET_GOLDEN_CHIP_DETAIL"
+msgstr "Win 10% more chips."
+
+msgid "LOC_TRINKET_GOLDEN_CHIP_NAME"
+msgstr "Golden Chip"
+
+msgid "LOC_TRINKET_INTEREST_CHIP_DETAIL"
+msgstr "Gain 5% of your chips after clearing a stage."
+
+msgid "LOC_TRINKET_INTEREST_CHIP_NAME"
+msgstr "Interest Chip"
+
+msgid "LOC_TRINKET_LAST_BREATH_DETAIL"
+msgstr "Win at 21 and skip the dealer’s turn."
+
+msgid "LOC_TRINKET_LAST_BREATH_NAME"
+msgstr "Last Breath"
+
+msgid "LOC_TRINKET_LAZY_DEALER_DETAIL"
+msgstr "The dealer sometimes stops drawing early."
+
+msgid "LOC_TRINKET_LAZY_DEALER_NAME"
+msgstr "Lazy Dealer"
+
+msgid "LOC_TRINKET_LUCKY_DRAW_DETAIL"
+msgstr "Your first hit cannot bust. Lasts 10 rounds."
+
+msgid "LOC_TRINKET_LUCKY_DRAW_NAME"
+msgstr "Lucky Draw"
+
+msgid "LOC_TRINKET_MIRROR_HANDS_DETAIL"
+msgstr "After a split, both hands receive the same drawn card."
+
+msgid "LOC_TRINKET_MIRROR_HANDS_NAME"
+msgstr "Mirror Hands"
+
+msgid "LOC_TRINKET_NERVOUS_DEALER_DETAIL"
+msgstr "The dealer stands on 16 instead of 17."
+
+msgid "LOC_TRINKET_NERVOUS_DEALER_NAME"
+msgstr "Nervous Dealer"
+
+msgid "LOC_TRINKET_OVERHEAT_DETAIL"
+msgstr "You bust only above 22."
+
+msgid "LOC_TRINKET_OVERHEAT_NAME"
+msgstr "Overheat!"
+
+msgid "LOC_TRINKET_SLOW_TIMER_DETAIL"
+msgstr "The round timer sometimes stops ticking."
+
+msgid "LOC_TRINKET_SLOW_TIMER_NAME"
+msgstr "Slow Timer"
+
+msgid "LOC_TRINKET_TAX_EVASION_DETAIL"
+msgstr "Recover half your lost chips when you bust."
+
+msgid "LOC_TRINKET_TAX_EVASION_NAME"
+msgstr "Tax Evasion!"
+
+msgid "LOC_VIBRATION"
+msgstr "Controller vibration"
+
+msgid "LOC_VICTORY"
+msgstr "YOU WIN!"
+
+msgid "LOC_VSYNC"
+msgstr "VSync"
+
+msgid "LOC_WIN"
+msgstr "WIN!"
+
+#. Profile stats. %s is the localized round count.
+msgid "LOC_ROUNDS_PLAYED"
+msgid_plural "LOC_ROUNDS_PLAYED_MANY"
+msgstr[0] "%s round played"
+msgstr[1] "%s rounds played"
+
+msgid "LOC_FPS_PENDING"
+msgstr "FPS: …"

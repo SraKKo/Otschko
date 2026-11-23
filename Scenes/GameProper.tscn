@@ -1,18 +1,13 @@
-[gd_scene load_steps=97 format=3 uid="uid://ubpel0sj1qt1"]
+[gd_scene load_steps=86 format=3 uid="uid://ubpel0sj1qt1"]
 
 [ext_resource type="Script" uid="uid://cjorm84bv4p3n" path="res://Scripts/Game.gd" id="1_266y0"]
 [ext_resource type="Texture2D" uid="uid://c4mgjybri5vrq" path="res://Sprites/Deck of Cards Spritesheet.png" id="2_ln7r3"]
 [ext_resource type="Texture2D" uid="uid://bmb24aiecrc25" path="res://Sprites/GameBG.png" id="2_my1cl"]
-[ext_resource type="Texture2D" uid="uid://dqaasu06gqyr2" path="res://Sprites/Buttons/button2.png" id="4_6vmwt"]
-[ext_resource type="LabelSettings" uid="uid://bi4fbbj2r7ox3" path="res://Fonts/TextBasic.tres" id="4_j1s7x"]
 [ext_resource type="Texture2D" uid="uid://bln103pn2a50g" path="res://Sprites/Buttons/chip10.png" id="4_k33n5"]
 [ext_resource type="FontFile" uid="uid://dtkqaap3uvc7s" path="res://Fonts/PixelArtFontHomebrewed.ttf" id="4_my1cl"]
-[ext_resource type="Texture2D" uid="uid://hxwi2jf3afxj" path="res://Sprites/Buttons/hitbutton.png" id="4_npdhm"]
-[ext_resource type="Texture2D" uid="uid://bk7d2ljdynts4" path="res://Sprites/Buttons/holdbutton.png" id="5_pvu6l"]
 [ext_resource type="Texture2D" uid="uid://bybuf2233l8x5" path="res://Sprites/Buttons/chip-10.png" id="5_vg7pf"]
 [ext_resource type="Script" uid="uid://dujg6tivekcc4" path="res://Scripts/TrinketHUD.gd" id="7_0rta7"]
 [ext_resource type="Texture2D" uid="uid://6at5il8w3e6i" path="res://Sprites/Buttons/chip50.png" id="8_fxnrk"]
-[ext_resource type="Texture2D" uid="uid://dhn2fjpkwb6y4" path="res://Sprites/Buttons/dealbutton.png" id="8_unm8k"]
 [ext_resource type="Texture2D" uid="uid://d28vy2jo35eth" path="res://Sprites/Buttons/chip-50.png" id="9_hnbh4"]
 [ext_resource type="Texture2D" uid="uid://tbhlfgcykxrg" path="res://Sprites/Buttons/chip100.png" id="10_l47h3"]
 [ext_resource type="Texture2D" uid="uid://brygie35vqjtk" path="res://Sprites/Buttons/chip-100.png" id="11_s1rj8"]
@@ -406,41 +401,10 @@ animations = [{
 
 [sub_resource type="MeshTexture" id="MeshTexture_n5fvy"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0rta7"]
-atlas = ExtResource("4_6vmwt")
-region = Rect2(0, 0, 32, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_c0xy6"]
-atlas = ExtResource("4_6vmwt")
-region = Rect2(32, 0, 32, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_k33n5"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0rta7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c0xy6")
-}],
-"loop": true,
-"name": &"default",
-"speed": 9.0
-}]
 
-[sub_resource type="LabelSettings" id="LabelSettings_vg7pf"]
-font = ExtResource("4_my1cl")
-font_size = 26
-outline_size = 19
-outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_6vmwt"]
-font = ExtResource("4_my1cl")
-font_size = 35
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 20
-shadow_color = Color(0.0117647, 0.192157, 0.117647, 0.823529)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v1qfn"]
 bg_color = Color(0.444281, 0.0425804, 4.81308e-08, 1)
@@ -718,13 +682,6 @@ texture = ExtResource("15_aww00")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w8qwj"]
 texture = ExtResource("16_s25x7")
 
-[sub_resource type="LabelSettings" id="LabelSettings_13664"]
-font = ExtResource("4_my1cl")
-font_size = 17
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 20
-shadow_color = Color(0.0117647, 0.192157, 0.117647, 0.823529)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_13664"]
 shader = ExtResource("18_2qxhv")
@@ -773,24 +730,24 @@ offset_left = 781.0
 offset_top = 572.0
 offset_right = 902.0
 offset_bottom = 630.0
-text = "HIT"
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = ExtResource("13_unm8k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
+text = "LOC_HIT"
 
-[node name="Hitbutton" type="Sprite2D" parent="HitButton"]
-position = Vector2(58.007996, 25.5)
-scale = Vector2(5.063, 5.063)
-texture = ExtResource("4_npdhm")
 
 [node name="HoldButton" type="Button" parent="."]
 offset_left = 776.0
 offset_top = 480.0
 offset_right = 904.0
 offset_bottom = 541.0
-text = "HOLD"
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = ExtResource("13_unm8k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
+text = "LOC_HOLD"
 
-[node name="Holdbutton" type="Sprite2D" parent="HoldButton"]
-position = Vector2(63.007996, 27.5)
-scale = Vector2(5.0625, 5.0625)
-texture = ExtResource("5_pvu6l")
 
 [node name="BetButtons" type="Node" parent="."]
 
@@ -799,7 +756,7 @@ offset_left = 957.0
 offset_top = 400.0
 offset_right = 1022.9829
 offset_bottom = 443.0
-text = "-10"
+text = "+100"
 icon = SubResource("MeshTexture_n5fvy")
 
 [node name="Chip100" type="Sprite2D" parent="BetButtons/BetPlus100Button"]
@@ -837,7 +794,7 @@ offset_left = 960.0
 offset_top = 488.0
 offset_right = 1027.1187
 offset_bottom = 533.0
-text = "+10"
+text = "+50"
 
 [node name="Chip50" type="Sprite2D" parent="BetButtons/BetPlus50Button"]
 position = Vector2(32.00003, 24.000008)
@@ -849,7 +806,7 @@ offset_left = 1040.0
 offset_top = 488.0
 offset_right = 1105.9829
 offset_bottom = 531.0
-text = "-10"
+text = "-50"
 icon = SubResource("MeshTexture_n5fvy")
 
 [node name="Chip51" type="Sprite2D" parent="BetButtons/BetMinus50Button"]
@@ -862,7 +819,7 @@ offset_left = 1048.0
 offset_top = 408.0
 offset_right = 1113.9829
 offset_bottom = 451.0
-text = "-10"
+text = "-100"
 icon = SubResource("MeshTexture_n5fvy")
 
 [node name="Chip100" type="Sprite2D" parent="BetButtons/BetMinus100Button"]
@@ -875,36 +832,25 @@ offset_left = 127.0
 offset_top = 546.0
 offset_right = 526.0
 offset_bottom = 629.0
-text = "DEAL"
+theme_override_font_sizes/font_size = 27
+theme_override_styles/normal = ExtResource("13_unm8k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
+text = "LOC_DEAL"
 
-[node name="Dealbutton" type="Sprite2D" parent="DealButton"]
-position = Vector2(195, 43)
-scale = Vector2(6.90625, 6.90625)
-texture = ExtResource("8_unm8k")
 
 [node name="SplitButton" type="Button" parent="."]
 offset_left = 578.0
 offset_top = 558.0
 offset_right = 730.0
 offset_bottom = 606.0
-text = "SPLIT!!!
-"
+theme_override_font_sizes/font_size = 19
+theme_override_styles/normal = ExtResource("13_unm8k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
+text = "LOC_SPLIT"
 
-[node name="SplitAnim" type="AnimatedSprite2D" parent="SplitButton"]
-position = Vector2(76.125, 30.0625)
-scale = Vector2(5.24219, 5.24219)
-sprite_frames = SubResource("SpriteFrames_k33n5")
-autoplay = "default"
-frame_progress = 0.184832
 
-[node name="Label" type="Label" parent="SplitButton"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 27.0
-offset_right = 237.0
-offset_bottom = 127.0
-text = "SPLIT!!"
-label_settings = SubResource("LabelSettings_vg7pf")
 
 [node name="Money" type="Sprite2D" parent="."]
 position = Vector2(988.99994, 104.99999)
@@ -912,10 +858,15 @@ rotation = 0.015708
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="MoneyLabel" type="Label" parent="Money"]
-offset_left = -142.0
-offset_right = 217.0
-offset_bottom = 63.0
-label_settings = ExtResource("4_j1s7x")
+
+offset_left = -172.0
+offset_right = 137.0
+offset_top = -17.0
+offset_bottom = 41.0
+theme_override_font_sizes/font_size = 27
+theme_override_constants/outline_size = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+vertical_alignment = 1
 
 [node name="Bet" type="Sprite2D" parent="."]
 position = Vector2(959.99994, 248)
@@ -928,10 +879,14 @@ anchor_left = 1.0
 anchor_top = -5.0
 anchor_right = 1.0
 anchor_bottom = -5.0
-offset_left = -109.0
-offset_right = 127.0
-offset_bottom = 46.0
-label_settings = ExtResource("4_j1s7x")
+offset_left = -143.0
+offset_right = 159.0
+offset_top = -18.0
+offset_bottom = 30.0
+theme_override_font_sizes/font_size = 27
+theme_override_constants/outline_size = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+vertical_alignment = 1
 
 [node name="Round" type="Sprite2D" parent="."]
 position = Vector2(72, 32)
@@ -939,13 +894,14 @@ rotation = 0.015708
 scale = Vector2(0.99999994, 0.99999994)
 
 [node name="RoundLabel" type="Label" parent="Round"]
-offset_left = -64.0
-offset_top = -16.0
-offset_right = 124.0
-offset_bottom = 54.0
-text = "Round: 1"
-label_settings = SubResource("LabelSettings_6vmwt")
-horizontal_alignment = 1
+
+offset_left = -54.0
+offset_right = 178.0
+offset_top = -4.0
+offset_bottom = 27.0
+theme_override_font_sizes/font_size = 20
+theme_override_constants/outline_size = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 vertical_alignment = 1
 
 [node name="TimeBar" type="ProgressBar" parent="."]
@@ -1014,7 +970,7 @@ offset_top = 193.0
 offset_right = 810.1754
 offset_bottom = 285.0
 theme_override_fonts/font = ExtResource("4_my1cl")
-text = "PAUSED"
+text = "LOC_PAUSED"
 label_settings = ExtResource("14_y8fh6")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1032,8 +988,7 @@ theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = ExtResource("13_unm8k")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
 theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
-text = "
-quit"
+text = "LOC_MENU"
 
 [node name="ResumeButton" type="Button" parent="UI/PauseMenu"]
 layout_mode = 0
@@ -1048,8 +1003,7 @@ theme_override_font_sizes/font_size = 46
 theme_override_styles/normal = ExtResource("13_unm8k")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_13664")
 theme_override_styles/hover = SubResource("StyleBoxTexture_w8qwj")
-text = "
-continue"
+text = "LOC_CONTINUE"
 
 [node name="TrinketChoice" parent="UI" instance=ExtResource("18_13664")]
 z_index = 2
@@ -1058,23 +1012,29 @@ z_index = 2
 position = Vector2(957, 216)
 
 [node name="StageLabel" type="Label" parent="UI/Stage"]
-offset_left = -102.0
 offset_top = -64.0
-offset_right = 64.0
 offset_bottom = -16.0
 rotation = 0.015707964
-label_settings = ExtResource("4_j1s7x")
+offset_left = -139.0
+offset_right = 176.0
+theme_override_font_sizes/font_size = 27
+theme_override_constants/outline_size = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="UI"]
 position = Vector2(952, 136)
 
 [node name="TargetLabel" type="Label" parent="UI/Sprite2D"]
-offset_left = -96.0
 offset_top = 64.0
-offset_right = 80.0
 offset_bottom = 107.0
 rotation = -0.015707964
-label_settings = SubResource("LabelSettings_13664")
+offset_left = -139.0
+offset_right = 176.0
+theme_override_font_sizes/font_size = 19
+theme_override_constants/outline_size = 6
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+vertical_alignment = 1
 
 [node name="Hand1Arrow" type="Sprite2D" parent="UI"]
 position = Vector2(48, 360)
@@ -1105,7 +1065,7 @@ offset_right = 786.0
 offset_bottom = 351.0
 rotation = -0.59864795
 scale = Vector2(0.13, 0.13)
-text = "WIN!!!"
+text = "LOC_WIN"
 label_settings = ExtResource("14_y8fh6")
 
 [node name="Bust" type="Label" parent="."]
@@ -1115,7 +1075,7 @@ offset_top = 259.0
 offset_right = 763.87573
 offset_bottom = 351.0
 scale = Vector2(0.165, 0.165)
-text = "BUST!"
+text = "LOC_BUST"
 label_settings = ExtResource("14_y8fh6")
 
 [node name="Draw" type="Label" parent="."]
@@ -1125,7 +1085,7 @@ offset_top = 256.0
 offset_right = 748.0
 offset_bottom = 348.0
 scale = Vector2(0.205, 0.205)
-text = "DRAW"
+text = "LOC_DRAW"
 label_settings = ExtResource("14_y8fh6")
 
 [connection signal="pressed" from="SplitButton" to="." method="_on_split_button_pressed"]

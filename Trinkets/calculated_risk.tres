@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_d6u5o")
 id = "calculated_risk"
-display_name = "Calculated Risk"
-description = "If your hand is at 16-18 you BUST at 23"
+display_name = "LOC_TRINKET_CALCULATED_RISK_NAME"
+description = "LOC_TRINKET_CALCULATED_RISK_DETAIL"
 icon = ExtResource("2_i1hdk")
 effect_script = ExtResource("1_novdb")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

@@ -4,6 +4,8 @@ class_name SettingsManager
 const PATH := "user://settings.cfg"
 
 const RESOLUTIONS: Array[Vector2i] = [Vector2i(1152, 648), Vector2i(1280, 720), Vector2i(1600, 900), Vector2i(1920, 1080)]
+var config_path := PATH
+var language := "pl"
 var resolution_index: int = 0
 var vsync: bool = true
 var fullscreen: bool = false
@@ -15,8 +17,27 @@ var crt_enabled: bool = true
 
 
 func _ready():
+	for arg in OS.get_cmdline_user_args():
+		if OS.is_debug_build() and arg.begins_with("--settings-file="):
+			config_path = arg.trim_prefix("--settings-file=")
 	load_settings()
+	apply_language(language)
 	apply_all()
+
+func apply_language(code: String) -> void:
+	language = code if code in Localization.LANGUAGES else "pl"
+	Localization.set_language(language)
+
+func language_selector() -> OptionButton:
+	var picker := OptionButton.new()
+	picker.name = "Language"
+	picker.add_item("LOC_LOCALE_PL")
+	picker.add_item("LOC_LOCALE_EN")
+	picker.select(Localization.LANGUAGES.find(language))
+	picker.item_selected.connect(func(index: int):
+		apply_language(Localization.LANGUAGES[index])
+		save_settings())
+	return picker
 
 func apply_all():
 	apply_resolution(resolution_index)
@@ -69,13 +90,15 @@ func save_settings():
 	cfg.set_value("audio", "music", music)
 	cfg.set_value("audio", "sfx", sfx)
 	cfg.set_value("video", "crt_enabled", crt_enabled)
-	cfg.save(PATH)
+	cfg.set_value("locale", "language", language)
+	cfg.save(config_path)
 
 func load_settings():
 	var cfg := ConfigFile.new()
-	if cfg.load(PATH) != OK:
+	if cfg.load(config_path) != OK:
 		return
 
+	language = str(cfg.get_value("locale", "language", language))
 	vibration_enabled = bool(cfg.get_value("controller", "vibration_enabled", vibration_enabled))
 	vsync = bool(cfg.get_value("video", "vsync", vsync))
 	resolution_index = clampi(int(cfg.get_value("video", "resolution_index", resolution_index)), 0, RESOLUTIONS.size() - 1)

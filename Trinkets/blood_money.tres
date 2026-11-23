@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_iwp08")
 id = "blood_money"
-display_name = "Blood Money"
-description = "Every successive win grants +5% money"
+display_name = "LOC_TRINKET_BLOOD_MONEY_NAME"
+description = "LOC_TRINKET_BLOOD_MONEY_DETAIL"
 icon = ExtResource("2_1r1le")
 effect_script = ExtResource("1_kckeu")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

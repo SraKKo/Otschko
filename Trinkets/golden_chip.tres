@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_8a23d")
 id = "golden_chip"
-display_name = "Golden Chip"
-description = "Earn 10% more chips "
+display_name = "LOC_TRINKET_GOLDEN_CHIP_NAME"
+description = "LOC_TRINKET_GOLDEN_CHIP_DETAIL"
 icon = ExtResource("2_jiwnb")
 effect_script = ExtResource("1_pxqgq")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

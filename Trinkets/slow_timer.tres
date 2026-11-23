@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_soeo3")
 id = "slow_timer"
-display_name = "Slow Timer"
-description = "Sometimes the round timer doesn't tick down."
+display_name = "LOC_TRINKET_SLOW_TIMER_NAME"
+description = "LOC_TRINKET_SLOW_TIMER_DETAIL"
 icon = ExtResource("2_8pgk7")
 effect_script = ExtResource("1_8pgk7")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

@@ -1,0 +1,18 @@
+{
+	"cloud": {
+		"base_version": 1,
+		"dirty": false,
+		"revision": 1.0,
+		"saved_at": 1793813903.689,
+		"server_updated_at": 1700000001000,
+		"user_key": "malykamis"
+	},
+	"profile_id": "user_516446959e449fcf43712f0b",
+	"progress": {
+		"best_bankroll": 900,
+		"best_stage": 2,
+		"rounds": 9,
+		"wins": 2
+	},
+	"version": 1.0
+}

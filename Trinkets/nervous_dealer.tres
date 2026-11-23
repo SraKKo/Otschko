@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_68fyt")
 id = "nervous_dealer"
-display_name = "Nervous Dealer"
-description = "Dealer stands on 16 instead of 17"
+display_name = "LOC_TRINKET_NERVOUS_DEALER_NAME"
+description = "LOC_TRINKET_NERVOUS_DEALER_DETAIL"
 icon = ExtResource("2_13kla")
 effect_script = ExtResource("1_yvcod")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

@@ -1,0 +1,49 @@
+{
+	"build": "debug",
+	"checks": [
+		{
+			"passed": true,
+			"test": "Startup opens press-any-button screen"
+		},
+		{
+			"passed": true,
+			"test": "Startup never silently assigns a profile"
+		},
+		{
+			"passed": true,
+			"test": "Two initial profiles are available"
+		},
+		{
+			"passed": true,
+			"test": "Created profile survives a separate process restart"
+		},
+		{
+			"passed": true,
+			"test": "Ala data survives restart"
+		},
+		{
+			"passed": true,
+			"test": "Olek data remains separate after restart"
+		},
+		{
+			"passed": true,
+			"test": "New profile reloads with its own data"
+		},
+		{
+			"passed": true,
+			"test": "Network simulation resets to online in a new process"
+		},
+		{
+			"passed": true,
+			"test": "Final logout succeeds"
+		},
+		{
+			"passed": true,
+			"test": "Logout from menu stays in main menu"
+		}
+	],
+	"passed": true,
+	"phase": "read",
+	"physical_controllers": [],
+	"profiles_dir": "F:\\GameDev\\Projekty\\Godot\\blackjack [C_Dokumenty]\\reports\\users\\source-profiles-wqn_efhe"
+}

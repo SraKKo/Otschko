@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_gvkn0")
 id = "interest_chip"
-display_name = "Interest Chip"
-description = "Every stage PASSED get 5% total money"
+display_name = "LOC_TRINKET_INTEREST_CHIP_NAME"
+description = "LOC_TRINKET_INTEREST_CHIP_DETAIL"
 icon = ExtResource("2_dy672")
 effect_script = ExtResource("1_q4a2t")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

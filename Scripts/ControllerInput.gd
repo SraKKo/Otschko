@@ -19,6 +19,7 @@ var controls: Array[Control] = []
 var context := ""
 var current_scene: Node
 var vibration_requests := 0
+var modal_root: Control
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
@@ -26,6 +27,7 @@ func _ready() -> void:
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 	for id in Input.get_connected_joypads(): device_names[id] = Input.get_joy_name(id)
 	_build_overlay()
+	Localization.changed.connect(_update_prompts)
 	device_changed.connect(_on_device_changed)
 	_on_device_changed(family, active_device)
 
@@ -86,9 +88,18 @@ func _input(event: InputEvent) -> void:
 		_select_device("keyboard", -1)
 	elif event is InputEventMouseMotion and event.relative.length() >= MOUSE_THRESHOLD:
 		_select_device("keyboard", -1)
+	if is_instance_valid(modal_root) and modal_root.is_visible_in_tree():
+		_ensure_focus()
+		return
 	if event is InputEventKey and event.echo: return
 	var scene := get_tree().current_scene
 	if scene == null: return
+	if scene.name == "ProfileGate" and event.is_action_pressed("ui_cancel"):
+		if UserSession.phase == "choose":
+			UserSession.phase = "press"
+			scene.call_deferred("show_press")
+			get_viewport().set_input_as_handled()
+		return
 	if event.is_action_pressed("pause") and _is_game():
 		if not get_tree().paused or scene.pause_menu.visible:
 			scene.toggle_pause()
@@ -128,8 +139,8 @@ func _select_device(next_family: String, device: int) -> void:
 	device_changed.emit(family, active_device)
 
 func _on_device_changed(_family: String, _device: int) -> void:
-	var names := {"keyboard": "Mysz/Klawiatura", "xbox": "Pad Xbox", "playstation": "Pad PlayStation", "switch": "Pad Nintendo Switch", "generic": "Pad"}
-	device_label.text = names.get(family, "Pad")
+	var names := {"keyboard": "LOC_DEVICE_KEYBOARD", "xbox": "LOC_DEVICE_XBOX", "playstation": "LOC_DEVICE_PLAYSTATION", "switch": "LOC_DEVICE_SWITCH"}
+	device_label.text = names.get(family, "LOC_DEVICE_PAD")
 	prompt_icon.family = family
 	_update_prompts()
 	refresh_cursor()
@@ -159,7 +170,10 @@ func refresh_context() -> void:
 	var scene := get_tree().current_scene
 	if scene == null: return
 	var root: Node = scene
-	if _is_game():
+	var has_modal := is_instance_valid(modal_root) and modal_root.is_visible_in_tree()
+	if has_modal:
+		root = modal_root
+	elif _is_game():
 		if not get_tree().paused:
 			var owner := get_viewport().gui_get_focus_owner()
 			if owner != null: owner.release_focus()
@@ -168,13 +182,17 @@ func refresh_context() -> void:
 			return
 		root = scene.trinket_choice if scene.trinket_choice.visible else scene.pause_menu
 	for node in root.find_children("*", "Control", true, false):
-		if (node is BaseButton or node is HSlider) and node.is_visible_in_tree():
+		if (node is BaseButton or node is HSlider or node is LineEdit) and node.is_visible_in_tree():
 			if node is BaseButton and node.disabled: continue
 			node.focus_mode = Control.FOCUS_ALL
 			controls.append(node)
-	if scene.name == "StartScreen":
+	if scene.name == "StartScreen" and not has_modal:
 		controls.assign([scene.get_node("Play"), scene.get_node("Settings"), scene.get_node("Credits"), scene.get_node("Quit")])
-	elif _is_game() and scene.pause_menu.visible and not scene.trinket_choice.visible:
+		if scene.has_node("CloudSave") and not scene.get_node("CloudSave").disabled: controls.append(scene.get_node("CloudSave"))
+		if scene.has_node("Achievements"): controls.append(scene.get_node("Achievements"))
+		if scene.has_node("LicenseDetails"): controls.append(scene.get_node("LicenseDetails"))
+		if scene.has_node("ChangeUser"): controls.append(scene.get_node("ChangeUser"))
+	elif not has_modal and _is_game() and scene.pause_menu.visible and not scene.trinket_choice.visible:
 		controls.assign([scene.pause_menu.get_node("ResumeButton"), scene.pause_menu.get_node("QuitButton")])
 	for index in range(controls.size()):
 		var control := controls[index]
@@ -184,7 +202,7 @@ func refresh_context() -> void:
 		control.focus_neighbor_bottom = control.get_path_to(next)
 		control.focus_previous = control.get_path_to(previous)
 		control.focus_next = control.get_path_to(next)
-		if not control is HSlider and not control is OptionButton:
+		if not control is HSlider and not control is OptionButton and not control is LineEdit:
 			control.focus_neighbor_left = control.get_path_to(previous)
 			control.focus_neighbor_right = control.get_path_to(next)
 	_ensure_focus()
@@ -192,7 +210,7 @@ func refresh_context() -> void:
 	_update_prompts()
 
 func _ensure_focus() -> void:
-	if _is_game() and not get_tree().paused: return
+	if _is_game() and not get_tree().paused and not is_instance_valid(modal_root): return
 	var owner := get_viewport().gui_get_focus_owner()
 	if owner != null and owner.is_visible_in_tree() and controls.has(owner): return
 	if not controls.is_empty(): controls[0].grab_focus()
@@ -237,16 +255,19 @@ func _update_prompts() -> void:
 	prompt_bar.offset_bottom = 87 if playing else 0
 	prompt_icon.custom_minimum_size = Vector2(36, 28) if playing else Vector2(44, 40)
 	hint_label.add_theme_font_size_override("font_size", 14 if playing else 16)
-	if _is_game() and not get_tree().paused:
-		var labels := {"keyboard": "Spacja: Rozdaj   H: Dobierz   J: Pas   K: Podziel   Q/E: Zakład -/+10   Esc: Pauza", "xbox": "A: Rozdaj   X: Dobierz   B: Pas   Y: Podziel   LB/RB: Zakład -/+10   Menu: Pauza", "playstation": "Krzyżyk: Rozdaj   Kwadrat: Dobierz   Kółko: Pas   Trójkąt: Podziel   L1/R1: Zakład   Options: Pauza", "switch": "B: Rozdaj   Y: Dobierz   A: Pas   X: Podziel   L/R: Zakład -/+10   +: Pauza", "generic": "Dolny: Rozdaj   Lewy: Dobierz   Prawy: Pas   Górny: Podziel   LB/RB: Zakład   Start: Pauza"}
-		hint_label.text = labels.get(family, labels.generic)
+	if playing:
+		var labels := {
+			"keyboard": "LOC_HINT_GAME_KEYBOARD", "xbox": "LOC_HINT_GAME_XBOX",
+			"playstation": "LOC_HINT_GAME_PS", "switch": "LOC_HINT_GAME_SWITCH", "generic": "LOC_HINT_GAME_PAD",
+		}
+		hint_label.text = tr(labels.get(family, labels.generic))
 	else:
-		var accept := {"keyboard": "Spacja / Enter", "xbox": "A", "playstation": "Krzyżyk", "switch": "B", "generic": "dolny przycisk"}
-		var back := {"keyboard": "Esc", "xbox": "B", "playstation": "Kółko", "switch": "A", "generic": "prawy przycisk"}
+		var accept := {"keyboard": tr("LOC_KEY_SPACE_ENTER"), "xbox": "A", "playstation": tr("LOC_KEY_CROSS"), "switch": "B", "generic": tr("LOC_KEY_SOUTH")}
+		var back := {"keyboard": "Esc", "xbox": "B", "playstation": tr("LOC_KEY_CIRCLE"), "switch": "A", "generic": tr("LOC_KEY_EAST")}
 		if _is_game() and get_tree().current_scene.trinket_choice.visible:
-			hint_label.text = "Naciśnij %s, aby wybrać nagrodę   |   Strzałki / krzyżak / lewa gałka: Nawigacja" % accept[family]
+			hint_label.text = Localization.message("LOC_HINT_REWARD", {"accept": accept[family]})
 		else:
-			hint_label.text = "Naciśnij %s, aby wybrać   |   %s: Wstecz   |   Strzałki / krzyżak / lewa gałka: Nawigacja" % [accept[family], back[family]]
+			hint_label.text = Localization.message("LOC_HINT_MENU", {"accept": accept[family], "back": back[family]})
 
 func _build_overlay() -> void:
 	var layer := CanvasLayer.new()
@@ -286,11 +307,15 @@ func _build_overlay() -> void:
 	prompt_icon.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	row.add_child(prompt_icon)
 	hint_label = Label.new()
+	hint_label.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 	hint_label.add_theme_font_size_override("font_size", 16)
 	hint_label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hint_label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	hint_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	hint_label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 	row.add_child(hint_label)
 	notice = Label.new()
-	notice.text = "Podłącz kontroler lub użyj klawiatury"
+	notice.text = "LOC_DEVICE_RECONNECT"
 	notice.position = Vector2(126, 110)
 	notice.size = Vector2(900, 70)
 	notice.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

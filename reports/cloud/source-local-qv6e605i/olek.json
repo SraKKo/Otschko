@@ -1,0 +1,17 @@
+{
+	"cloud": {
+		"base_version": 1.0,
+		"dirty": true,
+		"revision": 2,
+		"saved_at": 1793812366.843,
+		"server_updated_at": 1700000001000.0
+	},
+	"profile_id": "olek",
+	"progress": {
+		"best_bankroll": 500,
+		"best_stage": 1,
+		"rounds": 1,
+		"wins": 0
+	},
+	"version": 1
+}

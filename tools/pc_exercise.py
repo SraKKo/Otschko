@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+from check_localization import check as check_localization
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,6 +19,7 @@ def run(command, log, timeout=180):
     return data
 
 def build(godot):
+    check_localization()
     for kind in ("debug", "release"):
         target = ROOT / "builds" / ("windows-" + kind) / "Blackjack.exe"
         target.parent.mkdir(parents=True, exist_ok=True)

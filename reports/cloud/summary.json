@@ -1,0 +1,52 @@
+{
+  "real_cloud_writes": 0,
+  "namespace": "51796",
+  "live_profile_read": "HTTP 200, found=false, version=0",
+  "builds": {
+    "debug": {
+      "passed": 84,
+      "mock_requests": {
+        "host": "127.0.0.1",
+        "real_cloud_writes": 0,
+        "gets": 14,
+        "post_attempts": 8,
+        "successful_posts": 7,
+        "conflicts": 1,
+        "expected_versions": [
+          0,
+          1,
+          4,
+          5,
+          6,
+          7,
+          0,
+          0
+        ]
+      }
+    },
+    "release": {
+      "passed": 84,
+      "mock_requests": {
+        "host": "127.0.0.1",
+        "real_cloud_writes": 0,
+        "gets": 14,
+        "post_attempts": 8,
+        "successful_posts": 7,
+        "conflicts": 1,
+        "expected_versions": [
+          0,
+          1,
+          4,
+          5,
+          6,
+          7,
+          0,
+          0
+        ]
+      }
+    }
+  },
+  "proposed_live_write": "Awaiting explicit user approval",
+  "save_ui": "Save click uploads immediately without a second confirmation; conflicts still require a choice",
+  "cloud_user_key": "Profile display name, URL encoded; old random-ID saves are read-only migration sources"
+}

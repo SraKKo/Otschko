@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-04",
+  "profile_checks_per_build": {
+    "debug": 62,
+    "release": 62
+  },
+  "controller_regression_checks_per_build": 50,
+  "settings_restart_check": "passed",
+  "method": "Synthesized input and independent write/read processes; isolated profile fixtures; no physical controllers detected",
+  "logout_behavior": "F8 returns to main menu without a signed-in profile; Play requires selecting a profile"
+}

@@ -1,0 +1,4 @@
+{
+	"hmac": "a68aee647a0bf17f16cfb4e236e8a283fa3b3c4f79714ac5ee0b4a59f7e8e6aa",
+	"payload": "{\"cloud\":{\"base_version\":8.0,\"dirty\":false,\"revision\":7.0,\"saved_at\":1795022109.063,\"server_updated_at\":1700000008000.0,\"user_key\":\"Ala\"},\"profile_id\":\"ala\",\"progress\":{\"best_bankroll\":800,\"best_stage\":2,\"rounds\":43,\"wins\":1},\"version\":1.0}"
+}

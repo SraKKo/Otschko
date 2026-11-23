@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_lwwcb")
 id = "tax_evasion"
-display_name = "Tax Evasion!"
-description = "Recieve a refund of half your chips lost when you BUST"
+display_name = "LOC_TRINKET_TAX_EVASION_NAME"
+description = "LOC_TRINKET_TAX_EVASION_DETAIL"
 icon = ExtResource("2_y5hm7")
 effect_script = ExtResource("1_05mi4")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

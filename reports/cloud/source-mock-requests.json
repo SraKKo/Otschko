@@ -1,0 +1,19 @@
+{
+  "host": "127.0.0.1",
+  "real_cloud_writes": 0,
+  "gets": 18,
+  "post_attempts": 9,
+  "successful_posts": 8,
+  "conflicts": 1,
+  "expected_versions": [
+    0,
+    1,
+    4,
+    5,
+    6,
+    7,
+    0,
+    0,
+    1
+  ]
+}

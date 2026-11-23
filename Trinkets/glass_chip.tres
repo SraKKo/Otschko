@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_vxelw")
 id = "glass_chip"
-display_name = "Glass Chip"
-description = "WINS earn 30% more, but you BUST at 20"
+display_name = "LOC_TRINKET_GLASS_CHIP_NAME"
+description = "LOC_TRINKET_GLASS_CHIP_DETAIL"
 icon = ExtResource("2_ju02a")
 effect_script = ExtResource("1_d52pi")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

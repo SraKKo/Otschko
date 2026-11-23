@@ -1,0 +1,9 @@
+{
+  "url": "https://dsw-cloud.dsw-ppdg.workers.dev/v1/kv/51796/ala/save",
+  "method": "GET",
+  "cloud_write_requests": 0,
+  "http_status": 200,
+  "ok": true,
+  "found": false,
+  "version": 0
+}

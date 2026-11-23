@@ -5,7 +5,7 @@ func after_player_hand_updated(game: Node) -> void:
 	if not game.split_active:
 		if game.count_score(game.player_cards) == 21:
 			game.show_result("WIN")
-			game.game_over("Wygrałeś! Last Breath.")
+			game.game_over("win_last_breath")
 		return
 
 	# split – aktualna ręka

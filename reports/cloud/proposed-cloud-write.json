@@ -1,0 +1,17 @@
+{
+  "status": "WAITING_FOR_USER_APPROVAL_DO_NOT_SEND",
+  "method": "POST",
+  "url": "https://dsw-cloud.dsw-ppdg.workers.dev/v1/kv/51796/test_cw4/save",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "value": "{\"progress\":{\"best_bankroll\":500,\"best_stage\":1,\"rounds\":0,\"wins\":0},\"schema\":1}",
+    "expectedVersion": 0
+  },
+  "value_bytes": 80,
+  "http_body_bytes": 124,
+  "maximum_write_attempts": 1,
+  "retry_on_conflict": false,
+  "purpose": "One separate test record; expectedVersion=0 prevents overwriting an existing record."
+}

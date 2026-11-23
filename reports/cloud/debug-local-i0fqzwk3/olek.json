@@ -1,0 +1,4 @@
+{
+	"hmac": "93cb7ea9dfd3fe13bbf15cf001cb49b358e207579d8b1552c1d1346388965b73",
+	"payload": "{\"cloud\":{\"base_version\":1,\"dirty\":false,\"revision\":1.0,\"saved_at\":1795022109.541,\"server_updated_at\":1700000001000,\"user_key\":\"Olek\"},\"profile_id\":\"olek\",\"progress\":{\"best_bankroll\":500,\"best_stage\":1,\"rounds\":1,\"wins\":0},\"version\":1.0}"
+}

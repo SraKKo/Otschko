@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_7xwyf")
 id = "lucky_draw"
-display_name = "Lucky Draw"
-description = "first HIT can't bust, lasts 10 rounds"
+display_name = "LOC_TRINKET_LUCKY_DRAW_NAME"
+description = "LOC_TRINKET_LUCKY_DRAW_DETAIL"
 icon = ExtResource("2_ewnnf")
 effect_script = ExtResource("1_leebh")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

@@ -96,7 +96,7 @@ func run() -> void:
 	await motion(0.8)
 	check(router.family == "xbox" and router.active_device == 12, "Stick activates Xbox scheme")
 	check(Input.mouse_mode == Input.MOUSE_MODE_HIDDEN, "Pad hides menu cursor")
-	check(router.prompt_icon.family == "xbox" and "Naciśnij A" in router.hint_label.text, "Xbox icon and text")
+	check(router.prompt_icon.family == "xbox" and router.hint_label.text == Localization.message("LOC_HINT_MENU", {"accept": "A", "back": "B"}), "Xbox icon and text")
 	await mouse(1)
 	check(router.family == "xbox", "Mouse noise does not steal active device")
 	await screenshot("xbox-menu")
@@ -150,7 +150,7 @@ func run() -> void:
 	router.device_names[13] = "DualSense Wireless Controller"
 	await motion(0.8, 13)
 	check(router.family == "playstation" and router.prompt_icon.family == "playstation", "Live switch to PlayStation icon")
-	check("Krzyżyk: Rozdaj" in router.hint_label.text, "PlayStation gameplay text")
+	check(router.hint_label.text == tr("LOC_HINT_GAME_PS"), "PlayStation gameplay text")
 	await screenshot("playstation-game")
 	await joy(JOY_BUTTON_START, 13)
 	await screenshot("playstation-pause")
@@ -194,7 +194,7 @@ func run() -> void:
 	check(not get_tree().paused and Input.mouse_mode == Input.MOUSE_MODE_VISIBLE, "Escape resumes with clickable mouse cursor")
 	router.device_names[14] = "Nintendo Switch Pro Controller"
 	await motion(0.8, 14)
-	check(router.family == "switch" and "B: Rozdaj" in router.hint_label.text, "Nintendo uses its physical south button label B")
+	check(router.family == "switch" and router.hint_label.text == tr("LOC_HINT_GAME_SWITCH"), "Nintendo uses its physical south button label B")
 	router.switching_enabled = false
 	await key(KEY_F9)
 	check(router.family == "switch", "Explicit input zone lock prevents switching")

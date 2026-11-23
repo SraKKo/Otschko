@@ -1,0 +1,17 @@
+{
+	"profiles": [
+		{
+			"id": "ala",
+			"name": "Ala"
+		},
+		{
+			"id": "olek",
+			"name": "Olek"
+		},
+		{
+			"id": "user_e6161261376f0d4478acfe4c",
+			"name": "Marta"
+		}
+	],
+	"version": 1
+}

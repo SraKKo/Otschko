@@ -1,0 +1,4 @@
+{
+	"hmac": "8c9710327004566df00061f9e1d6fd996d9203aa49c0b4508bf83f8cd11a796a",
+	"payload": "{\"cloud\":{\"base_version\":2,\"dirty\":false,\"revision\":1,\"saved_at\":1795022198.931,\"server_updated_at\":1700000002000,\"user_key\":\"malykamis\"},\"profile_id\":\"user_45a038acc2af1d38955abc67\",\"progress\":{\"achievements\":[\"split\",\"three_trinkets\",\"natural_blackjack\"],\"best_bankroll\":900,\"best_stage\":2,\"rounds\":10,\"wins\":3},\"version\":1}"
+}

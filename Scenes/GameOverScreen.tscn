@@ -85,19 +85,20 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_gpdu0")
 anchors_preset = -1
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 448.0
-offset_top = 96.0
-offset_right = 782.0
-offset_bottom = 283.0
+offset_left = 56.0
+offset_top = 115.0
+offset_right = 1096.0
+offset_bottom = 277.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.034906585
 size_flags_horizontal = 4
-text = "
-BUST!"
-label_settings = ExtResource("2_ew8mo")
-horizontal_alignment = 1
+text = "LOC_GAME_OVER"
 metadata/_edit_use_anchors_ = true
+theme_override_font_sizes/font_size = 54
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="QuitButton" type="Button" parent="."]
 offset_left = 488.0
@@ -105,14 +106,12 @@ offset_top = 376.0
 offset_right = 728.0
 offset_bottom = 472.0
 theme = SubResource("Theme_qhbal")
-theme_override_constants/outline_size = 19
-theme_override_fonts/font = ExtResource("3_jii3q")
-theme_override_font_sizes/font_size = 46
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("4_g28uj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_2tcun")
 theme_override_styles/hover = SubResource("StyleBoxTexture_u0bp0")
-text = "
-quit"
+text = "LOC_MENU"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -54,43 +54,33 @@ offset_left = 368.0
 offset_top = 72.0
 offset_right = 840.0
 offset_bottom = 164.0
-text = "credits"
-label_settings = ExtResource("2_640q4")
+text = "LOC_CREDITS"
+theme_override_font_sizes/font_size = 38
+horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 0
 offset_left = 56.0
-offset_top = 136.0
-offset_right = 1299.0
+offset_top = 168.0
+offset_right = 1096.0
 offset_bottom = 523.0
-text = "assets used:
-Deck of Cards by Noh 
-itch.io: noh-kinda.itch.io
-
-UI Buttons SFX by SoupTonic
-itch.io: souptonic.itch.io
-
-
-Programming, Graphics, Music, SFX,
-Idea, etc. - SraKKo
-itch.io: srakko.itch.io"
-label_settings = ExtResource("3_5qoai")
+text = "LOC_CREDITS_BODY"
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 0
 offset_left = 864.0
 offset_top = 520.0
 offset_right = 1104.0
-offset_bottom = 616.0
+offset_bottom = 592.0
 theme = SubResource("Theme_ubfhf")
-theme_override_constants/outline_size = 19
-theme_override_fonts/font = ExtResource("4_jpdlp")
-theme_override_font_sizes/font_size = 46
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("5_cmrso")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_iiqut")
 theme_override_styles/hover = SubResource("StyleBoxTexture_7xbyc")
-text = "
-back"
+text = "LOC_BACK"
 
 [node name="CRT" type="CanvasLayer" parent="."]
 

@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_7tofg")
 id = "mirror_hands"
-display_name = "Mirror Hands"
-description = "While split is active both hands gain the same first card"
+display_name = "LOC_TRINKET_MIRROR_HANDS_NAME"
+description = "LOC_TRINKET_MIRROR_HANDS_DETAIL"
 icon = ExtResource("2_8q2ip")
 effect_script = ExtResource("1_xacf3")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

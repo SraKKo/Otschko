@@ -17,7 +17,8 @@ func _ready() -> void:
 	overlay.layer = 100
 	add_child(overlay)
 	label = Label.new()
-	label.text = "FPS: ..."
+	label.text = tr("LOC_FPS_PENDING")
+	label.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 	label.position = Vector2(12, 8)
 	label.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	label.add_theme_font_size_override("font_size", 20)
@@ -35,12 +36,32 @@ func _ready() -> void:
 	for argument in OS.get_cmdline_user_args():
 		if argument.begins_with("--pc-verify-settings="):
 			call_deferred("_verify_settings", argument.trim_prefix("--pc-verify-settings="))
+	for argument in OS.get_cmdline_user_args():
+		if OS.is_debug_build() and argument.begins_with("--verify-cloud="):
+			var cloud_check := preload("res://Scripts/CloudVerification.gd").new()
+			add_child(cloud_check)
+			cloud_check.call_deferred("run")
+	for argument in OS.get_cmdline_user_args():
+		if OS.is_debug_build() and argument.begins_with("--verify-users="):
+			var user_check := preload("res://Scripts/UserVerification.gd").new()
+			add_child(user_check)
+			user_check.call_deferred("run")
 	if "--verify-controllers" in OS.get_cmdline_user_args():
 		var verification := preload("res://Scripts/ControllerVerification.gd").new()
 		add_child(verification)
 		verification.call_deferred("run")
+	for argument in OS.get_cmdline_user_args():
+		if OS.is_debug_build() and argument.begins_with("--verify-localization="):
+			var locale_check := preload("res://Scripts/LocalizationVerification.gd").new()
+			add_child(locale_check)
+			locale_check.call_deferred("verify", argument.trim_prefix("--verify-localization="))
 	if benchmark:
 		call_deferred("_prepare_benchmark")
+
+	if OS.is_debug_build() and "--verify-drm" in OS.get_cmdline_user_args():
+		var verification := preload("res://Scripts/DrmVerification.gd").new()
+		add_child(verification)
+		verification.call_deferred("run")
 
 func dev_log(message: String) -> void:
 	if OS.is_debug_build():
@@ -63,9 +84,9 @@ func _process(_delta: float) -> void:
 	var window_seconds := float(now - window_start) / 1000000.0
 	if window_seconds >= 0.5:
 		var fps := frames / window_seconds
-		label.text = "%.1f FPS (%.2f ms)" % [fps, 1000.0 / fps]
+		label.text = Localization.message("LOC_FPS", {"fps": Localization.decimal(fps, 1), "ms": Localization.decimal(1000.0 / fps, 2)})
 		if benchmark:
-			label.text += " | BENCHMARK - please wait"
+			label.text += "  •  " + tr("LOC_BENCHMARK")
 		frames = 0
 		window_start = now
 	if sampling:

@@ -5,8 +5,8 @@ extends Control
 func _ready() -> void:
 	SettingsMenager.apply_crt(crt_rect)
 	var panel := PanelContainer.new()
-	panel.position = Vector2(236, 34)
-	panel.size = Vector2(680, 574)
+	panel.position = Vector2(236, 38)
+	panel.size = Vector2(680, 552)
 	var style := StyleBoxFlat.new()
 	style.bg_color = Color(0.025, 0.09, 0.065, 0.97)
 	style.border_color = Color(0.68, 0.57, 0.29)
@@ -14,17 +14,19 @@ func _ready() -> void:
 	style.set_corner_radius_all(12)
 	style.content_margin_left = 32
 	style.content_margin_right = 32
-	style.content_margin_top = 20
-	style.content_margin_bottom = 20
+	style.content_margin_top = 17
+	style.content_margin_bottom = 17
 	panel.add_theme_stylebox_override("panel", style)
 	add_child(panel)
 	var column := VBoxContainer.new()
-	column.add_theme_constant_override("separation", 8)
+	column.add_theme_constant_override("separation", 7)
 	panel.add_child(column)
 	var title := Label.new()
-	title.text = "SETTINGS / PC"
+	title.text = "LOC_SETTINGS"
 	title.add_theme_font_size_override("font_size", 30)
 	column.add_child(title)
+	_add_row(column, "LOC_LANGUAGE", SettingsMenager.language_selector())
+
 	var resolution := OptionButton.new()
 	resolution.name = "Resolution"
 	for dimensions in SettingsMenager.RESOLUTIONS:
@@ -33,31 +35,32 @@ func _ready() -> void:
 	resolution.item_selected.connect(func(index: int):
 		SettingsMenager.apply_resolution(index)
 		SettingsMenager.save_settings())
-	_add_row(column, "Window resolution", resolution)
-	_toggle(column, "Fullscreen", SettingsMenager.fullscreen, func(on: bool):
+	_add_row(column, "LOC_RESOLUTION", resolution)
+	_toggle(column, "LOC_FULLSCREEN", "Fullscreen", SettingsMenager.fullscreen, func(on: bool):
 		SettingsMenager.apply_fullscreen(on)
 		SettingsMenager.save_settings())
-	_toggle(column, "VSync", SettingsMenager.vsync, func(on: bool):
+	_toggle(column, "LOC_VSYNC", "VSync", SettingsMenager.vsync, func(on: bool):
 		SettingsMenager.apply_vsync(on)
 		SettingsMenager.save_settings())
-	_toggle(column, "CRT filter", SettingsMenager.crt_enabled, func(on: bool):
+	_toggle(column, "LOC_CRT", "CRTfilter", SettingsMenager.crt_enabled, func(on: bool):
 		SettingsMenager.crt_enabled = on
 		SettingsMenager.apply_crt(crt_rect)
 		SettingsMenager.save_settings())
-	_toggle(column, "Controller vibration", SettingsMenager.vibration_enabled, func(on: bool):
+	_toggle(column, "LOC_VIBRATION", "Controllervibration", SettingsMenager.vibration_enabled, func(on: bool):
 		SettingsMenager.vibration_enabled = on
 		if not on:
 			for device in Input.get_connected_joypads(): Input.stop_joy_vibration(device)
 		SettingsMenager.save_settings())
-	_volume(column, "Master volume", "Master", SettingsMenager.master)
-	_volume(column, "Music volume", "Music", SettingsMenager.music)
-	_volume(column, "SFX volume", "SFX", SettingsMenager.sfx)
+	_volume(column, "LOC_MASTER", "Master", SettingsMenager.master)
+	_volume(column, "LOC_MUSIC", "Music", SettingsMenager.music)
+	_volume(column, "LOC_SFX", "SFX", SettingsMenager.sfx)
 	var hint := Label.new()
-	hint.text = "Changes are saved automatically. F11: fullscreen."
+	hint.text = "LOC_SETTINGS_HINT"
 	hint.add_theme_font_size_override("font_size", 16)
+	hint.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(hint)
 	var back := Button.new()
-	back.text = "BACK"
+	back.text = "LOC_BACK"
 	back.custom_minimum_size.y = 42
 	back.pressed.connect(func():
 		SfxPlayer.play(preload("res://Sounds/SFX/ClickButton.ogg"))
@@ -66,19 +69,19 @@ func _ready() -> void:
 
 func _add_row(parent: VBoxContainer, caption: String, control: Control) -> void:
 	var row := HBoxContainer.new()
-	row.custom_minimum_size.y = 40
+	row.custom_minimum_size.y = 36
 	var label := Label.new()
 	label.text = caption
 	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	label.add_theme_font_size_override("font_size", 22)
+	label.add_theme_font_size_override("font_size", 20)
 	row.add_child(label)
 	control.custom_minimum_size.x = 240
 	row.add_child(control)
 	parent.add_child(row)
 
-func _toggle(parent: VBoxContainer, caption: String, value: bool, callback: Callable) -> void:
+func _toggle(parent: VBoxContainer, caption: String, name_id: String, value: bool, callback: Callable) -> void:
 	var button := CheckButton.new()
-	button.name = caption.replace(" ", "")
+	button.name = name_id
 	button.button_pressed = value
 	button.toggled.connect(callback)
 	_add_row(parent, caption, button)

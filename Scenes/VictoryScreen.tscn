@@ -82,14 +82,17 @@ offset_bottom = 57.38277
 theme_override_styles/panel = SubResource("StyleBoxFlat_0i7ly")
 
 [node name="Victory!" type="Label" parent="."]
-offset_left = 48.0
-offset_top = 120.0
-offset_right = 1129.0
-offset_bottom = 212.0
+offset_left = 56.0
+offset_top = 115.0
+offset_right = 1096.0
+offset_bottom = 277.0
 rotation = -0.017453292
 pivot_offset = Vector2(524, 0)
-text = "Congratulations!"
-label_settings = ExtResource("3_r53cv")
+text = "LOC_VICTORY"
+theme_override_font_sizes/font_size = 54
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -103,14 +106,12 @@ offset_top = 376.0
 offset_right = 696.0
 offset_bottom = 472.00003
 theme = SubResource("Theme_gao4f")
-theme_override_constants/outline_size = 19
-theme_override_fonts/font = ExtResource("4_rg3ah")
-theme_override_font_sizes/font_size = 46
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
 theme_override_styles/normal = ExtResource("5_ua571")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_clld4")
 theme_override_styles/hover = SubResource("StyleBoxTexture_qpx47")
-text = "
-quit"
+text = "LOC_MENU"
 
 [node name="CRT" type="CanvasLayer" parent="."]
 

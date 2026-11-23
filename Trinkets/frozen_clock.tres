@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("3_21hs6")
 id = "frozen_clock"
-display_name = "Frozen Clock"
-description = "Freezes time for 3 seconds"
+display_name = "LOC_TRINKET_FROZEN_CLOCK_NAME"
+description = "LOC_TRINKET_FROZEN_CLOCK_DETAIL"
 icon = ExtResource("2_gj1ru")
 effect_script = ExtResource("1_8g7ba")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

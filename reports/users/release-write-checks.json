@@ -1,0 +1,217 @@
+{
+	"build": "release",
+	"checks": [
+		{
+			"passed": true,
+			"test": "Startup opens press-any-button screen"
+		},
+		{
+			"passed": true,
+			"test": "Startup never silently assigns a profile"
+		},
+		{
+			"passed": true,
+			"test": "Two initial profiles are available"
+		},
+		{
+			"passed": true,
+			"test": "Mouse movement alone cannot claim ownership"
+		},
+		{
+			"passed": true,
+			"test": "First button remembers its controller"
+		},
+		{
+			"passed": true,
+			"test": "Profile Cancel returns to device-claim screen"
+		},
+		{
+			"passed": true,
+			"test": "Profile login binds the starting controller to Ala"
+		},
+		{
+			"passed": true,
+			"test": "User name is visible in menu"
+		},
+		{
+			"passed": true,
+			"test": "Menu provides Change User"
+		},
+		{
+			"passed": true,
+			"test": "Primary controller starts the game"
+		},
+		{
+			"passed": true,
+			"test": "User name remains visible in gameplay"
+		},
+		{
+			"passed": true,
+			"test": "Real round completion updates active profile"
+		},
+		{
+			"passed": true,
+			"test": "Round result is saved locally immediately"
+		},
+		{
+			"passed": true,
+			"test": "F9 displays readable offline notice"
+		},
+		{
+			"passed": true,
+			"test": "Offline mode does not pause gameplay"
+		},
+		{
+			"passed": true,
+			"test": "Network loss does not alter saved data"
+		},
+		{
+			"passed": true,
+			"test": "Restored network automatically hides notice"
+		},
+		{
+			"passed": true,
+			"test": "Another device joins Olek as player two"
+		},
+		{
+			"passed": true,
+			"test": "Player two joins without stopping the game"
+		},
+		{
+			"passed": true,
+			"test": "Second user is named on screen"
+		},
+		{
+			"passed": true,
+			"test": "Join button does not accidentally perform gameplay action"
+		},
+		{
+			"passed": true,
+			"test": "Repeated input does not duplicate the additional user"
+		},
+		{
+			"passed": true,
+			"test": "Last-input changes do not replace primary ownership"
+		},
+		{
+			"passed": true,
+			"test": "Mouse-keyboard switching preserves the original owner"
+		},
+		{
+			"passed": true,
+			"test": "Pause is active before platform logout"
+		},
+		{
+			"passed": true,
+			"test": "F8 returns immediately to the logged-out main menu"
+		},
+		{
+			"passed": true,
+			"test": "Logout clears primary, device and additional user"
+		},
+		{
+			"passed": true,
+			"test": "Logout removes identity and clears pause"
+		},
+		{
+			"passed": true,
+			"test": "Logout clears the previous user's session inventory"
+		},
+		{
+			"passed": true,
+			"test": "Offline logout preserves the saved result"
+		},
+		{
+			"passed": true,
+			"test": "Logged-out menu offers sign-in"
+		},
+		{
+			"passed": true,
+			"test": "Settings remain accessible after logout"
+		},
+		{
+			"passed": true,
+			"test": "Settings return to logged-out menu"
+		},
+		{
+			"passed": true,
+			"test": "Play requires profile selection after logout"
+		},
+		{
+			"passed": true,
+			"test": "Keyboard can own the next session"
+		},
+		{
+			"passed": true,
+			"test": "Keyboard selects Olek"
+		},
+		{
+			"passed": true,
+			"test": "Olek does not inherit Ala's data"
+		},
+		{
+			"passed": true,
+			"test": "Pad joins a session owned by the keyboard"
+		},
+		{
+			"passed": true,
+			"test": "Second pad preserves keyboard ownership and uninterrupted play"
+		},
+		{
+			"passed": true,
+			"test": "Olek records his own result"
+		},
+		{
+			"passed": true,
+			"test": "Saving Olek does not overwrite Ala"
+		},
+		{
+			"passed": true,
+			"test": "Profiles can be used while offline"
+		},
+		{
+			"passed": true,
+			"test": "Change User opens profile selection"
+		},
+		{
+			"passed": true,
+			"test": "Changing back reloads Ala's own data"
+		},
+		{
+			"passed": true,
+			"test": "Empty profile names are rejected"
+		},
+		{
+			"passed": true,
+			"test": "Duplicate names are rejected case-insensitively"
+		},
+		{
+			"passed": true,
+			"test": "Real creation form adds a third profile"
+		},
+		{
+			"passed": true,
+			"test": "New profile starts with separate clean progress"
+		},
+		{
+			"passed": true,
+			"test": "New profile retains the initiating device"
+		},
+		{
+			"passed": true,
+			"test": "Network restoration works after user changes"
+		},
+		{
+			"passed": true,
+			"test": "Final logout succeeds"
+		},
+		{
+			"passed": true,
+			"test": "Logout from menu stays in main menu"
+		}
+	],
+	"passed": true,
+	"phase": "write",
+	"physical_controllers": [],
+	"profiles_dir": "F:\\GameDev\\Projekty\\Godot\\blackjack [C_Dokumenty]\\reports\\users\\release-profiles-68bnm2a4"
+}

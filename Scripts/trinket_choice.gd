@@ -56,7 +56,7 @@ func _set_button_def(btn: TextureButton, def: TrinketDef):
 	btn.visible = true
 	btn.texture_normal = def.icon
 	# opcjonalnie: tooltip
-	btn.tooltip_text = def.display_name + "\n" + def.description
+	btn.tooltip_text = tr(def.display_name) + "\n" + tr(def.description)
 
 func _pick(idx: int):
 	SfxPlayer.play(preload("res://Sounds/SFX/ClickTrinket.ogg"))

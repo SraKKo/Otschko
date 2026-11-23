@@ -1,0 +1,284 @@
+{
+	"checks": [
+		{
+			"passed": true,
+			"test": "Correct album namespace 51796"
+		},
+		{
+			"passed": true,
+			"test": "Decision: both saves absent"
+		},
+		{
+			"passed": true,
+			"test": "Decision: only local exists"
+		},
+		{
+			"passed": true,
+			"test": "Decision: only cloud exists"
+		},
+		{
+			"passed": true,
+			"test": "Decision: matching version and clean local"
+		},
+		{
+			"passed": true,
+			"test": "Decision: pending local changes on unchanged cloud"
+		},
+		{
+			"passed": true,
+			"test": "Decision: clean local follows newer cloud"
+		},
+		{
+			"passed": true,
+			"test": "Decision: both sides changed"
+		},
+		{
+			"passed": true,
+			"test": "Decision: older server cannot silently replace local"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Cloud URL uses the profile name instead of the local ID"
+		},
+		{
+			"passed": true,
+			"test": "Fresh profile does not create an empty pending save"
+		},
+		{
+			"passed": true,
+			"test": "Login does not write to cloud"
+		},
+		{
+			"passed": true,
+			"test": "An empty save cannot upload"
+		},
+		{
+			"passed": true,
+			"test": "Local save carries dirty flag and base version"
+		},
+		{
+			"passed": true,
+			"test": "Saving locally requires no cloud write"
+		},
+		{
+			"passed": true,
+			"test": "Opening the cloud panel does not write"
+		},
+		{
+			"passed": true,
+			"test": "Closing the panel leaves changes local"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "One Save click sends one write without a confirmation dialog"
+		},
+		{
+			"passed": true,
+			"test": "Successful Save closes the panel without extra confirmation"
+		},
+		{
+			"passed": true,
+			"test": "Unchanged synchronized progress cannot create redundant writes"
+		},
+		{
+			"passed": true,
+			"test": "Offline progress persists without changing base version"
+		},
+		{
+			"passed": true,
+			"test": "Offline mode makes no HTTP requests"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Network return reads cloud but waits for Save click"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Save click synchronizes pending offline changes"
+		},
+		{
+			"passed": true,
+			"test": "Local mock fixture configured"
+		},
+		{
+			"passed": true,
+			"test": "Independent changes open conflict choice despite clock skew"
+		},
+		{
+			"passed": true,
+			"test": "Keep Cloud adopts server progress and version"
+		},
+		{
+			"passed": true,
+			"test": "Conflict keeps backup of discarded local progress"
+		},
+		{
+			"passed": true,
+			"test": "Local mock fixture configured"
+		},
+		{
+			"passed": true,
+			"test": "Local mock fixture configured"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "HTTP 409 preserves local changes and newer cloud"
+		},
+		{
+			"passed": true,
+			"test": "HTTP 409 returns to conflict choice without retry"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Keep Local saves directly against the latest selected server version"
+		},
+		{
+			"passed": true,
+			"test": "Local mock fixture configured"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "In-flight response cannot erase later local changes"
+		},
+		{
+			"passed": true,
+			"test": "Local mock fixture configured"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Later changes are sent by another Save click"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Olek has an independent cloud key"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Other profile starts its own server version sequence"
+		},
+		{
+			"passed": true,
+			"test": "Other profile never overwrites Ala's local save"
+		},
+		{
+			"passed": true,
+			"test": "Local mock fixture configured"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Late response for previous profile cannot overwrite current user's data"
+		},
+		{
+			"passed": true,
+			"test": "Local mock fixture configured"
+		},
+		{
+			"passed": true,
+			"test": "Switching back reloads the correct profile"
+		},
+		{
+			"passed": true,
+			"test": "Create named profile for cloud migration test"
+		},
+		{
+			"passed": true,
+			"test": "New random local IDs resolve to the name malykamis in cloud"
+		},
+		{
+			"passed": true,
+			"test": "Local mock fixture configured"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Legacy ID save is restored locally with a new name-key version base"
+		},
+		{
+			"passed": true,
+			"test": "Legacy discovery never writes or deletes cloud data automatically"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Save click migrates progress to the named cloud key"
+		},
+		{
+			"passed": true,
+			"test": "Migrating keeps the previous remote save unchanged"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Clear Local removes only active local save"
+		},
+		{
+			"passed": true,
+			"test": "Clear Local preserves a local backup"
+		},
+		{
+			"passed": true,
+			"test": "Clear Local never deletes or writes cloud data"
+		},
+		{
+			"passed": true,
+			"test": "Logout does not recreate empty local progress after Clear Local"
+		}
+	],
+	"passed": true,
+	"phase": "write",
+	"real_cloud_writes": 0,
+	"transport": "http://127.0.0.1:54067/v1"
+}

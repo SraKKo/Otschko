@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_74twg")
 id = "last_breath"
-display_name = "Last Breath"
-description = "You win when you have 21, skips dealer turn"
+display_name = "LOC_TRINKET_LAST_BREATH_NAME"
+description = "LOC_TRINKET_LAST_BREATH_DETAIL"
 icon = ExtResource("2_wgfni")
 effect_script = ExtResource("1_3joii")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

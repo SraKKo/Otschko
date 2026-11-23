@@ -1,0 +1,84 @@
+{
+	"checks": [
+		{
+			"passed": true,
+			"test": "Correct album namespace 51796"
+		},
+		{
+			"passed": true,
+			"test": "Decision: both saves absent"
+		},
+		{
+			"passed": true,
+			"test": "Decision: only local exists"
+		},
+		{
+			"passed": true,
+			"test": "Decision: only cloud exists"
+		},
+		{
+			"passed": true,
+			"test": "Decision: matching version and clean local"
+		},
+		{
+			"passed": true,
+			"test": "Decision: pending local changes on unchanged cloud"
+		},
+		{
+			"passed": true,
+			"test": "Decision: clean local follows newer cloud"
+		},
+		{
+			"passed": true,
+			"test": "Decision: both sides changed"
+		},
+		{
+			"passed": true,
+			"test": "Decision: older server cannot silently replace local"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Cloud URL uses the profile name instead of the local ID"
+		},
+		{
+			"passed": true,
+			"test": "Restart restores cleared local progress from cloud"
+		},
+		{
+			"passed": true,
+			"test": "Restored cloud version persists cleanly"
+		},
+		{
+			"passed": true,
+			"test": "Cloud restore recreates local save"
+		},
+		{
+			"passed": true,
+			"test": "Restoring from cloud never uploads"
+		},
+		{
+			"passed": true,
+			"test": "HTTP operation completes"
+		},
+		{
+			"passed": true,
+			"test": "Achievement events survive restart and cloud restore"
+		},
+		{
+			"passed": true,
+			"test": "Counter achievement survives restart and cloud restore"
+		},
+		{
+			"passed": true,
+			"test": "Restored achievements do not replay notices or upload"
+		}
+	],
+	"passed": true,
+	"phase": "read",
+	"real_cloud_writes": 0,
+	"transport": "http://127.0.0.1:54535/v1"
+}

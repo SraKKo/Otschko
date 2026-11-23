@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_mm8ci")
 id = "overheat"
-display_name = "Overheat!"
-description = "You bust only above 22"
+display_name = "LOC_TRINKET_OVERHEAT_NAME"
+description = "LOC_TRINKET_OVERHEAT_DETAIL"
 icon = ExtResource("2_4g6ag")
 effect_script = ExtResource("1_x0jdw")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

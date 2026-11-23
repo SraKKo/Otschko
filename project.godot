@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="blackjack"
-run/main_scene="uid://bf4hd6m5t6e18"
+run/main_scene="res://Scenes/ProfileGate.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 
 [audio]
@@ -20,6 +20,7 @@ buses/default_bus_layout="res://Sounds/default_bus_layout.tres"
 
 [autoload]
 
+Localization="*res://Scripts/Localization.gd"
 Global="*res://Scripts/Global.gd"
 inventory="*res://Scripts/Inventory.gd"
 TrinketDb="*res://Scripts/TrinketDb.gd"
@@ -28,6 +29,10 @@ MusicPlayer="*res://Scenes/MusicPlayer.tscn"
 SfxPlayer="*res://Scripts/SFXPlayer.gd"
 PCRuntime="*res://Scripts/PCRuntime.gd"
 ControllerInput="*res://Scripts/ControllerInput.gd"
+UserSession="*res://Scripts/UserSession.gd"
+RoamingSave="*res://Scripts/RoamingSave.gd"
+LicenseService="*res://Scripts/LicenseService.gd"
+Achievements="*res://Scripts/Achievements.gd"
 
 [display]
 
@@ -44,6 +49,14 @@ pause={
 ]
 }
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Locale/pl.po", "res://Locale/en.po")
+locale/fallback="pl"
+pseudolocalization/expansion_ratio=0.25
+pseudolocalization/skip_placeholders=true
+
 [rendering]
 
+renderer/rendering_method.web="gl_compatibility"
 textures/canvas_textures/default_texture_filter=0

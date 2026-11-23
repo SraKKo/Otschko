@@ -22,6 +22,6 @@ func refresh():
 		icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 		icon.custom_minimum_size = icon_size
 		icon.texture = def.icon
-		icon.tooltip_text = def.display_name + "\n" + def.description
+		icon.tooltip_text = tr(def.display_name) + "\n" + tr(def.description)
 
 		vbox.add_child(icon)

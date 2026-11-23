@@ -7,8 +7,8 @@
 [resource]
 script = ExtResource("1_yfv5l")
 id = "lazy_dealer"
-display_name = "Lazy Dealer"
-description = "Dealer sometimes stops drawing early"
+display_name = "LOC_TRINKET_LAZY_DEALER_NAME"
+description = "LOC_TRINKET_LAZY_DEALER_DETAIL"
 icon = ExtResource("2_jvvg5")
 effect_script = ExtResource("1_orkun")
 metadata/_custom_type_script = "uid://cfodyqpqyn817"

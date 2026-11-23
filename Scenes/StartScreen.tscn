@@ -117,42 +117,36 @@ offset_top = 280.0
 offset_right = 704.0
 offset_bottom = 376.0
 theme = SubResource("Theme_2qxhv")
-theme_override_constants/outline_size = 19
-theme_override_fonts/font = ExtResource("3_3u666")
-theme_override_font_sizes/font_size = 46
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = ExtResource("4_kehkj")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
-text = "
-PLAY"
+text = "LOC_PLAY"
 
 [node name="Settings" type="Button" parent="."]
 offset_left = 464.0
 offset_top = 376.0
 offset_right = 704.0
 offset_bottom = 472.0
-theme_override_constants/outline_size = 19
-theme_override_fonts/font = ExtResource("3_3u666")
-theme_override_font_sizes/font_size = 36
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 27
 theme_override_styles/normal = SubResource("StyleBoxTexture_ey7n4")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
-text = "
-SETTINGS"
+text = "LOC_SETTINGS"
 
 [node name="Quit" type="Button" parent="."]
 offset_left = 464.0
 offset_top = 472.0
 offset_right = 704.0
 offset_bottom = 568.0
-theme_override_constants/outline_size = 19
-theme_override_fonts/font = ExtResource("3_3u666")
-theme_override_font_sizes/font_size = 46
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxTexture_ey7n4")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
-text = "
-quit"
+text = "LOC_QUIT"
 
 [node name="Title" type="Node2D" parent="."]
 position = Vector2(520, 120)
@@ -162,6 +156,7 @@ offset_left = -488.0
 offset_top = -40.0
 offset_right = 593.0
 offset_bottom = 144.0
+auto_translate_mode = 2
 text = "otshcko!"
 label_settings = ExtResource("2_0on6r")
 horizontal_alignment = 1
@@ -177,18 +172,16 @@ speed_scale = 0.711
 
 [node name="Credits" type="Button" parent="."]
 offset_left = 1007.99994
-offset_top = 568.0
+offset_top = 544.0
 offset_right = 1248.0
 offset_bottom = 664.0
 scale = Vector2(0.52, 0.52)
-theme_override_constants/outline_size = 19
-theme_override_fonts/font = ExtResource("3_3u666")
-theme_override_font_sizes/font_size = 46
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxTexture_ey7n4")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_anxsw")
 theme_override_styles/hover = SubResource("StyleBoxTexture_kehkj")
-text = "
-credits"
+text = "LOC_CREDITS"
 
 [node name="CRT" type="CanvasLayer" parent="."]
 

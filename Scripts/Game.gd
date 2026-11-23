@@ -12,9 +12,15 @@ var split_active := false
 var current_hand := 1   # 1 lub 2
 var dealer_hidden_card: int = -1
 
-var money: int = 500     
+var _chips := preload("res://Scripts/ProtectedChips.gd").new(500)
+var money: int:
+	get: return _chips.get_value()
+	set(value): _chips.set_value(value)
+var integrity_notice: Label     
 var bet: int = 0         
 var in_round: bool = false
+var round_reported := false
+var last_round_result := ""
 
 var max_time := 10     
 var current_time := 10
@@ -84,6 +90,16 @@ const VICTORY_SCENE := "res://Scenes/VictoryScreen.tscn"
 const CARD_BACK = 52  
 
 func _ready():
+	if not (LicenseService.authorized or UserSession.legacy_check):
+		call_deferred("_return_to_profiles")
+		return
+	_chips.tampered.connect(_on_chip_tamper)
+	integrity_notice = Label.new()
+	integrity_notice.position = Vector2(22, 46)
+	integrity_notice.add_theme_color_override("font_color", Color(1, 0.72, 0.35))
+	integrity_notice.add_theme_color_override("font_outline_color", Color.BLACK)
+	integrity_notice.add_theme_constant_override("outline_size", 6)
+	add_child(integrity_notice)
 	PCRuntime.dev_log("Wczytano poziom: GameProper")
 	SettingsMenager.apply_crt(crt_rect)
 	MusicPlayer.play_crossfade(preload("res://Sounds/Music/Base.ogg"), 1.0)
@@ -122,7 +138,11 @@ func _ready():
 	
 	split_button.visible = false
 	
+	for readout: Label in [money_label, bet_label, round_label, stage_label, target_label]:
+		readout.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 	update_ui()
+	update_round_label()
+	Localization.changed.connect(_refresh_localized_hud)
 	
 	hide_cards()
 	hit_button.disabled = true
@@ -131,6 +151,25 @@ func _ready():
 	time_bar.value = time_bar.max_value
 
 	
+func _refresh_localized_hud() -> void:
+	update_ui()
+	update_round_label()
+	update_stage_ui()
+
+func _return_to_profiles() -> void:
+	UserSession.change_user()
+
+func _input(event: InputEvent) -> void:
+	if not OS.is_debug_build(): return
+	if event is InputEventKey and event.pressed and not event.echo and event.keycode == KEY_F7:
+		_chips.simulate_tamper()
+		update_ui()
+		get_viewport().set_input_as_handled()
+
+func _on_chip_tamper() -> void:
+	print("[ANTI-CHEAT] Niezgodna suma kontrolna żetonów; wyzerowano portfel.")
+	integrity_notice.text = "LOC_CHIPS_TAMPERED"
+
 func can_split() -> bool:
 	if player_cards.size() != 2:
 		return false
@@ -213,7 +252,7 @@ func on_hit_pressed():
 		add_new_player_card_sprite(new_card)
 
 		if count_score(player_cards) > get_bust_limit():
-			game_over("Przegrana! Masz ponad limit.")
+			game_over("bust")
 			show_result("BUST")
 		return   # <-- TO jest kluczowe
 
@@ -310,6 +349,7 @@ func do_split():
 	update_split_sprites()
 	update_split_arrows()
 	notify_player_hand_updated()
+	Achievements.grant("split")
 
 func update_split_sprites():
 	# wyczyść dodatkowe karty gracza (poza bazowymi sprite’ami)
@@ -394,7 +434,7 @@ func finish_split():
 	split_active = false
 	current_hand = 1
 	update_split_arrows()
-	game_over("Split zakończony")
+	game_over("split")
 
 
 func count_score(cards: Array) -> int:
@@ -424,44 +464,49 @@ func check_winner():
 	var dealer_score = count_score(dealer_cards)
 
 	if dealer_score > 21:
-		game_over("Wygrałeś! Dealer ma ponad 21.")
+		game_over("win_dealer_bust")
 		show_result("WIN")
 		SfxPlayer.play(preload("res://Sounds/SFX/Win.wav"))
 	elif dealer_score > player_score:
-		game_over("Przegrana! Dealer ma więcej punktów.")
+		game_over("lose_score")
 		show_result("BUST")
 		SfxPlayer.play(preload("res://Sounds/SFX/Fail.wav"))
 	elif dealer_score < player_score:
-		game_over("Wygrałeś! Masz więcej punktów.")
+		game_over("win_score")
 		show_result("WIN")
 		SfxPlayer.play(preload("res://Sounds/SFX/Win.wav"))
 	else:
 		show_result("DRAW")
-		game_over("Remis!")
+		game_over("draw")
 		SfxPlayer.play(preload("res://Sounds/SFX/Draw.wav"))
 
 
-func game_over(msg: String):
-	PCRuntime.dev_log("Wynik rundy: " + msg)
+func game_over(result: String):
+	if round_reported: return
+	round_reported = true
+	PCRuntime.dev_log("Wynik rundy: " + result)
 
 	hit_button.disabled = true
 	hold_button.disabled = true
 	var end_res := ""
 
 # Rozliczenie betu (tylko normalna gra)
-	if msg != "Split zakończony":
-		match msg:
-			"Wygrałeś! Dealer ma ponad 21.", "Wygrałeś! Masz więcej punktów.":
+	if result != "split":
+		match result:
+			"win_dealer_bust", "win_score":
 				var base = bet * 2
 				money += apply_payout_modifiers(base, "normal_win")
 				PCRuntime.dev_log("Zdobyto wygrana. Kapital: " + str(money))
 
-			"Remis!":
+			"draw":
 				money += bet  # zwrot stawki (tego zwykle nie modyfikujemy)
 
-			"Przegrana! Masz ponad 21.", "Przegrana! Dealer ma więcej punktów.", "Przegrana! Czas minął.":
+			"bust", "lose_score", "lose_time":
 				pass
 	
+	var won := result.begins_with("win_") or (result == "split" and last_round_result == "WIN")
+	var natural := result.begins_with("win_") and player_cards.size() == 2 and count_score(player_cards) == 21
+	UserSession.record_round(won, stage_index, money, natural)
 	if end_res != "":
 		notify_round_end(end_res)
 
@@ -494,6 +539,7 @@ func game_over(msg: String):
 			notify_stage_cleared()
 			
 		if stage_index >= FINAL_STAGE:
+			Achievements.grant("victory")
 			get_tree().change_scene_to_file(VICTORY_SCENE)
 			return
 
@@ -530,6 +576,8 @@ func on_deal():
 			print("[DEV] ", "Postaw najpierw zakład!")
 		return
 	
+	round_reported = false
+	last_round_result = ""
 	round_count += 1
 	update_round_label()
 	
@@ -556,8 +604,8 @@ func on_deal():
 	deal_initial_cards()
 
 func update_ui():
-	money_label.text = "Money: " + str(money)
-	bet_label.text = "Bet: " + str(bet)
+	money_label.text = Localization.message("LOC_MONEY", {"number": Localization.number(money)})
+	bet_label.text = Localization.message("LOC_BET", {"number": Localization.number(bet)})
 	update_stage_ui()
 
 
@@ -582,7 +630,7 @@ func time_out():
 	if OS.is_debug_build():
 		print("[DEV] ", "Czas minął!")
 	# Gracz automatycznie przegrywa
-	game_over("Przegrana! Czas minął.")
+	game_over("lose_time")
 
 func _on_round_time_timeout() -> void:
 	var step := 1
@@ -599,7 +647,7 @@ func _on_round_time_timeout() -> void:
 		time_out()
 
 func update_round_label():
-	round_label.text = "Round: " + str(round_count)
+	round_label.text = Localization.message("LOC_ROUND", {"number": Localization.number(round_count)})
 	
 func add_new_player_card_sprite(card_index: int):
 	var new_sprite := AnimatedSprite2D.new()
@@ -724,6 +772,7 @@ func _on_result_anim_finished(_name: StringName) -> void:
 	anim.play("TextShake")
 
 func show_result(kind: String) -> void:
+	last_round_result = kind
 	ControllerInput.rumble()
 	# schowaj oba i pokaż tylko właściwy
 	win_label.visible = false
@@ -782,8 +831,8 @@ func start_stage(new_stage_index: int) -> void:
 
 
 func update_stage_ui():
-	stage_label.text = "STAGE " + str(stage_index)
-	target_label.text = "Money Required: " + str(stage_target_money)
+	stage_label.text = Localization.message("LOC_STAGE", {"number": Localization.number(stage_index)})
+	target_label.text = Localization.message("LOC_TARGET", {"number": Localization.number(stage_target_money)})
 
 func update_split_arrows() -> void:
 	# bez splita - nic nie pokazujemy
